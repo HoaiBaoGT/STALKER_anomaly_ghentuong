@@ -1,0 +1,64 @@
+[logic]
+active				= beh@idle_1
+post_combat_time	= 0,0
+;==================================================
+[before_hit@invulnerable]
+ignore = invulnerable
+;----------------------------------------
+[meet@base]
+close_distance 		= 0
+close_snd_distance 	= 0
+far_distance		= 0
+far_snd_distance	= 0
+allow_break 		= true
+use					= false
+abuse				= false
+trade_enable		= false
+meet_on_talking		= false
+can_gtfo			= false
+;----------------------------------------
+[beh@base]
+dont_keep_items						= true
+gather_items_enabled				= false
+help_wounded_enabled				= false
+corpse_detection_enabled			= false
+combat_ignore_keep_when_attacked	= true
+target				= waypoint
+path_end			= loop
+walk_dist			= 0
+jog_dist			= 0
+run_anim			= assault
+meet				= meet@base
+before_hit			= before_hit@invulnerable
+invulnerable		= true
+combat_ignore_cond	= false
+danger_ignore		= true
+;==================================================
+[meet@general]:meet@base
+meet_dialog	= as_dialog_tdef_idle
+use			= {!beh_reached} false, true
+;----------------------------------------
+[beh@general]
+meet		= meet@general
+;----------------------------------------
+;TODO: Make animpoint works.
+[beh@idle_1]:beh@base,beh@general
+pt1			= 999999,sit_ass | pos:195.5,0,123.3 look:195.5,0,113.3
+on_info		= {=surge_started} beh@hide_1, {=is_rain} beh@hide_1, {=script(as_xr_conditions:hour_between:0:11)} beh@idle_2
+run_anim	= walk_noweap
+[beh@idle_2]:beh@base,beh@general
+pt1			= 999999,sit_ass | pos:203,0,88.5 look:213,0,88.5
+on_info		= {=surge_started} beh@hide_2, {=is_rain} beh@hide_2, {!script(as_xr_conditions:hour_between:0:11)} beh@idle_1
+run_anim	= walk_noweap
+
+[beh@hide_1]:beh@base,beh@general
+pt1			= 999999,zat_b14_stay_wall | pos:208.5,-2,123.5 look:218.5,-2,123.5
+on_info		= {=surge_complete !is_rain} beh@idle_1
+run_anim	= run
+[beh@hide_2]:beh@base,beh@general
+pt1			= 999999,zat_b14_stay_wall | pos:211.1,0.5,64 look:201.1,0.5,64
+on_info		= {=surge_complete !is_rain} beh@idle_2
+run_anim	= run
+
+
+

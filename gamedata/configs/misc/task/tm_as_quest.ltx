@@ -1,0 +1,202 @@
+;============================================================
+;Anomaly 1.5.5.0
+;GhenTuong
+;============================================================
+[as_quest_base]
+icon = ui_inGame2_Mesta_evakuatsii
+storyline = true
+prior = 1000
+status_functor	= as_quest_status
+target_functor	= as_quest_target
+title_functor	= as_quest_target
+descr_functor	= as_quest_target
+;============================================================
+;Verl Nut
+;============================================================
+[as_quest_verlnut_0]:as_quest_base
+status_functor_params = as_quest_verlnut,0
+on_init		= %+as_quest_verlnut_0_started%
+condlist_0	= {+as_quest_verlnut_0_complete} complete
+
+[as_quest_verlnut_1]:as_quest_base
+status_functor_params = as_quest_verlnut,1
+on_init		= %+as_quest_verlnut_1_started%
+condlist_0	= {+as_quest_verlnut_1_complete} complete
+
+[as_quest_verlnut_2]:as_quest_base
+status_functor_params = as_quest_verlnut,2
+on_init		= %+as_quest_verlnut_2_started%
+condlist_0	= {+as_quest_verlnut_2_complete} complete
+
+;============================================================
+;Clear Sky
+;============================================================
+[as_quest_csky_main_0]:as_quest_base
+status_functor_params = as_quest_csky,main_0
+on_init		= %+as_quest_csky_main_0_started%
+condlist_0	= {+as_quest_csky_main_0_complete} complete
+
+[as_quest_csky_main_1]:as_quest_base
+status_functor_params = as_quest_csky,main_1
+on_init		= %+as_quest_csky_main_1_started%
+condlist_0	= {+as_quest_csky_main_1_complete} complete
+
+[as_quest_csky_main_2]:as_quest_base
+status_functor_params = as_quest_csky,main_2
+on_init		= %+as_quest_csky_main_2_started%
+condlist_0	= {+as_quest_csky_main_2_complete} complete
+
+[as_quest_csky_main_3]:as_quest_base
+status_functor_params = as_quest_csky,main_3
+on_init		= %+as_quest_csky_main_3_started%
+condlist_0	= {+as_quest_csky_main_3_complete} complete
+
+[as_quest_csky_main_4]:as_quest_base
+status_functor_params = as_quest_csky,main_4
+on_init		= %+as_quest_csky_main_4_started%
+condlist_0	= {+as_quest_csky_main_4_complete} complete
+
+[as_quest_csky_main_5]:as_quest_base
+status_functor_params = as_quest_csky,main_5
+on_init		= %+as_quest_csky_main_5_started%
+condlist_0	= {+as_quest_csky_main_5_complete} complete
+
+;TRADER
+
+[as_quest_csky_trader_0]:as_quest_base
+status_functor_params = as_quest_csky,trader_0
+on_init		= %+as_quest_csky_trader_0_started%
+condlist_0	= {+as_quest_csky_trader_0_complete} complete
+
+[as_quest_csky_trader_1]:as_quest_base
+status_functor_params = as_quest_csky,trader_1
+on_init		= %+as_quest_csky_trader_1_started%
+condlist_0	= {+as_quest_csky_trader_1_complete} complete
+
+[as_quest_csky_trader_2]:as_quest_base
+status_functor_params = as_quest_csky,trader_2
+on_init		= %+as_quest_csky_trader_2_started%
+condlist_0	= {+as_quest_csky_trader_2_complete} complete
+
+;TECH
+
+[as_quest_csky_tech_0]:as_quest_base
+status_functor_params = as_quest_csky,tech_0
+on_init		= %+as_quest_csky_tech_0_started%
+condlist_0	= {+as_quest_csky_tech_0_complete} complete
+
+[as_quest_csky_tech_1]:as_quest_base
+status_functor_params = as_quest_csky,tech_1
+on_init		= %+as_quest_csky_tech_1_started%
+condlist_0	= {+as_quest_csky_tech_1_complete} complete
+
+[as_quest_csky_tech_2]:as_quest_base
+status_functor_params = as_quest_csky,tech_2
+on_init		= %+as_quest_csky_tech_2_started%
+condlist_0	= {+as_quest_csky_tech_2_complete} complete
+
+;MEDIC
+
+[as_quest_csky_medic_0]:as_quest_base
+status_functor_params = as_quest_csky,medic_0
+on_init		= %+as_quest_csky_medic_0_started%
+condlist_0	= {+as_quest_csky_medic_0_complete} complete
+
+[as_quest_csky_medic_1]:as_quest_base
+status_functor_params = as_quest_csky,medic_1
+on_init		= %+as_quest_csky_medic_1_started%
+condlist_0	= {+as_quest_csky_medic_1_complete} complete
+
+[as_quest_csky_medic_2]:as_quest_base
+status_functor_params = as_quest_csky,medic_2
+on_init		= %+as_quest_csky_medic_2_started%
+condlist_0	= {+as_quest_csky_medic_2_complete} complete
+
+;============================================================
+;Kiki
+;============================================================
+[as_quest_kiki_0]:as_quest_base
+status_functor_params = as_quest_kiki,0
+on_init		= %+as_quest_kiki_0_started%
+condlist_0	= {+as_quest_kiki_0_complete} complete
+;============================================================
+;Tdef
+;============================================================
+[as_quest_tdef_base]:as_quest_base
+title_functor	= as_quest_tdef_text
+descr_functor	= as_quest_tdef_text
+status_functor	= as_quest_tdef_status
+target_functor	= as_quest_tdef_target
+
+[as_quest_tdef_0]:as_quest_tdef_base
+status_functor_params = 0
+on_init		= %+as_quest_tdef_0_started%
+condlist_0	= {+as_quest_tdef_0_complete} complete
+
+[as_quest_tdef_1]:as_quest_tdef_base
+status_functor_params = 1
+on_init		= %+as_quest_tdef_1_started%
+condlist_0	= {+as_quest_tdef_1_complete} complete
+;============================================================
+;Stalker
+;============================================================
+[as_quest_stalker_base]:as_quest_base
+title_functor	= as_quest_stalker_text
+descr_functor	= as_quest_stalker_text
+status_functor	= as_quest_stalker_status
+target_functor	= as_quest_stalker_target
+;--------------------------------------------------
+;Quest 0:
+[as_quest_stalker_0]:as_quest_stalker_base
+status_functor_params = 0
+icon		= ui_inGame2_Poslednie_razrabotki
+on_init		= %+as_quest_stalker_0_started%
+condlist_0	= {+as_quest_stalker_0_complete} complete
+;--------------------------------------------------
+;Quest 1:
+[as_quest_stalker_1]:as_quest_stalker_base
+status_functor_params = 1
+icon		= ui_inGame2_Zalozhnik
+on_init		= %+as_quest_stalker_1_started%
+condlist_1	= {+as_quest_stalker_1_complete} complete
+;============================================================
+;Chief
+;============================================================
+[as_quest_chief_base]:as_quest_base
+title_functor	= as_quest_chief_text
+descr_functor	= as_quest_chief_text
+status_functor	= as_quest_chief_status
+target_functor	= as_quest_chief_target
+;--------------------------------------------------
+;Quest 0: Meet Chief
+[as_quest_chief_0]:as_quest_chief_base
+status_functor_params = 0
+on_init		= %+as_quest_chief_0_started%
+condlist_0	= {+as_quest_chief_0_complete} complete
+;--------------------------------------------------
+;Quest 1: Rob Ecologist
+[as_quest_chief_1]:as_quest_chief_base
+status_functor_params = 1
+on_init		= %+as_quest_chief_1_started%
+condlist_0	= {+as_quest_chief_1_complete} complete
+;--------------------------------------------------
+;============================================================
+;Miscellaneous
+;============================================================
+[as_quest_misc_base]:as_quest_base
+title_functor	= as_quest_misc_text
+descr_functor	= as_quest_misc_text
+status_functor	= as_quest_misc_status
+target_functor	= as_quest_misc_target
+;--------------------------------------------------
+;Quest 0:
+[as_quest_misc_0]:as_quest_misc_base
+status_functor_params = 0
+on_init		= %+as_quest_misc_0_started%
+condlist_0	= {+as_quest_misc_0_complete} complete
+;--------------------------------------------------
+;Quest 1:
+[as_quest_misc_1]:as_quest_misc_base
+status_functor_params = 1
+on_init		= %+as_quest_misc_1_started%
+condlist_0	= {+as_quest_misc_1_complete} complete

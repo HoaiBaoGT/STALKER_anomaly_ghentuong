@@ -1,0 +1,48 @@
+[logic]
+active				= beh@idle
+post_combat_time	= 0,0
+;==================================================
+[before_hit@general]
+ignore = invulnerable
+;----------------------------------------
+[meet@base]
+close_distance 		= 0
+close_snd_distance 	= 0
+far_distance		= 0
+far_snd_distance	= 0
+allow_break 		= true
+use					= false
+abuse				= false
+trade_enable		= false
+meet_on_talking		= false
+can_gtfo			= false
+;----------------------------------------
+[beh@base]
+dont_keep_items						= true
+gather_items_enabled				= false
+help_wounded_enabled				= false
+corpse_detection_enabled			= false
+combat_ignore_keep_when_attacked	= true
+target				= waypoint
+path_end			= loop
+walk_dist			= 0
+jog_dist			= 1000
+run_anim			= assault
+meet				= meet@base
+before_hit			= before_hit@general
+invulnerable		= true
+combat_ignore_cond	= false
+danger_ignore		= true
+;==================================================
+[beh@switch]
+on_info1 = {-as_quest_kiki_0_complete +as_quest_kiki_0_started !npc_on_level(l05_bar)} %=script(as_xr_effects:set_new_logic:scripts\as_logic\as_quest_kiki_0.ltx)%
+;==================================================
+[meet@idle]:meet@base
+meet_dialog	= {-as_quest_kiki_0_complete} as_dialog_kiki_0_0, as_dialog_kiki_idle
+use			= {!beh_reached} false, true
+;----------------------------------------
+[beh@idle]:beh@base,beh@switch
+pt1		= 1000,animpoint_sit_normal | pos:137.3,-4.8,24 animpoint:137.3,-4.8,24,136.3,-4.8,23.7
+meet	= meet@idle
+
+

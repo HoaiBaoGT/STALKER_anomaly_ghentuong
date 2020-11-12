@@ -1,0 +1,170 @@
+[logic]
+active 						= beh@general
+post_combat_time			= 0,0
+can_select_weapon			= true
+dont_keep_items				= true
+gather_items_enabled		= false
+help_wounded_enabled		= false
+corpse_detection_enabled	= false
+;==================================================
+[meet@base]
+allow_break 		= true
+close_distance 		= 0
+close_victim		= nil
+close_anim 			= nil
+close_snd_distance 	= 0
+close_snd_hello		= nil
+close_snd_bye		= nil
+far_distance		= 0
+far_victim			= nil
+far_anim			= nil
+far_snd_distance	= 0
+far_snd				= nil
+snd_on_use			= nil
+use					= true
+abuse				= false
+trade_enable		= false
+meet_on_talking		= false
+;==================================================
+[beh@base]
+meet				= no_meet
+behavior_state		= beh_move
+target				= waypoint
+path_end			= loop
+walk_anim			= assault
+jog_anim			= assault
+invulnerable		= true
+combat_ignore_cond	= false
+on_info				= {!check_npc_name(as_npc_stalker_0_bandit) =actor_enemy} %=actor_friend%, %=as_ignore_heli%
+;==================================================
+[beh@general]:beh@base
+on_info1	= {=as_quest_stalker_is_npc(1)}		beh@hostage_0
+on_info2	= {=as_quest_stalker_is_npc(2)}		beh@stalker_a_1
+on_info3	= {=as_quest_stalker_is_npc(3)}		beh@stalker_a_2
+on_info4	= {=as_quest_stalker_is_npc(4)}		beh@stalker_a_3
+on_info5	= {=as_quest_stalker_is_npc(5)}		beh@stalker_a_4
+on_info6	= {=as_quest_stalker_is_npc(11)}	beh@bandit_1
+on_info7	= {=as_quest_stalker_is_npc(12)}	beh@bandit_2
+on_info8	= {=as_quest_stalker_is_npc(13)}	beh@bandit_3
+on_info9	= {=as_quest_stalker_is_npc(14)}	beh@bandit_4
+on_info10	= {=as_quest_stalker_is_npc(15)}	beh@bandit_5
+on_info11	= {=as_quest_stalker_is_npc(16)}	beh@bandit_6
+on_info12	= {=as_quest_stalker_is_npc(17)}	beh@bandit_7
+on_info13	= {=as_quest_stalker_is_npc(18)}	beh@bandit_8
+on_info14	= {=as_quest_stalker_is_npc(19)}	beh@bandit_9
+on_info15	= {=as_quest_stalker_is_npc(20)}	beh@bandit_10
+;==================================================
+[meet@hostage]:meet@base
+meet_dialog	= as_dialog_stalker_0_2
+use			= {-as_quest_stalker_0_money -as_quest_stalker_0_dead} false, {+as_dialog_stalker_0_2 !check_smart_dist_le(30:esc_smart_terrain_2_12)} false, true
+[beh@hostage]:beh@base
+meet		= meet@hostage
+;----------------------------------------
+[beh@hostage_0]:beh@hostage
+pt1	= 999999999,wounded_heavy | pos:112,-2,-1 look:111,-2,0
+combat_ignore_cond	= true
+on_info1			= {+as_dialog_stalker_0_2} beh@hostage_1
+[beh@hostage_1]:beh@hostage
+pt1	= 999999999,sit_ass_weapon | pos:-208,-19.5,-131 look:-209,-19.5,-131
+combat_ignore_cond	= {=fighting_dist_ge(60)} true, {=check_enemy_name(as_npc_stalker_0_bandit)} true, false
+on_info1			= {-as_quest_stalker_0_safe =check_smart_dist_le(30:esc_smart_terrain_2_12)} %+as_quest_stalker_0_safe%
+;==================================================
+[meet@stalker]:meet@base
+meet_dialog			= as_dialog_stalker_0_1
+[beh@stalker_a]:beh@base
+combat_ignore_cond	= {=fighting_dist_ge(60)} true, {=check_enemy_name(as_npc_stalker_0_bandit)} true, false
+[beh@stalker_b]:beh@base
+combat_ignore_cond	= {=fighting_dist_ge(60)} true, false
+[beh@stalker_c]:beh@base
+combat_ignore_cond	= {=fighting_dist_ge(60)} true, false
+[beh@stalker_d]:beh@base
+combat_ignore_cond	= {=fighting_dist_ge(60)} true, false
+meet				= meet@stalker
+;----------------------------------------
+[beh@stalker_a_1]:beh@stalker_a
+meet		= meet@stalker
+pt1	= 999999999,hide | pos:-32,-10,-123 look:-32,-10,-122
+on_info1	= {+as_dialog_stalker_0_1} beh@stalker_b_1
+on_info2	= {+as_dialog_stalker_0_2} beh@stalker_d_1
+[beh@stalker_a_2]:beh@stalker_a
+pt1	= 999999999,sit_ass_weapon | pos:-30,-10.5,-129 look:-30,-10.5,-128
+on_info1	= {+as_dialog_stalker_0_1} beh@stalker_b_2
+on_info2	= {+as_dialog_stalker_0_2} beh@stalker_d_2
+[beh@stalker_a_3]:beh@stalker_a
+pt1	= 999999999,sit_ass_weapon | pos:-25,-10.5,-128 look:-26,-10.5,-127
+on_info1	= {+as_dialog_stalker_0_1} beh@stalker_b_3
+on_info2	= {+as_dialog_stalker_0_2} beh@stalker_d_3
+[beh@stalker_a_4]:beh@stalker_a
+pt1	= 999999999,sit_ass_weapon | pos:-32,-10,-126 look:-31,-10,-125
+on_info1	= {+as_dialog_stalker_0_1} beh@stalker_b_4
+on_info2	= {+as_dialog_stalker_0_2} beh@stalker_d_4
+;----------------------------------------
+[beh@stalker_b_1]:beh@stalker_b
+pt1	= 999999999,hide | pos:83,-8,-50 look:84,-8,-49
+on_info1	= {+as_quest_stalker_0_dead} beh@stalker_c_1
+[beh@stalker_b_2]:beh@stalker_b
+pt1	= 999999999,hide | pos:84,-8,-40 look:85,-8,-40
+on_info1	= {+as_quest_stalker_0_dead} beh@stalker_c_2
+[beh@stalker_b_3]:beh@stalker_b
+pt1	= 999999999,hide | pos:91,-7.5,-54 look:92,-7.5,-53
+on_info1	= {+as_quest_stalker_0_dead} beh@stalker_c_3
+[beh@stalker_b_4]:beh@stalker_b
+pt1	= 999999999,hide | pos:82,-8,-32 look:83,-8,-32
+on_info1	= {+as_quest_stalker_0_dead} beh@stalker_c_4
+;----------------------------------------
+[beh@stalker_c_1]:beh@stalker_c
+pt1	= 999999999,hide | pos:105,-7,-15 look:104,-7,-15
+on_info1	= {+as_dialog_stalker_0_2} beh@stalker_d_1
+[beh@stalker_c_2]:beh@stalker_c
+pt1	= 999999999,hide | pos:115,-7,-10 look:115,-7,-9
+on_info1	= {+as_dialog_stalker_0_2} beh@stalker_d_2
+[beh@stalker_c_3]:beh@stalker_c
+pt1	= 999999999,hide | pos:112,-7,-13 look:113,-7,-14
+on_info1	= {+as_dialog_stalker_0_2} beh@stalker_d_3
+[beh@stalker_c_4]:beh@stalker_c
+pt1	= 999999999,hide | pos:109,-7,-14 look:108,-7,-14
+on_info1	= {+as_dialog_stalker_0_2} beh@stalker_d_4
+;----------------------------------------
+[beh@stalker_d_1]:beh@stalker_d
+pt1	= 999999999,sit_ass_weapon | pos:-213,-19.5,-129 look:-212,-19.5,-129
+[beh@stalker_d_2]:beh@stalker_d
+pt1	= 999999999,sit_ass_weapon | pos:-213,-19.5,-131 look:-212,-19.5,-131
+[beh@stalker_d_3]:beh@stalker_d
+pt1	= 999999999,sit_ass_weapon | pos:-212,-19.5,-126 look:-211,-19.5,-127
+[beh@stalker_d_4]:beh@stalker_d
+pt1	= 999999999,sit_ass_weapon | pos:-208,-19.5,-128 look:-209,-19.5,-129
+;==================================================
+[meet@bandit]:meet@base
+meet_dialog			= as_dialog_stalker_0_3
+allow_break 		= true
+close_distance		= {-as_quest_stalker_0_money} 10, 0
+close_victim		= {-as_quest_stalker_0_money} actor, nil
+close_anim			= {-as_quest_stalker_0_money} threat_na, nil
+close_snd_distance 	= {-as_quest_stalker_0_money} 3, 0
+close_snd_hello		= {-as_quest_stalker_0_money} meet_stop, nil
+use					= {-as_quest_stalker_0_fight} true, false
+[beh@bandit]:beh@base
+meet				= meet@bandit
+invulnerable		= {-as_quest_stalker_0_fight} true, false
+combat_ignore_cond	= {-as_quest_stalker_0_fight =check_enemy_name(actor:as_npc_stalker_0_stalker)} true, {=check_enemy_name(as_npc_stalker_0_hostage)} true, false
+;----------------------------------------
+[beh@bandit_1]:beh@bandit
+pt1	= 999999999,guard | pos:106,-7,-11 look:105,-7,-12
+[beh@bandit_2]:beh@bandit
+pt1	= 999999999,guard | pos:115,-7,-7 look:115,-7,-6
+[beh@bandit_3]:beh@bandit
+pt1	= 999999999,guard | pos:111,-7,-11 look:111,-7,-12
+[beh@bandit_4]:beh@bandit
+pt1	= 999999999,guard | pos:106,-3,-8 look:105,-3,-8
+[beh@bandit_5]:beh@bandit
+pt1	= 999999999,guard | pos:111,-3,-8 look:111,-3,-9
+[beh@bandit_6]:beh@bandit
+pt1	= 999999999,guard | pos:110,-2,7 look:110,-2,8
+[beh@bandit_7]:beh@bandit
+pt1	= 999999999,guard | pos:117,-7,9 look:116,-7,9
+[beh@bandit_8]:beh@bandit
+pt1	= 999999999,guard | pos:112,-7,3 look:112,-7,2
+[beh@bandit_9]:beh@bandit
+pt1	= 999999999,sit_ass_weapon | pos:106,-2.5,0 look:107,-2.5,0
+[beh@bandit_10]:beh@bandit
+pt1	= 999999999,sit_ass_weapon | pos:106,-7.5,1 look:107,-7.5,1

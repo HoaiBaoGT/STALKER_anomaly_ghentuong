@@ -1,0 +1,32 @@
+function add_animations()
+	return {
+	hold_medkit	= {	prop	= { maxidle = 3,
+								sumidle = 3,
+								rnd = 80 },
+					into	= { [0]	= {"item_4_draw_0",  {a="medkit_script"}, "item_4_draw_1"} },
+					out		= { [0]	= {"item_4_holster_0", {d="medkit_script"}, "item_4_holster_1"} },
+					idle	= { [0]	= "item_4_aim_0" },
+					rnd		= nil }
+	}
+end
+copy_table(state_mgr_animation_list.animations, add_animations())
+
+function add_states()
+	return {
+	hold_medkit	= {	weapon = "strapped",
+				movement = move.stand,
+				mental = anim.free,
+				bodystate = move.standing,
+				animstate = nil,
+				animation = "hold_medkit"
+			},
+	fold_arms_wpn = {weapon = "strapped",
+				movement = move.stand,
+				mental = anim.free,
+				bodystate = move.standing,
+				animstate = nil,
+				animation = "fold_arms"
+			}
+	}
+end
+copy_table(state_lib.states, add_states())

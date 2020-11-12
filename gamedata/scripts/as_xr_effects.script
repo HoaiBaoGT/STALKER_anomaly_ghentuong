@@ -1,0 +1,42 @@
+
+function set_new_logic(actor,npc,p)
+	if not (p and p[1]) then
+		printf("[%s] Line: %s :ERROR",debug.getinfo(1,"S").source,debug.getinfo(1).currentline)
+	end
+	printf("set_new_logic %s => %s", npc:name(), p[1])
+	xr_logic.set_new_scheme_and_logic(npc, nil, nil, (p[2] or "logic"), nil, p[1])
+end
+
+function reset_logic(actor,npc,p)
+	--printf("reset_logic %s",npc:name())
+	xr_logic.restore_scheme_and_logic(npc)
+end
+
+function teleport_to_smart(actor,npc,p)
+	local id	= npc:id()
+	local smart	= p and p[1] and SIMBOARD.smarts_by_names[p[1]]
+	local pos	= vector():set(smart.position)
+	local lvid	= tonumber(smart.m_level_vertex_id)
+	local gvid	= tonumber(smart.m_game_vertex_id)
+	
+	alife():teleport_object(id,gvid,lvid,pos)
+	--printf("teleport_to_smart = %s | %s | %s", pos, lvid, gvid)
+	
+	--HACK. Teleport is gay.
+	local function hacky(id)
+		if (db.offline_objects[id]) then
+			--printf("teleport_to_smart: %s",db.offline_objects[id].level_vertex_id)
+			db.offline_objects[id].level_vertex_id = nil
+		end
+		db.spawned_vertex_by_id[id] = nil
+		return true
+	end
+	CreateTimeEvent(id,"teleport_to_smart",1,hacky,id)
+end
+
+
+
+
+--[[--------------------------------------------------
+
+----------------------------------------------------]]

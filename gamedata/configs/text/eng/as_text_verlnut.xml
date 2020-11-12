@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<string_table>
+	
+	<string id="as_dialog_verlnut_idle_hello">
+		<text>Hello, brother.</text>
+	</string>
+	<string id="as_dialog_verlnut_idle_bye">
+		<text>Until next time.</text>
+	</string>
+	
+		<string id="as_quest_tdef_0_title">
+			<text>Verlnut: The Talking Snork.</text>
+		</string>
+		<string id="as_quest_tdef_0_descr_1">
+			<text>Meet Verlnut at Skadovsk in Zaton.</text>
+		</string>
+		<string id="as_quest_tdef_0_descr_2">
+			<text>Find a Boar chops (Purified) for Verlnut.</text>
+		</string>
+	
+	<string id="as_dialog_verlnut_0_talk_0">
+		<text>What? A talking snork?</text>
+	</string>
+	<string id="as_dialog_verlnut_0_talk_1">
+		<text>Oh hoho... The Zone now is full of strange anomalies, fancy artefacts,bullshit creatures. And you are surprised by a talking snork.</text>
+	</string>
+	<string id="as_dialog_verlnut_0_talk_2">
+		<text>Who are you? What happened to you?</text>
+	</string>
+	<string id="as_dialog_verlnut_0_talk_3">
+		<text>It is a long story. But I am hungry now. Since I came here, I haven't eaten anything. Can you bring me some food?</text>
+	</string>
+	<string id="as_dialog_verlnut_0_talk_4">
+		<text>Sure. What kind of food do you want?</text>
+	</string>
+	<string id="as_dialog_verlnut_0_talk_5">
+		<text>Boar chops, grilled with salt and wine. For a long time, I haven't eaten any... cooked food if you catch my mind. Bring me one and don't forget one for yourself, then we will have a meal and I will tell you the story.</text>
+	</string>
+	<string id="as_dialog_verlnut_0_talk_6">
+		<text>As you wish.</text>
+	</string>
+	<string id="as_dialog_verlnut_0_talk_7">
+		<text>Sorry, I can't do that.</text>
+	</string>
+	<string id="as_dialog_verlnut_0_talk_8">
+		<text>Well...</text>
+	</string>
+	
+	<string id="as_dialog_verlnut_0_item_0">
+		<text>Here you go. %c[d_orange][Boar Chops]</text>
+	</string>
+	<string id="as_dialog_verlnut_0_item_1">
+		<text>Thanks! Thank you! Nom nom nom!!! Yeah, that is what I am talking about. Here, take these for your trouble. I don't need them anymore...</text>
+	</string>
+	
+	
+		<string id="as_quest_tdef_1_title">
+			<text>Verlnut: Revenge.</text>
+		</string>
+		<string id="as_quest_tdef_1_descr_1">
+			<text>Meet Verlnut at the factory near the north tunnel in Jupiter. Or go there with him.</text>
+		</string>
+		<string id="as_quest_tdef_1_descr_2">
+			<text>Help Verlnut fight against the controller and its gang.</text>
+		</string>
+		<string id="as_quest_tdef_1_descr_3">
+			<text>Return to Skadovsk.</text>
+		</string>
+	
+	<string id="as_dialog_verlnut_1_give_0">
+		<text>You told me about a controller. It is very dangerous for those who don't know about its existing. Is it still there?</text>
+	</string>
+	<string id="as_dialog_verlnut_1_give_1">
+		<text>Yes. It has turned the turnel into its home. For two years many stalkers have fallen to its hands. Damn those freedomers in the Yanow Station, haven't bothered laying a hand on it even when it is right next to their ass. I really want to have my revenge, but my men are all dead. Going there alone seems isn't a smart idea.</text>
+	</string>
+	<string id="as_dialog_verlnut_1_give_2">
+		<text>Count me in. What do you want to do?</text>
+	</string>
+	<string id="as_dialog_verlnut_1_give_3">
+		<text>You want to help me, huh? Well, Beard has told me about you. A good shooter indeed. Tell you what? I will have my revenge. And you will have my one-week wages from guarding the ship. Deal?</text>
+	</string>
+	<string id="as_dialog_verlnut_1_give_4">
+		<text>Deal.</text>
+	</string>
+	<string id="as_dialog_verlnut_1_give_5">
+		<text>Okay. Meet me at the factory east of the tunnel. Or you can go there with me if you want.</text>
+	</string>
+	<string id="as_dialog_verlnut_1_give_6">
+		<text>Sorry for mentioning about that.</text>
+	</string>
+	<string id="as_dialog_verlnut_1_give_7">
+		<text>It is fine. Nevermind.</text>
+	</string>
+	<string id="as_dialog_verlnut_1_give_8">
+		<text>I am not sure about this.</text>
+	</string>
+	<string id="as_dialog_verlnut_1_give_9">
+		<text>It is tough. I know.</text>
+	</string>
+	
+	<string id="as_dialog_verlnut_1_move_0">
+		<text>I am ready. Let's go.</text>
+	</string>
+	
+	<string id="as_dialog_verlnut_1_talk_0">
+		<text>I will draw their attention while you snipe them. I think we should clear those zombified stalkers guarding the gate first. Then we go inside dealing with the monster together.</text>
+	</string>
+	<string id="as_dialog_verlnut_1_talk_1">
+		<text>I am ready. Go.</text>
+	</string>
+	<string id="as_dialog_verlnut_1_talk_2">
+		<text>Wait. Let me scout them first. I will talk to you when I am ready.</text>
+	</string>
+	
+	<string id="as_dialog_verlnut_1_dead_0">
+		<text>Ha ha ha. It is dead. Finally. Okay, will you return to the ship with me?</text>
+	</string>
+	<string id="as_dialog_verlnut_1_dead_1">
+		<text>Yes. Let we go.</text>
+	</string>
+	<string id="as_dialog_verlnut_1_dead_2">
+		<text>I have other stuff to do here. I will meet you at the ship then.</text>
+	</string>
+	
+	<string id="as_dialog_verlnut_1_reward_0">
+		<text>Congratulation for your revenge. Ah~, my head is still aching.</text>
+	</string>
+	<string id="as_dialog_verlnut_1_reward_1">
+		<text>Ah ha ha ha. There you go. The deal as I promised. You are a good shooter, indeed. Now, let us have a drink.</text>
+	</string>
+	<string id="as_dialog_verlnut_1_reward_2">
+		<text>Thanks.</text>
+	</string>
+	
+	<string id="as_dialog_verlnut_idle_info_1_0">
+		<text>How did you become like this?</text>
+	</string>
+	<string id="as_dialog_verlnut_idle_info_1_1">
+		<text>It was two years ago. I used to be a free stalker, a leader of a stalker squad. One day an emission occurred while we were exploring the north of Yanov station. We headed to a nearby tunnel and engaged a controller. Usually, a controller isn't much of a problem for us. But this time it had a mob of zombified stalker being under its control and the emission distracted us. One by one, my men either fell into its control or went down by the suppressing fire from those zombies. The last thing I remember is I was the last one standing and the emission hit me. When I woke up, I knew that I had become a snork. I engaged gunfire from a stalker squad and took a while to convince them. Then they led me here.</text>
+	</string>
+	<string id="as_dialog_verlnut_idle_info_2_0">
+		<text>Why did you give me all your medicine? Why don't you need them?</text>
+	</string>
+	<string id="as_dialog_verlnut_idle_info_2_1">
+		<text>I feel no pain. The blood flowing in my vein is too solid for having any serious bleeding. Medic said that my body had a strange effect. It regenerates extremely quickly, like a Soul artefact. Have you ever heard of this artefact? It even slowly heals everyone being nearby. If you are wounded, you can come here. We will talk and drink while your wound is healed up.</text>
+	</string>
+	<string id="as_dialog_verlnut_idle_info_3_0">
+		<text>How is your life here?</text>
+	</string>
+	<string id="as_dialog_verlnut_idle_info_3_1">
+		<text>Once I thought I won't be welcome. But surprisingly, they treat me evenly. Some curious about me but this is fine. At first, I got some trouble with those dutyers. Now they understand me and leave me be. My job is guarding on top of the ship at night time. Beard pays me food and drink and money for that.</text>
+	</string>
+	
+</string_table>

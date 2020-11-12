@@ -1,0 +1,50 @@
+
+local M = {}
+local HI, GI, DI = has_alife_info, give_info, disable_info
+
+function on_game_start()
+    RegisterScriptCallback("save_state",save_state)
+    RegisterScriptCallback("load_state",load_state)
+end
+
+function save_state(m)
+	m.as_quest_peacher = M
+end
+
+function load_state(m)
+	M = m.as_quest_peacher or {}
+end
+--=============================================================
+local STAGE_STATUS = {}
+local STAGE_TARGET = {}
+local STAGE_TEXT = {}
+--=============================================================
+--main_0
+--=============================================================
+
+--=============================================================
+function quest_progress(functor,quest,tsk,task_id,stage,field)
+	if (M and tostring(quest)) then
+		if (functor == "status") then
+			return STAGE_STATUS[tostring(quest)] and STAGE_STATUS[tostring(quest)](tsk,task_id,stage)
+		end
+		if (functor == "target") then
+			return STAGE_TARGET[tostring(quest)] and STAGE_TARGET[tostring(quest)](tsk,task_id,stage)
+		end
+		if (functor == "text") then
+			return STAGE_TEXT[tostring(quest)] and STAGE_TEXT[tostring(quest)](tsk,task_id,stage,field)
+		end
+	end
+end
+
+function pick_logic(actor,npc,p)
+	if (p and #p == 2) then
+		local quest = p[1]
+		local index = p[2]
+		return M and M[quest] and (M[quest][index] == npc:id())
+	end
+	return false
+end
+
+
+

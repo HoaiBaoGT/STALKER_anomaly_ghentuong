@@ -1,0 +1,354 @@
+
+<dialog id="as_dialog_stalker_0_0">
+	<phrase_list>
+		<phrase id="0">
+			<text/>
+			<next>pick_dialog</next>
+		</phrase>
+		<phrase id="pick_dialog">
+			<text/>
+			<next>a</next>
+			<next>b</next>
+		</phrase>
+		
+		<phrase id="a">
+			<dont_has_info>as_dialog_stalker_0_0</dont_has_info>
+			<text>as_dialog_stalker_0_0_0</text>
+			<next>1</next>
+			<next>5</next>
+		</phrase>
+		<phrase id="1">
+			<text>as_dialog_stalker_0_0_1</text>
+			<next>2</next>
+		</phrase>
+		<phrase id="2">
+			<text>as_dialog_stalker_0_0_2</text>
+			<next>3</next>
+			<next>5</next>
+		</phrase>
+		<phrase id="3">
+			<text>as_dialog_stalker_0_0_3</text>
+			<next>4</next>
+		</phrase>
+		<phrase id="4">
+			<text>as_dialog_stalker_0_0_4</text>
+			<give_info>as_dialog_stalker_0_0</give_info>
+		</phrase>
+		<phrase id="5">
+			<text>as_dialog_stalker_0_0_5</text>
+		</phrase>
+		
+		<phrase id="b">
+			<has_info>as_dialog_stalker_0_0</has_info>
+			<text>as_dialog_stalker_0_0_6</text>
+			<next>7</next>
+			<next>8</next>
+		</phrase>
+		<phrase id="7">
+			<has_info>as_quest_stalker_0_safe</has_info>
+			<text>as_dialog_stalker_0_0_7</text>
+			<next>9</next>
+		</phrase>
+		<phrase id="8">
+			<text>as_dialog_stalker_0_0_8</text>
+		</phrase>
+		<phrase id="9">
+			<text>as_dialog_stalker_0_0_9</text>
+			<next>10</next>
+		</phrase>
+		<phrase id="10">
+			<text>as_dialog_stalker_0_0_10</text>
+			<give_info>as_quest_stalker_0_finish</give_info>
+		</phrase>
+	</phrase_list>
+</dialog>
+
+<dialog id="as_dialog_stalker_0_1">
+	<phrase_list>
+		<phrase id="0">
+			<text/>
+			<next>pick_dialog</next>
+		</phrase>
+		<phrase id="pick_dialog">
+			<text/>
+			<next>a</next>
+			<next>b</next>
+			<next>c</next>
+		</phrase>
+		
+		<phrase id="a">
+			<dont_has_info>as_dialog_stalker_0_1</dont_has_info>
+			<dont_has_info>as_quest_stalker_0_money</dont_has_info>
+			<text>as_dialog_stalker_0_1_0</text>
+			<next>1</next>
+			<next>2</next>
+			<next>5</next>
+		</phrase>
+		<phrase id="1">
+			<text>as_dialog_stalker_0_1_1</text>
+			<give_info>as_dialog_stalker_0_1</give_info>
+			<action>dialogs.break_dialog</action>
+		</phrase>
+		<phrase id="2">
+			<text>as_dialog_stalker_0_1_2</text>
+			<next>3</next>
+		</phrase>
+		<phrase id="3">
+			<text>as_dialog_stalker_0_1_3</text>
+			<next>1</next>
+			<next>4</next>
+			<next>5</next>
+		</phrase>
+		<phrase id="4">
+			<text>as_dialog_stalker_0_1_4</text>
+			<action>dialogs.break_dialog</action>
+		</phrase>
+		<phrase id="5">
+			<text>as_dialog_stalker_0_1_5</text>
+			<action>dialogs.break_dialog</action>
+		</phrase>
+		
+		<phrase id="b">
+			<has_info>as_quest_stalker_0_fight</has_info>
+			<text>as_dialog_stalker_0_1_6</text>
+			<next>8</next>
+		</phrase>
+		<phrase id="c">
+			<has_info>as_quest_stalker_0_money</has_info>
+			<text>as_dialog_stalker_0_1_7</text>
+			<next>8</next>
+		</phrase>
+		<phrase id="8">
+			<text>as_dialog_stalker_0_1_8</text>
+			<action>dialogs.break_dialog</action>
+		</phrase>
+	</phrase_list>
+</dialog>
+
+<dialog id="as_dialog_stalker_0_2">
+	<phrase_list>
+		<phrase id="0">
+			<text/>
+			<next>pick_dialog</next>
+		</phrase>
+		<phrase id="pick_dialog">
+			<text/>
+			<next>a</next>
+			<next>b</next>
+		</phrase>
+		
+		<phrase id="a">
+			<text>as_dialog_stalker_0_2_0</text>
+			<next>1</next>
+		</phrase>
+		<phrase id="1">
+			<text>as_dialog_stalker_0_2_1</text>
+			<give_info>as_dialog_stalker_0_2</give_info>
+			<action>dialogs.break_dialog</action>
+		</phrase>
+		
+		<phrase id="b">
+			<text>as_dialog_stalker_0_2_2</text>
+			<next>3</next>
+			<next>6</next>
+		</phrase>
+		<phrase id="3">
+			<text>as_dialog_stalker_0_2_3</text>
+			<next>4</next>
+		</phrase>
+		<phrase id="4">
+			<text>as_dialog_stalker_0_2_4</text>
+			<next>5</next>
+		</phrase>
+		<phrase id="5">
+			<text>as_dialog_stalker_0_2_5</text>
+			<action>dialogs.break_dialog</action>
+		</phrase>
+		<phrase id="6">
+			<text>as_dialog_stalker_0_2_6</text>
+			<action>dialogs.break_dialog</action>
+		</phrase>
+	</phrase_list>
+</dialog>
+
+<dialog id="as_dialog_stalker_0_3">
+	<phrase_list>
+		<phrase id="0">
+			<text/>
+			<next>pick_dialog</next>
+		</phrase>
+		<phrase id="pick_dialog">
+			<text/>
+			<next>a</next>
+			<next>b</next>
+		</phrase>
+		
+		<phrase id="a">
+			<dont_has_info>as_quest_stalker_0_money</dont_has_info>
+			<text>as_dialog_stalker_0_3_0</text>
+			<next>1</next>
+			<next>6</next>
+		</phrase>
+		<phrase id="1">
+			<text>as_dialog_stalker_0_3_1</text>
+			<next>2</next>
+		</phrase>
+		<phrase id="2">
+			<text>as_dialog_stalker_0_3_2</text>
+			<next>3</next>
+			<next>6</next>
+		</phrase>
+		<phrase id="3">
+			<precondition>as_quest_stalker.dialog_has_money</precondition>
+			<text>as_dialog_stalker_0_3_3</text>
+			<next>4</next>
+		</phrase>
+		<phrase id="4">
+			<text>as_dialog_stalker_0_3_4</text>
+			<action>as_quest_stalker.dialog_relocate_money</action>
+			<give_info>as_quest_stalker_0_money</give_info>
+			<next>5</next>
+		</phrase>
+		<phrase id="5">
+			<text>as_dialog_stalker_0_3_5</text>
+			<action>dialogs.break_dialog</action>
+		</phrase>
+		<phrase id="6">
+			<text>as_dialog_stalker_0_3_6</text>
+			<action>dialogs.break_dialog</action>
+		</phrase>
+		
+		<phrase id="b">
+			<has_info>as_quest_stalker_0_money</has_info>
+			<text>as_dialog_stalker_0_3_7</text>
+			<next>8</next>
+			<next>11</next>
+		</phrase>
+		<phrase id="8">
+			<text>as_dialog_stalker_0_3_8</text>
+			<next>9</next>
+		</phrase>
+		<phrase id="9">
+			<text>as_dialog_stalker_0_3_9</text>
+			<next>10</next>
+		</phrase>
+		<phrase id="10">
+			<text>as_dialog_stalker_0_3_10</text>
+			<action>dialogs.break_dialog</action>
+		</phrase>
+		<phrase id="11">
+			<text>as_dialog_stalker_0_3_11</text>
+			<action>dialogs.break_dialog</action>
+		</phrase>
+	</phrase_list>
+</dialog>
+
+<dialog id="as_dialog_stalker_1_0">
+	<phrase_list>
+		<phrase id="0">
+			<text/>
+			<next>pick_dialog</next>
+		</phrase>
+		<phrase id="pick_dialog">
+			<text/>
+			<next>a</next>
+			<next>b</next>
+		</phrase>
+		
+		<phrase id="a">
+			<dont_has_info>as_quest_stalker_1_actor_doc</dont_has_info>
+			<text>as_dialog_stalker_1_0_0</text>
+		</phrase>
+		
+		<phrase id="b">
+			<has_info>as_quest_stalker_1_actor_doc</has_info>
+			<text>as_dialog_stalker_1_0_1</text>
+			<next>2</next>
+			<next>4</next>
+			<next>6</next>
+		</phrase>
+		<phrase id="2">
+			<dont_has_info>as_quest_stalker_1_duty_doc</dont_has_info>
+			<text>as_dialog_stalker_1_0_2</text>
+			<next>3</next>
+		</phrase>
+		<phrase id="3">
+			<text>as_dialog_stalker_1_0_3</text>
+			<give_info>as_quest_stalker_1_finish</give_info>
+		</phrase>
+		<phrase id="4">
+			<has_info>as_quest_stalker_1_duty_doc</has_info>
+			<text>as_dialog_stalker_1_0_4</text>
+			<next>5</next>
+		</phrase>
+		<phrase id="5">
+			<text>as_dialog_stalker_1_0_5</text>
+			<give_info>as_quest_stalker_1_finish</give_info>
+		</phrase>
+		<phrase id="6">
+			<text>as_dialog_stalker_1_0_6</text>
+		</phrase>
+	</phrase_list>
+</dialog>
+
+<dialog id="as_dialog_stalker_1_1">
+	<phrase_list>
+		<phrase id="0">
+			<text/>
+			<next>pick_dialog</next>
+		</phrase>
+		<phrase id="pick_dialog">
+			<text/>
+			<next>a</next>
+			<next>b</next>
+			<next>c</next>
+		</phrase>
+		
+		<phrase id="a">
+			<dont_has_info>as_quest_stalker_1_duty_money</dont_has_info>
+			<text>as_dialog_stalker_1_1_0</text>
+			<give_info>as_quest_stalker_1_duty_money</give_info>
+			<next>1</next>
+		</phrase>
+		<phrase id="1">
+			<text>as_dialog_stalker_1_1_1</text>
+			<action>dialogs.break_dialog</action>
+		</phrase>
+		
+		<phrase id="b">
+			<has_info>as_quest_stalker_1_duty_money</has_info>
+			<dont_has_info>as_quest_stalker_1_duty_doc</dont_has_info>
+			<text>as_dialog_stalker_1_1_2</text>
+			<next>3</next>
+			<next>6</next>
+		</phrase>
+		<phrase id="3">
+			<has_info>as_quest_stalker_1_actor_doc</has_info>
+			<text>as_dialog_stalker_1_1_3</text>
+			<next>4</next>
+		</phrase>
+		<phrase id="4">
+			<text>as_dialog_stalker_1_1_4</text>
+			<give_info>as_quest_stalker_1_duty_doc</give_info>
+			<next>5</next>
+		</phrase>
+		<phrase id="5">
+			<text>as_dialog_stalker_1_1_5</text>
+			<action>dialogs.break_dialog</action>
+		</phrase>
+		<phrase id="6">
+			<text>as_dialog_stalker_1_1_6</text>
+			<action>dialogs.break_dialog</action>
+		</phrase>
+		
+		<phrase id="c">
+			<has_info>as_quest_stalker_1_duty_doc</has_info>
+			<text>as_dialog_stalker_1_1_7</text>
+			<next>8</next>
+		</phrase>
+		<phrase id="8">
+			<text>as_dialog_stalker_1_1_8</text>
+			<action>dialogs.break_dialog</action>
+		</phrase>
+	</phrase_list>
+</dialog>

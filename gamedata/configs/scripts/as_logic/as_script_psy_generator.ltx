@@ -1,0 +1,22 @@
+[logic]
+active = ph_idle@state_1
+
+[ph_idle@base]
+on_info1 = %=script(xr_custom:psy_field:50)%
+
+[ph_idle@state_1]:ph_idle@base
+on_timer = 2000 | %=script(xr_custom:play_particles:artefact\af_electra_idle:joint5)% ph_idle@state_2
+[ph_idle@state_2]:ph_idle@base
+on_timer = 2000 | %=script(xr_custom:play_particles:artefact\af_electra_idle:joint5)% ph_idle@state_3
+[ph_idle@state_3]:ph_idle@base
+on_timer = 2000 | %=script(xr_custom:play_particles:artefact\af_electra_idle:joint5)% ph_idle@state_4
+[ph_idle@state_4]:ph_idle@base
+on_timer = 2000 | %=script(xr_custom:play_particles:artefact\af_electra_idle:joint5)% ph_idle@state_5
+[ph_idle@state_5]:ph_idle@base
+on_timer = 2000 | %=script(xr_custom:play_particles:artefact\af_electra_idle:joint5)% ph_idle@shoot
+
+[ph_idle@shoot]:ph_idle@base
+on_info2 = %=script(xr_custom:play_particles:artefact\af_electra_show:joint5) =script(xr_custom:psy_hit:50:0.2)% ph_idle@state_1
+
+[waypoint]
+main_3 = pos:402,-3,242

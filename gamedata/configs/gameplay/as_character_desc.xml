@@ -1,0 +1,235 @@
+
+<specific_character id="as_npc_csky_leader" team_default="1">
+	<class>as_npc_csky_leader</class>
+	<name>as_npc_csky_leader_name</name>
+	<icon>ui_inGame2_csky_1_1</icon>
+	<community>csky</community>
+	<snd_config>characters_voice\human\csky_1\</snd_config>
+	<visual>actors\as_visual\as_npc_csky_leader</visual>
+	
+	<map_icon x="1" y="0"> </map_icon>
+	<bio></bio>
+	<supplies></supplies>
+	<rank>10000</rank>
+	<reputation>1000</reputation>
+	<money min="1000000" max="1000000" infinitive="1"/>
+	
+	<start_dialog>as_dialog_leader_hello</start_dialog>
+	<actor_dialog>as_dialog_leader_csky_main_0_talk</actor_dialog>
+	<actor_dialog>as_dialog_leader_csky_main_1_give</actor_dialog>
+	<actor_dialog>as_dialog_leader_csky_main_1_info</actor_dialog>
+	<actor_dialog>as_dialog_leader_csky_main_1_reward</actor_dialog>
+	<actor_dialog>as_dialog_leader_csky_main_2_give</actor_dialog>
+	
+	
+	<actor_dialog>as_dialog_leader_story_1</actor_dialog>
+	<actor_dialog>as_dialog_leader_story_2</actor_dialog>
+	<actor_dialog>as_dialog_leader_story_3</actor_dialog>
+	<actor_dialog>actor_break_dialog</actor_dialog>
+</specific_character>
+
+<specific_character id="as_npc_csky_trader" team_default="1">
+	<class>as_npc_csky_trader</class>
+	<name>as_npc_csky_trader_name</name>
+	<icon>ui_inGame2_csky_soc2</icon>
+	<community>csky</community>
+	<snd_config>characters_voice\human\csky_2\</snd_config>
+	<visual>actors\as_visual\as_npc_csky_trader</visual>
+	
+	<map_icon x="1" y="0"> </map_icon>
+	<bio></bio>
+	<supplies></supplies>
+	<rank>10000</rank>
+	<reputation>1000</reputation>
+	<money min="1000000" max="1000000" infinitive="1"/>
+	
+	<start_dialog>as_dialog_trader_hello</start_dialog>
+	<actor_dialog>as_dialog_trader_csky_trader_1_give</actor_dialog>
+	<actor_dialog>as_dialog_trader_csky_trader_1_reward</actor_dialog>
+	
+	<actor_dialog>as_dialog_trader_trade</actor_dialog>
+	<actor_dialog>as_dialog_trader_story_1</actor_dialog>
+	<actor_dialog>as_dialog_trader_story_2</actor_dialog>
+	<actor_dialog>as_dialog_trader_story_3</actor_dialog>
+	<actor_dialog>actor_break_dialog</actor_dialog>
+</specific_character>
+
+<specific_character id="as_npc_csky_tech" team_default="1">
+	<class>as_npc_csky_tech</class>
+	<name>as_npc_csky_tech_name</name>
+	<icon>ui_inGame2_csky_1</icon>
+	<community>csky</community>
+	<snd_config>characters_voice\human\csky_2\</snd_config>
+	<visual>actors\as_visual\as_npc_csky_tech</visual>
+	
+	<map_icon x="1" y="0"> </map_icon>
+	<bio></bio>
+	<supplies></supplies>
+	<rank>10000</rank>
+	<reputation>1000</reputation>
+	<money min="1000000" max="1000000" infinitive="1"/>
+	
+	<start_dialog>as_dialog_tech_hello</start_dialog>
+	<actor_dialog>as_dialog_tech_csky_tech_1_give</actor_dialog>
+	<actor_dialog>as_dialog_tech_csky_tech_1_reward</actor_dialog>
+	
+	<actor_dialog>as_dialog_tech_trade</actor_dialog>
+	<actor_dialog>as_dialog_tech_mechanic</actor_dialog>
+	<actor_dialog>actor_break_dialog</actor_dialog>
+</specific_character>
+
+<specific_character id="as_npc_csky_medic" team_default="1">
+	<class>as_npc_csky_medic</class>
+	<name>as_npc_csky_medic_name</name>
+	<icon>ui_inGame2_csky_1_2</icon>
+	<community>csky</community>
+	<snd_config>characters_voice\human\csky_2\</snd_config>
+	<visual>actors\as_visual\as_npc_csky_medic</visual>
+	
+	<map_icon x="1" y="0"> </map_icon>
+	<bio></bio>
+	<supplies></supplies>
+	<rank>10000</rank>
+	<reputation>1000</reputation>
+	<money min="1000000" max="1000000" infinitive="1"/>
+	
+	<start_dialog>as_dialog_medic_hello</start_dialog>
+	<actor_dialog>as_dialog_medic_csky_medic_1_give</actor_dialog>
+	<actor_dialog>as_dialog_medic_csky_medic_1_reward</actor_dialog>
+	
+	<actor_dialog>as_dialog_medic_trade</actor_dialog>
+	<actor_dialog>as_dialog_medic_anomaly</actor_dialog>
+	
+	<actor_dialog>actor_break_dialog</actor_dialog>
+</specific_character>
+
+<specific_character id="as_npc_verlnut" team_default="1">
+	<class>as_npc_verlnut</class>
+	<name>as_npc_verlnut_name</name>
+	<icon>ui_inGame2_csky_1_2</icon>
+	<community>csky</community>
+	<snd_config>characters_voice\human\zombied_1\</snd_config>
+	<visual>actors\as_visual\armor_snork</visual>
+	
+	<map_icon x="1" y="0"> </map_icon>
+	<bio></bio>
+	<supplies></supplies>
+	<rank>10000</rank>
+	<reputation>1000</reputation>
+	<money min="1000000" max="1000000" infinitive="1"/>
+	
+	
+	<actor_dialog>actor_break_dialog</actor_dialog>
+</specific_character>
+
+<specific_character id="as_npc_preacher" team_default="1">
+	<class>as_npc_preacher</class>
+	<name>as_npc_preacher_name</name>
+	<icon>ui_inGame2_csky_1_2</icon>
+	<community>csky</community>
+	<snd_config>characters_voice\human\zombied_1\</snd_config>
+	<visual>actors\as_visual\armor_snork</visual>
+	
+	<map_icon x="1" y="0"> </map_icon>
+	<bio></bio>
+	<supplies></supplies>
+	<rank>10000</rank>
+	<reputation>1000</reputation>
+	<money min="1000000" max="1000000" infinitive="1"/>
+	
+	
+	<actor_dialog>actor_break_dialog</actor_dialog>
+</specific_character>
+
+
+
+
+<specific_character id="as_npc_kiki" team_default="1">
+	<name>as_npc_kiki_name</name>
+	<icon>ui_inGame2_neutral_a</icon>
+	<map_icon x="1" y="0">
+	</map_icon>
+	<bio></bio>
+	<class>as_npc_kiki</class>
+	<community>stalker</community>
+	<terrain_sect>stalker_terrain</terrain_sect>
+	<snd_config>characters_voice\human\stalker_1\</snd_config>
+	<rank>10000</rank>
+	<reputation>2000</reputation>
+	<visual>actors\stalker_neutral\stalker_neutrala2</visual>
+	<supplies>
+	</supplies>
+	<actor_dialog>actor_break_dialog</actor_dialog>
+</specific_character>
+
+<!--Chief-->
+<specific_character id="as_npc_chief" team_default="1">
+	<name>as_npc_chief_name</name>
+	<icon>ui_inGame2_1_mask</icon>
+	<map_icon x="1" y="0">
+	</map_icon>
+	<bio></bio>
+	<class>as_npc_chief</class>
+	<community>bandit</community>
+	<terrain_sect>stalker_terrain</terrain_sect>
+	<snd_config>characters_voice\human\bandit_1\</snd_config>
+	<rank>30000</rank>
+	<reputation>-1000</reputation>
+	<visual>actors\stalker_bandit\stalker_bondit_zara</visual>
+	<supplies>
+	[spawn] \n
+	wpn_ak74u_ps01 = 1 \n
+	ammo_5.45x39_fmj = 1 \n
+	</supplies>
+#include "gameplay\character_criticals.xml"
+	<actor_dialog>as_dialog_chief_about_1</actor_dialog>
+	<actor_dialog>as_dialog_chief_0_1</actor_dialog>
+	<actor_dialog>as_dialog_chief_1_1</actor_dialog>
+	<actor_dialog>as_dialog_chief_1_2</actor_dialog>
+	<actor_dialog>as_dialog_chief_1_3</actor_dialog>
+	<actor_dialog>actor_break_dialog</actor_dialog>
+</specific_character>
+
+<specific_character id="as_npc_eagle" team_default="1">
+	<name>as_npc_eagle_name</name>
+	<icon>ui_npc_u_soldier_antigas</icon>
+	<map_icon x="1" y="0">
+	</map_icon>
+	<bio></bio>
+	<class>as_npc_eagle</class>
+	<community>bandit</community>
+	<terrain_sect>stalker_terrain</terrain_sect>
+	<snd_config>characters_voice\human\bandit_2\</snd_config>
+	<rank>20000</rank>
+	<reputation>-1000</reputation>
+	<visual>actors\stalker_bandit\stalker_bandit_5_gasmask</visual>
+	<supplies>
+	[spawn] \n
+	wpn_rpk = 1 \n
+	ammo_7.62x39_fmj = 1 \n
+	</supplies>
+#include "gameplay\character_criticals.xml"
+	<actor_dialog>actor_break_dialog</actor_dialog>
+</specific_character>
+
+<specific_character id="as_npc_snake" team_default="1">
+	<name>as_npc_snake_name</name>
+	<icon>ui_inGame2_a2</icon>
+	<map_icon x="1" y="0">
+	</map_icon>
+	<bio></bio>
+	<class>as_npc_snake</class>
+	<community>bandit</community>
+	<terrain_sect>stalker_terrain</terrain_sect>
+	<snd_config>characters_voice\human\bandit_3\</snd_config>
+	<rank>20000</rank>
+	<reputation>-1000</reputation>
+	<visual>actors\stalker_bandit\stalker_bandita3</visual>
+	<supplies>
+	[spawn] \n
+	wpn_svd_1p29 = 1 \n
+	ammo_7.62x54_7h1 = 1 \n
+	</supplies>
+#include "gameplay\character_criticals.xml"
+	<actor_dialog>actor_break_dialog</actor_dialog>
+</specific_character>

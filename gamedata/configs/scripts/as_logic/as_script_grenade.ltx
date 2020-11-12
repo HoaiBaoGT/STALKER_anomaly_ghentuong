@@ -1,0 +1,16 @@
+[logic]
+active = ph_idle@click
+
+[ph_idle@base]
+nonscript_usable = false
+
+[ph_idle@click]:ph_idle@base
+on_info = %=script(xr_custom:play_sound:weapons\gd5\generic_checkout)% ph_idle@delay
+
+[ph_idle@delay]:ph_idle@base
+on_timer = 3000 | ph_idle@explode
+
+[ph_idle@explode]:ph_idle@base
+on_info = %=script(xr_custom:self_explode)% ph_idle@idle
+
+[ph_idle@idle]:ph_idle@base

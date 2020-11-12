@@ -1,0 +1,59 @@
+[logic]
+active = beh@general
+;==================================================
+[beh@base]
+gather_items_enabled				= false
+help_wounded_enabled				= false
+corpse_detection_enabled			= false
+combat_ignore_keep_when_attacked	= false
+target								= waypoint
+path_end							= loop
+walk_dist							= 0
+jog_dist							= 0
+run_anim							= patrol
+use_camp							= false
+meet								= no_meet
+combat_ignore_cond					= false
+before_hit							= as_quest_csky.main_3_before_hit
+;==================================================
+[beh@general]:beh@base
+on_info1	= {=script(as_quest_csky:pick_logic:as_quest_csky_main_3:1)} %=script(xr_custom:set_position:beh@monolith_1:pt1)% beh@monolith_1
+on_info2	= {=script(as_quest_csky:pick_logic:as_quest_csky_main_3:2)} %=script(xr_custom:set_position:beh@monolith_2:pt1)% beh@monolith_2
+on_info3	= {=script(as_quest_csky:pick_logic:as_quest_csky_main_3:3)} %=script(xr_custom:set_position:beh@monolith_3:pt1)% beh@monolith_3
+on_info4	= {=script(as_quest_csky:pick_logic:as_quest_csky_main_3:4)} %=script(xr_custom:set_position:beh@monolith_4:pt1)% beh@monolith_4
+on_info5	= {=script(as_quest_csky:pick_logic:as_quest_csky_main_3:5)} %=script(xr_custom:set_position:beh@monolith_5:pt1)% beh@monolith_5
+on_info6	= {=script(as_quest_csky:pick_logic:as_quest_csky_main_3:6)} %=script(xr_custom:set_position:beh@monolith_6:pt1)% beh@monolith_6
+on_info7	= {=script(as_quest_csky:pick_logic:as_quest_csky_main_3:7)} %=script(xr_custom:set_position:beh@monolith_7:pt1)% beh@monolith_7
+on_info8	= {=script(as_quest_csky:pick_logic:as_quest_csky_main_3:8)} %=script(xr_custom:set_position:beh@monolith_8:pt1)% beh@monolith_8
+;==================================================
+[beh@monolith_1]:beh@base
+pt1 = 999999,trans_0 | pos:400,-5.5,230 look:402,-3,242
+on_info = {=has_enemy} %=script(xr_custom:fight_from_waypoint:beh@monolith_1:pt1)%
+
+[beh@monolith_2]:beh@base
+pt1 = 999999,trans_0 | pos:395,-5.5,233 look:402,-3,242
+on_info = {=has_enemy} %=script(xr_custom:fight_from_waypoint:beh@monolith_2:pt1)%
+
+[beh@monolith_3]:beh@base
+pt1 = 999999,trans_0 | pos:410,-5.5,235 look:402,-3,242
+on_info = {=has_enemy} %=script(xr_custom:fight_from_waypoint:beh@monolith_3:pt1)%
+
+[beh@monolith_4]:beh@base
+pt1 = 999999,trans_0 | pos:403,-6.0,237 look:402,-3,242
+on_info = {=has_enemy} %=script(xr_custom:fight_from_waypoint:beh@monolith_4:pt1)%
+
+[beh@monolith_5]:beh@base
+pt1 = 999999,trans_0 | pos:408,-5.5,232 look:402,-3,242
+on_info = {=has_enemy} %=script(xr_custom:fight_from_waypoint:beh@monolith_5:pt1)%
+
+[beh@monolith_6]:beh@base
+pt1 = 999999,trans_0 | pos:393,-5.5,225 look:402,-3,242
+on_info = {=has_enemy} %=script(xr_custom:fight_from_waypoint:beh@monolith_6:pt1)%
+
+[beh@monolith_7]:beh@base
+pt1 = 999999,trans_0 | pos:405,-5.5,227 look:402,-3,242
+on_info = {=has_enemy} %=script(xr_custom:fight_from_waypoint:beh@monolith_7:pt1)%
+
+[beh@monolith_8]:beh@base
+pt1 = 999999,trans_0 | pos:397,-5.5,228 look:402,-3,242
+on_info = {=has_enemy} %=script(xr_custom:fight_from_waypoint:beh@monolith_8:pt1)%

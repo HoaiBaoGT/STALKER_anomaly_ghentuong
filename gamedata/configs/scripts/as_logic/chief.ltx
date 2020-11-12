@@ -1,0 +1,92 @@
+[logic]
+active = beh@general
+post_combat_time	= 0,0
+can_select_weapon	= true
+dont_keep_items		= true
+level_spot			= quest_npc
+
+[meet@base]
+allow_break 		= true
+close_distance 		= 0
+close_victim		= nil
+close_anim 			= nil
+close_snd_distance 	= 0
+close_snd_hello		= nil
+close_snd_bye		= nil
+far_distance		= 0
+far_victim			= nil
+far_anim			= nil
+far_snd_distance	= 0
+far_snd				= nil
+snd_on_use			= nil
+use					= true
+abuse				= false
+trade_enable		= false
+meet_on_talking		= false
+;==================================================
+[beh@base]
+meet			= no_meet
+behavior_state	= beh_move
+target			= waypoint
+path_end		= loop
+walk_anim		= assault
+jog_anim		= assault
+gather_items_enabled		= false
+help_wounded_enabled		= false
+corpse_detection_enabled	= false
+invulnerable				= true
+combat_ignore_cond			= {+as_chief_on_mission} false, {=fighting_dist_le(40)} false, true
+
+[beh@general]:beh@base
+on_info		= {=check_npc_name(as_npc_chief)} beh@chief
+on_info2	= {=check_npc_name(as_npc_eagle)} beh@eagle
+on_info3	= {=check_npc_name(as_npc_snake)} beh@snake
+
+[beh@chief]:beh@base
+on_info		= {-as_chief_on_mission} beh@chief_hideout
+on_info2	= {+as_chief_on_mission +as_quest_chief_1_started -as_quest_chief_1_complete} beh@chief_1_1
+[beh@eagle]:beh@base
+on_info		= {-as_chief_on_mission} beh@eagle_hideout
+on_info2	= {+as_chief_on_mission +as_quest_chief_1_started -as_quest_chief_1_complete} beh@eagle_1_1
+[beh@snake]:beh@base
+on_info		= {-as_chief_on_mission} beh@snake_hideout
+on_info2	= {+as_chief_on_mission +as_quest_chief_1_started -as_quest_chief_1_complete} beh@snake_1_1
+;==================================================
+;Hideout
+[beh@chief_hideout]:beh@base
+pt1			= 999999999,sit_ass_weapon | pos:-3.1317615509033,0.090795427560806,27.991109848022 look:-2.1768414378166,0.090795427560806,28.267669796944
+meet		= meet@base
+on_info		= {+as_chief_on_mission} beh@general
+[beh@eagle_hideout]:beh@base
+pt1			= 999999999,guard | pos:0.83109068870544,0.092520207166672,26.79663848877 look:0.77690720558167,0.092520207166672,27.794125854969
+on_info		= {+as_chief_on_mission} beh@general
+[beh@snake_hideout]:beh@base
+pt1			= 999999999,sit_ass | pos:-3.1505951881409,0.15302476286888,30.052845001221 look:-2.4092245101929,0.15302476286888,29.383104562759
+on_info		= {+as_chief_on_mission} beh@general
+;==================================================
+;Quest 1
+[beh@chief_1_1]:beh@base
+pt1			= 999999999,threat_na | pos:28,0,125 look:27,0,125
+meet		= meet@chief_1
+on_info		= {+as_dialog_chief_beh_1_1} beh@chief_1_2
+[beh@eagle_1_1]:beh@base
+pt1			= 999999999,threat_na | pos:11,0,120 look:10,0,120
+on_info		= {+as_dialog_chief_beh_1_1} beh@eagle_1_2
+[beh@snake_1_1]:beh@base
+pt1			= 999999999,threat_na | pos:20,1,130 look:19,1,130
+on_info		= {+as_dialog_chief_beh_1_1} beh@snake_1_2
+;----------------------------------------
+[beh@chief_1_2]:beh@base
+pt1			= 999999999,threat_na | pos:-244,0,146 look:-295,0,140
+meet		= meet@chief_1
+on_info		= {-as_chief_on_mission} beh@general
+[beh@eagle_1_2]:beh@base
+pt1			= 999999999,threat_na | pos:-248,0,150 look:-295,0,140
+on_info		= {-as_chief_on_mission} beh@general
+[beh@snake_1_2]:beh@base
+pt1			= 999999999,threat_na | pos:-243,1,168 look:-295,0,140
+on_info		= {-as_chief_on_mission} beh@general
+;----------------------------------------
+[meet@chief_1]:meet@base
+meet_dialog	= {-as_quest_chief_1_target_dead} as_dialog_chief_beh_1_1, as_dialog_chief_beh_1_2
+;==================================================

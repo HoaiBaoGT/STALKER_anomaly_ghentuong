@@ -1,0 +1,171 @@
+--=============================================================
+--Anomaly 1.5.5.0
+--GhenTuong
+--=============================================================
+local M = {}
+local HI, GI, DI = has_alife_info, give_info, disable_info
+
+function on_game_start()
+    RegisterScriptCallback("save_state",save_state)
+    RegisterScriptCallback("load_state",load_state)
+end
+
+function save_state(m)
+	m.as_quest_kiki = M
+end
+
+function load_state(m)
+	M = m.as_quest_kiki or {}
+end
+--=============================================================
+local STAGE_STATUS = {}
+local STAGE_TARGET = {}
+local STAGE_TEXT = {}
+local QUEST_LIST = {
+	[1] = "as_quest_kiki_1",
+	[2] = "as_quest_kiki_2",
+}
+function give_quest_1()
+	task_manager.get_task_manager():give_task(QUEST_LIST[1])
+end
+function give_quest_2()
+	task_manager.get_task_manager():give_task(QUEST_LIST[2])
+end
+--=============================================================
+--Quest 0
+--=============================================================
+STAGE_STATUS[0] = function(tsk,task_id,stage)
+	if (stage == 0) then
+		if not M[task_id] then
+			M[task_id] = {}
+		end
+		
+		local npc = get_story_se_object("as_npc_kiki")
+		if not npc then
+			local smart = SIMBOARD.smarts_by_names["trc_sim_19"]
+			local se	= alife():create("as_npc_kiki",smart.position,smart.m_level_vertex_id,smart.m_game_vertex_id)
+			local se_data = utils_stpk.get_stalker_data(se)
+			se_data.visual_name		= [[actors\stalker_neutral\stalker_neutrala2]]
+			se_data.character_name	= game.translate_string("as_npc_kiki_name")
+			utils_stpk.set_stalker_data(se_data,se)
+			
+			local owned = alife():get_children(se)
+			for w in owned do
+				local weapon = alife():object(w)
+				if string.find(weapon:section_name(),"wpn_") then
+					alife_release(weapon)
+				end
+			end
+			local new_weapon = {"wpn_svd_1p29","ammo_7.62x54_7h1"}
+			for i,v in pairs(new_weapon) do
+				alife_create_item(v,se)
+			end
+		else
+			local le_npc = level.object_by_id(npc.id)
+			if le_npc then
+				if le_npc:character_icon() ~= "ui_inGame2_neutral_a" then
+					le_npc:set_character_icon("ui_inGame2_neutral_a")
+				end
+			end
+		end
+		
+		local monster = M[task_id].monster and M[task_id].monster.id and alife():object(M[task_id].monster.id)
+		if not HI(task_id.."_dead") and not (monster and monster:section_name() == M[task_id].monster.section_name) then
+			local smart = SIMBOARD.smarts_by_names["trc_sim_19"]
+			if smart then
+				local se = alife():create("as_npc_kiki_0_chimera",smart.position,smart.m_level_vertex_id,smart.m_game_vertex_id)
+				M[task_id].monster = {id = se.id,section_name = se:section_name()}
+			end
+		else
+			if not HI(task_id.."_dead") then
+				if (monster and not monster:alive()) then
+					GI(task_id.."_dead")
+				end
+			end
+		end
+		
+		if HI(task_id.."_reward") then
+			xr_effects.reward_item(0,0,{"af_cell"})
+			return 1
+		end
+	end
+	
+	if (stage == 1) then
+		if mob_trade.GetTalkingNpc() then
+			return
+		end
+		if not HI(task_id.."_complete") then
+			M[task_id] = nil
+			GI(task_id.."_complete")
+		end
+	end
+end
+
+STAGE_TARGET[0] = function(tsk,task_id,stage)
+	if (stage == 0) then
+		if not HI(task_id.."_dead") then
+			return M[task_id] and M[task_id].monster and M[task_id].monster.id or nil
+		end
+		local npc = get_story_se_object("as_npc_kiki")
+		return npc and npc.id or nil
+	end
+	
+	if (stage == 1) then
+		local npc = get_story_se_object("as_npc_kiki")
+		return npc and npc.id or nil
+	end
+end
+
+STAGE_TEXT[0] = function(tsk,task_id,field,stage)
+	if (field == "title") then
+		return task_id .."_".. field
+	end
+	
+	if (field == "descr") then
+		if not HI(task_id.."_dead") then
+			return task_id .."_".. field .."_".. 0
+		end
+		return task_id .."_".. field .."_".. 1
+	end
+end
+
+--=============================================================
+--Quest 1
+--=============================================================
+
+--=============================================================
+--=============================================================
+task_status_functor.as_quest_kiki_status = function(tsk,task_id,stage_f)
+	if not (db.actor and tsk and M) then return end
+	local stage = tsk.stage
+	local quest = tonumber(task_manager.task_ini:r_string_ex(task_id,"status_functor_params"))
+	
+	local progress = STAGE_STATUS[quest] and STAGE_STATUS[quest](tsk,task_id,stage) or stage
+	if tonumber(progress) and (tonumber(progress) ~= stage) then
+		tsk.stage = progress
+	end
+	if (progress == "complete" or progress == "fail") then return progress end
+end
+
+task_functor.as_quest_kiki_target = function(task_id,field,p,tsk)
+	if not (db.actor and tsk and M) then return end
+	local stage = tsk.stage
+	local quest = tonumber(task_manager.task_ini:r_string_ex(task_id,"status_functor_params"))
+	
+	if STAGE_TARGET[quest] then
+		return STAGE_TARGET[quest](tsk,task_id,stage) or nil
+	end
+	return nil
+end
+
+task_functor.as_quest_kiki_text = function(task_id,field,p,tsk)
+	if not (db.actor and tsk) then return end
+	local stage = tsk.stage
+	local quest = tonumber(task_manager.task_ini:r_string_ex(task_id,"status_functor_params"))
+	
+	if STAGE_TEXT[quest] then
+		local new_text = STAGE_TEXT[quest](tsk,task_id,field,stage)
+		return new_text and game.translate_string(new_text) or "nil"
+	end
+	return "nil"
+end

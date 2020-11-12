@@ -1,0 +1,9 @@
+[logic]
+active = ph_idle@up
+
+[ph_idle@up]
+hit_on_bone = 6|%=script(as_static_object:play_anim:shooting_target_1_down)% ph_idle@down|7|%=script(as_static_object:play_anim:shooting_target_1_down)% ph_idle@down|8|%=script(as_static_object:play_anim:shooting_target_1_down)% ph_idle@down|9|%=script(as_static_object:play_anim:shooting_target_1_down)% ph_idle@down
+
+[ph_idle@down]
+on_timer = 10000 | %=script(as_static_object:play_anim:shooting_target_1_up)% ph_idle@up
+

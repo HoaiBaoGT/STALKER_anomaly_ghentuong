@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<string_table>
+	
+	<string id="as_dialog_kiki_0_0_0">
+		<text>Thanks for saving me, buddy. I don't know how much longer I can hold. My shooter doesn't fit to fight against this monster at all.</text>
+	</string>
+	<string id="as_dialog_kiki_0_0_1">
+		<text>Keep the story. Let us return to the bar first. Then we can talk.</text>
+	</string>
+	
+	<string id="as_dialog_kiki_0_0_2">
+		<text>Home at last. Thanks for your help again. Here, keep it. I have found it before getting in trouble.</text>
+	</string>
+	<string id="as_dialog_kiki_0_0_3">
+		<text>Verywell.</text>
+	</string>
+	
+</string_table>

@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<string_table>
+	<string id="as_quest_rumor_tdef">
+		<text>Have you known T.Def, an old dutyer sitting near a campfire in Rostok? They say he is looking for a shooter. Poor the old man, he was one of the best fighters in the Zone. Now he needs someone else to do the killing for him.</text>
+	</string>
+	<string id="as_quest_tdef_info_title">
+		<text>T.Def: Meet T.Def</text>
+	</string>
+	<string id="as_quest_tdef_info_descr">
+		<text>They said there is an old man name T.Def. He is a veteran dutyer who is needing a hand for an assassination mission. He is sitting by the campfire at the Duty base in Rostok.</text>
+	</string>
+	
+	<string id="as_quest_tdef_1_title_1">
+		<text>T.Def: Destroy The Monolithian Sniper</text>
+	</string>
+	<string id="as_quest_tdef_1_title_2">
+		<text>T.Def: Destroy The Monolithian Sniper Again</text>
+	</string>
+	<string id="as_quest_tdef_1_title_3">
+		<text>T.Def: Destroy The Monolithian Sniper Again...</text>
+	</string>
+	
+	<string id="as_quest_tdef_1_descr_1">
+		<text>T.Def want me to kill a monolithian sniper at the Wild Territory. I have agreed to do him a favor that before killing the target, I will pass on his apology to it.</text>
+	</string>
+	<string id="as_quest_tdef_1_descr_2">
+		<text>I have killed the target. Now, I need to report to T.Def.</text>
+	</string>
+	<string id="as_quest_tdef_1_descr_3">
+		<text>What is wrong? I saw he is dead. T.Def said that there was another monolithian in the Garbage similar to the one we have talked about before. I must find out what is happening.</text>
+	</string>
+	<string id="as_quest_tdef_1_descr_4">
+		<text>I have killed the target. But what is happening? Did he ... reborn? Anyway, I need to report to T.Def.</text>
+	</string>
+	<string id="as_quest_tdef_1_descr_5">
+		<text>It happens again. Yet, another monolithian appears. T.Def said that it was in the Military Warehouses. Does the monolith have the ability to reborn after death?</text>
+	</string>
+	<string id="as_quest_tdef_1_descr_6">
+		<text>Now I know the truth. Surely, there will be no more trouble with the monolithian. I need to tell T.Def about that.</text>
+	</string>
+	
+	
+	<string id="as_npc_tdef_1_monolithian_sniper_name">
+		<text>The Monolithian Sniper</text>
+	</string>
+	
+	<string id="as_dialog_tdef_idle_hello">
+		<text>Hello.</text>
+	</string>
+	<string id="as_dialog_tdef_idle_bye">
+		<text>Until next time.</text>
+	</string>
+	
+	<string id="as_dialog_tdef_1_give_0">
+		<text>I heard that you are in need of a shooter, aren’t you?</text>
+	</string>
+	<string id="as_dialog_tdef_1_give_1">
+		<text>Yes. There is a monolithian who is haunting and killing people at the Wild Territory near Rostok. Hear like a common assassination contract, eh? But he is different. He was one of my students. Years before, he has joined Duty's ranks as a rookie. I was the one teaching him. He is a skilled shooter. When he was among us, they called him "The Legendary Sniper". Now he has fallen into the Monolith, the skills that I have trained him has fallen into a wrong purpose. For a week since he has appeared, he killed more than thirty stalkers. I feel I need to take responsibility for that.</text>
+	</string>
+	<string id="as_dialog_tdef_1_give_2">
+		<text>Okay. I will do.</text>
+	</string>
+	<string id="as_dialog_tdef_1_give_3">
+		<text>Good. It is the spirit I want to see. And if you may, please do me a favor. When you wound him, before you kill him, tell him that T.Def says sorry.</text>
+	</string>
+	<string id="as_dialog_tdef_1_give_4">
+		<text>I will keep it in mind.</text>
+	</string>
+	
+	<string id="as_dialog_tdef_1_info_0">
+		<text>Can I ask you some questions about the monolithian sniper?</text>
+	</string>
+	<string id="as_dialog_tdef_1_info_1">
+		<text>Go ahead.</text>
+	</string>
+	<string id="as_dialog_tdef_1_info_2">
+		<text>Can you tell me more about him?</text>
+	</string>
+	<string id="as_dialog_tdef_1_info_3">
+		<text>He was well known as a high-skill sniper. But, you know, everyone will lose to the zone one way or another. Once he was among Duty’s ranks, he was a respectful fighter, was my proudest student. Now he is worshiping a rock that I don't know if it even exists.</text>
+	</string>
+	<string id="as_dialog_tdef_1_info_4">
+		<text>What can you give me afterward?</text>
+	</string>
+	<string id="as_dialog_tdef_1_info_5">
+		<text>Of course. When it is done, you can keep my gun. An AK-12. My shooting days are behind me. I don't need it anymore.</text>
+	</string>
+	<string id="as_dialog_tdef_1_info_6">
+		<text>Nevermind.</text>
+	</string>
+	
+	<string id="as_dialog_tdef_1_dead_1_0">
+		<text>He is dead.</text>
+	</string>
+	<string id="as_dialog_tdef_1_dead_1_1">
+		<text>Are you sure it is the monolithian we have said?</text>
+	</string>
+	<string id="as_dialog_tdef_1_dead_1_2">
+		<text>Uhh, yes. There is only one monolithian at the location. Quite a tough fight. And, sniper my ass! He went full auto to me with an assault rifle.</text>
+	</string>
+	<string id="as_dialog_tdef_1_dead_1_3">
+		<text>Oh, exactly. A Scar, eh? It is his favorite gun. They call him the tittle "The Legendary Sniper" because he can use an assault rifle with an incredible accuracy, not because he use a sniper rifle. It is more of an irony to those freedomers using sniper rifles than a true compliment.</text>
+	</string>
+	<string id="as_dialog_tdef_1_dead_1_4">
+		<text>But what is wrong? Why do you ask?</text>
+	</string>
+	<string id="as_dialog_tdef_1_dead_1_5">
+		<text>There is something wrong. After you had left, I received a message from the Flea Market in the Garbage. They said that there is a monolithian bothering them too. The description is similar to the one we have said before.</text>
+	</string>
+	<string id="as_dialog_tdef_1_dead_1_6">
+		<text>Ehh... I swear. I have killed him. I saw he suicided with a grenade. I almost died.</text>
+	</string>
+	<string id="as_dialog_tdef_1_dead_1_7">
+		<text>I believe you say the truth. Duty patrols reported that you have killed a monolithian in Wild Territory already. It is weird, isn't it? I suppose you come to the Garbage and find out what is happening.</text>
+	</string>
+	<string id="as_dialog_tdef_1_dead_1_8">
+		<text>I see. Okay, I will do.</text>
+	</string>
+	
+	<string id="as_dialog_tdef_1_dead_2_0">
+		<text>It is weird. There was a monolithian in the Garbage too. He is same as the one I have killed in Wild Territory. But he is dead now.</text>
+	</string>
+	<string id="as_dialog_tdef_1_dead_2_1">
+		<text>Yes, they have told me about your kill in the Garbage. But we are fucked. Another report tells that there is a monolithian in the Army Warehouses too. Same description. What have they done to my kid? Have they cloned humans? You, please, come to the Army Warehouses and find out what is what. I need to get some clues first so that I can convince Voronin to send our men to it.</text>
+	</string>
+	<string id="as_dialog_tdef_1_dead_2_2">
+		<text>Okay. I also want to know what the hell is behind all of these.</text>
+	</string>
+	
+	<string id="as_dialog_tdef_1_dead_3_0">
+		<text>He is dead. He came to The Zone to rescue his brothers who have fallen into the Monolith. The two monolithians I have killed is his brothers. Unfortunately, he failed and became a monolithian himself.</text>
+	</string>
+	<string id="as_dialog_tdef_1_dead_3_1">
+		<text>Well, It makes sense now. I wondered why he was so eager for the north. He has almost joined every exploring targeting the north part of The Zone before.</text>
+	</string>
+	<string id="as_dialog_tdef_1_dead_3_2">
+		<text>He apologizes for lying to you. At the moment, his mind was still functioning but he couldn't control himself. He suicided with a grenade. I couldn't do anything about that.</text>
+	</string>
+	<string id="as_dialog_tdef_1_dead_3_3">
+		<text>I don't blame you for that. The job is for killing him, right? I want to put an end to his suffering. Here, take this. It is my gun, an AK-12. And, thank for your help, friend.</text>
+	</string>
+	<string id="as_dialog_tdef_1_dead_3_4">
+		<text>You are welcome.</text>
+	</string>
+	
+	<string id="as_dialog_tdef_1_monolith_1_0">
+		<text>Arrh… Infidel!</text>
+	</string>
+	<string id="as_dialog_tdef_1_monolith_1_1">
+		<text>T.Def says sorry.</text>
+	</string>
+	<string id="as_dialog_tdef_1_monolith_1_2">
+		<text>Sorry my ass. Granata! %c[d_orange][Click!]</text>
+	</string>
+	<string id="as_dialog_tdef_1_monolith_1_3">
+		<text>%c[d_orange][!!!]</text>
+	</string>
+	
+	<string id="as_dialog_tdef_1_monolith_2_0">
+		<text>Infidel!</text>
+	</string>
+	<string id="as_dialog_tdef_1_monolith_2_1">
+		<text>Is that you? Aren't you dead already? I saw you are dead by my own eyes.</text>
+	</string>
+	<string id="as_dialog_tdef_1_monolith_2_2">
+		<text>Ahh hahahaha… You have not seen the last of me. Granata! %c[d_orange][Click!]</text>
+	</string>
+	<string id="as_dialog_tdef_1_monolith_2_3">
+		<text>Ah shit.</text>
+	</string>
+	
+	<string id="as_dialog_tdef_1_monolith_3_0">
+		<text>You! You killed them. But.. arr. I can't blame you for that.</text>
+	</string>
+	<string id="as_dialog_tdef_1_monolith_3_1">
+		<text>Why are you still alive? Who are they?</text>
+	</string>
+	<string id="as_dialog_tdef_1_monolith_3_2">
+		<text>You killed them, my two brothers. They falled into the Monolith. I have come through all those training years, all the efforts to reach the north, to meet them. Now they are dead. I was such a fool, think that I can rescue them. You see what I became now. I just... can't control myself.</text>
+	</string>
+	<string id="as_dialog_tdef_1_monolith_3_3">
+		<text>T.Def says sorry.</text>
+	</string>
+	<string id="as_dialog_tdef_1_monolith_3_4">
+		<text>The old man. Should he does? Aren't I the one who has to say that? I lied to him. Please, tell him that I am sorry.</text>
+	</string>
+	<string id="as_dialog_tdef_1_monolith_3_5">
+		<text>I will do.</text>
+	</string>
+	<string id="as_dialog_tdef_1_monolith_3_6">
+		<text>Now kill me! I can't... control myself. I can't... %c[d_orange][Click!]</text>
+	</string>
+	<string id="as_dialog_tdef_1_monolith_3_7">
+		<text>Farewell.</text>
+	</string>
+</string_table>

@@ -1,0 +1,122 @@
+[smart_terrain];jup_b205_smart_terrain
+squad_id = 49
+max_population = 4
+respawn_params = respawn@jup_b205
+respawn_idle = 60000
+
+
+[respawn@jup_b205]
+spawn_base_guard
+
+[spawn_base_guard]
+spawn_squads	= as_squad_csky_base_guard
+spawn_num		= {=story_object_exist(as_npc_csky_leader) !squad_exist(as_squad_csky_base_guard)} 1, 0
+
+[exclusive]
+guard_1 = jupiter\as_logic_jup_b205_smart_terrain.ltx
+guard_2 = jupiter\as_logic_jup_b205_smart_terrain.ltx
+guard_3 = jupiter\as_logic_jup_b205_smart_terrain.ltx
+guard_4 = jupiter\as_logic_jup_b205_smart_terrain.ltx
+guard_5 = jupiter\as_logic_jup_b205_smart_terrain.ltx
+guard_6 = jupiter\as_logic_jup_b205_smart_terrain.ltx
+guard_7 = jupiter\as_logic_jup_b205_smart_terrain.ltx
+guard_8 = jupiter\as_logic_jup_b205_smart_terrain.ltx
+guard_9 = jupiter\as_logic_jup_b205_smart_terrain.ltx
+
+patrol_1 = jupiter\as_logic_jup_b205_smart_terrain.ltx
+patrol_2 = jupiter\as_logic_jup_b205_smart_terrain.ltx
+patrol_3 = jupiter\as_logic_jup_b205_smart_terrain.ltx
+
+chad_sky_1 = jupiter\as_logic_jup_b205_smart_terrain.ltx
+chad_sky_2 = jupiter\as_logic_jup_b205_smart_terrain.ltx
+chad_sky_3 = jupiter\as_logic_jup_b205_smart_terrain.ltx
+
+hide_1 = jupiter\as_logic_jup_b205_smart_terrain.ltx
+hide_2 = jupiter\as_logic_jup_b205_smart_terrain.ltx
+hide_3 = jupiter\as_logic_jup_b205_smart_terrain.ltx
+hide_4 = jupiter\as_logic_jup_b205_smart_terrain.ltx
+hide_5 = jupiter\as_logic_jup_b205_smart_terrain.ltx
+hide_6 = jupiter\as_logic_jup_b205_smart_terrain.ltx
+
+sleep_1 = jupiter\as_logic_jup_b205_smart_terrain.ltx
+sleep_2 = jupiter\as_logic_jup_b205_smart_terrain.ltx
+sleep_3 = jupiter\as_logic_jup_b205_smart_terrain.ltx
+sleep_4 = jupiter\as_logic_jup_b205_smart_terrain.ltx
+sleep_5 = jupiter\as_logic_jup_b205_smart_terrain.ltx
+
+visitor_1 = jupiter\as_logic_jup_b205_smart_terrain.ltx
+visitor_2 = jupiter\as_logic_jup_b205_smart_terrain.ltx
+visitor_3 = jupiter\as_logic_jup_b205_smart_terrain.ltx
+visitor_4 = jupiter\as_logic_jup_b205_smart_terrain.ltx
+visitor_5 = jupiter\as_logic_jup_b205_smart_terrain.ltx
+visitor_6 = jupiter\as_logic_jup_b205_smart_terrain.ltx
+visitor_7 = jupiter\as_logic_jup_b205_smart_terrain.ltx
+visitor_8 = jupiter\as_logic_jup_b205_smart_terrain.ltx
+visitor_9 = jupiter\as_logic_jup_b205_smart_terrain.ltx
+visitor_10 = jupiter\as_logic_jup_b205_smart_terrain.ltx
+visitor_11 = jupiter\as_logic_jup_b205_smart_terrain.ltx
+visitor_12 = jupiter\as_logic_jup_b205_smart_terrain.ltx
+visitor_13 = jupiter\as_logic_jup_b205_smart_terrain.ltx
+visitor_14 = jupiter\as_logic_jup_b205_smart_terrain.ltx
+visitor_15 = jupiter\as_logic_jup_b205_smart_terrain.ltx
+
+[static_object_leader]
+misc_1 = as_rupor | -384.64,14.50,10.50 | 0,0,0
+misc_2 = as_disel_generator | -381.00,2.65,-4.50 | 0,-90,0
+misc_3 = as_transiver | -394.90,12.33,10.20 | 0,0,0
+misc_4 = as_mili_maps | -395.50,12.33,10.20 | 0,15,0
+misc_5 = as_child_bench | -390.00,11.42,3.40 | 0,0,0
+
+sleep_1 = as_sleepbag | -396.50,11.42,1.00 | 0,0,0
+sleep_2 = as_sleepbag | -396.50,11.42,0.00 | 0,0,0
+sleep_3 = as_sleepbag | -396.50,11.42,-1.00 | 0,0,0
+sleep_4 = as_sleepbag | -396.50,11.42,-2.00 | 0,0,0
+sleep_5 = as_sleepbag | -396.50,11.42,-3.00 | 0,0,0
+
+;distance between windows is 2.3
+;front
+board_f_01 = as_hospital_wooden_board_01 | -384.61,12.60,-16.30 | 0,-90,0
+board_f_02 = as_hospital_wooden_board_01 | -384.61,12.60,-14.00 | 0,-90,0
+board_f_03 = as_hospital_wooden_board_01 | -384.61,12.70,-9.90 | 0,-90,90
+board_f_04 = as_hospital_wooden_board_01 | -384.61,12.70,-7.60 | 0,-90,90
+board_f_05 = as_hospital_wooden_board_01 | -384.61,12.70,-5.30 | 0,-90,90
+;back
+board_b_01 = as_hospital_wooden_board_01 | -398.70,12.70,-16.60 | 0,90,90
+board_b_02 = as_hospital_wooden_board_01 | -398.70,12.70,-14.30 | 0,90,90
+board_b_03 = as_hospital_wooden_board_01 | -398.70,12.70,-12.00 | 0,90,90
+board_b_04 = as_hospital_wooden_board_01 | -398.70,12.70,-9.70 | 0,90,90
+board_b_05 = as_hospital_wooden_board_01 | -398.70,12.70,-7.40 | 0,90,90
+board_b_06 = as_hospital_wooden_board_01 | -398.70,12.70,-5.10 | 0,90,90
+board_b_07 = as_hospital_wooden_board_01 | -398.70,12.70,-2.80 | 0,90,90
+board_b_08 = as_hospital_wooden_board_01 | -398.70,12.70,-0.50 | 0,90,90
+board_b_09 = as_hospital_wooden_board_01 | -398.70,12.70,1.80 | 0,90,90
+board_b_10 = as_hospital_wooden_board_01 | -398.70,12.70,4.10 | 0,90,90
+board_b_11 = as_hospital_wooden_board_01 | -398.70,12.70,6.40 | 0,90,90
+board_b_12 = as_hospital_wooden_board_01 | -398.70,12.70,8.70 | 0,90,90
+
+light_1 = as_light_sharnir_1 | -384.95,14.50,-2.80 | 0,180,90
+light_2 = as_light_sharnir_1 | -384.95,14.50,7.60 | 0,180,90
+light_3 = as_light_sharnir_1 | -389.55,14.50,-14.35 | 0,180,90
+light_4 = as_light_sharnir_1 | -398.37,14.50,-14.35 | 0,0,90
+light_5 = as_light_sharnir_1 | -394.50,14.5,7.6 | 0,180,90
+
+[static_object_trader]
+misc_1 = as_museum_ak74 | -392.15,12.37,-16.55 | 0,-90,0
+misc_2 = as_museum_ak74 | -392.15,12.70,-16.55 | 0,-90,0
+misc_3 = as_museum_ak74 | -392.15,13.03,-16.55 | 0,-90,0
+misc_4 = as_museum_ak74 | -392.15,13.36,-16.55 | 0,-90,0
+misc_5 = as_museum_spas12 | -391.05,12.47,-16.55 | 0,-90,0
+misc_6 = as_museum_spas12 | -391.05,12.80,-16.55 | 0,-90,0
+misc_7 = as_museum_spas12 | -391.05,13.13,-16.55 | 0,-90,0
+misc_8 = as_museum_spas12 | -391.05,13.46,-16.55 | 0,-90,0
+misc_9 = as_freezer | -388.10,11.42,-16.10 | 0,180,0
+
+[static_object_tech]
+misc_1 = as_taburet_wood_01 | -396.40,11.42,-15.40 | 0,45,0
+misc_2 = as_vise | -397.45,12.32,-14.00 | 0,0,0
+misc_3 = as_tech_large_parts | -398.10,12.32,-13.90 | 0,180,0
+misc_4 = as_tech_upgr_o_3 | -398.10,12.32,-14.80 | 0,110,0
+misc_5 = as_tech_dev_instrument_1 | -398.20,11.42,-14.00 | 0,80,0
+
+[static_object_medic]
+misc_1 = as_taburet_wood_01 | -397.00,11.42,-10.00 | 0,0,0

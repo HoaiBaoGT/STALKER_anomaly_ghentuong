@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<string_table>
+	
+	<string id="as_quest_misc_0_npc_name">
+		<text>Chrome</text>
+	</string>
+	<string id="as_dialog_misc_0_0_0">
+		<text>Oh no I am dying</text>
+	</string>
+	<string id="as_dialog_misc_0_0_1">
+		<text>What the...</text>
+	</string>
+</string_table>

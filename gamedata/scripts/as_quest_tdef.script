@@ -1,0 +1,287 @@
+--My thanks for your help.
+
+local M = {}
+local HI, GI, DI = has_alife_info, give_info, disable_info
+
+function on_game_start()
+    RegisterScriptCallback("save_state",save_state)
+    RegisterScriptCallback("load_state",load_state)
+end
+
+function save_state(m)
+	m.as_quest_tdef = M
+end
+
+function load_state(m)
+	M = m.as_quest_tdef or {}
+end
+--=============================================================
+local STAGE_STATUS = {}
+local STAGE_TARGET = {}
+local STAGE_TEXT = {}
+--=============================================================
+--Quest 0
+--=============================================================
+STAGE_STATUS[0] = function(tsk,task_id,stage)
+	local npc = get_story_se_object("as_npc_tdef")
+	if not npc then
+		local smart	= SIMBOARD.smarts_by_names["bar_dolg_bunker"]
+		local se	= alife():create("as_npc_tdef",smart.position,smart.m_level_vertex_id,smart.m_game_vertex_id)
+		local se_data = utils_stpk.get_stalker_data(se)
+		se_data.visual_name		= [[actors\stalker_dolg\stalker_dolg_0]]
+		se_data.character_name	= game.translate_string("as_npc_tdef_name")
+		utils_stpk.set_stalker_data(se_data,se)
+		
+		local owned = alife():get_children(se)
+		for w in owned do
+			local weapon = alife():object(w)
+			if string.find(weapon:section_name(),"wpn_") then
+				alife_release(weapon)
+			end
+		end
+		local new_weapon = {"wpn_ak12","ammo_5.45x39_fmj","wpn_sig220","ammo_11.43x23_fmj"}
+		for i,v in pairs(new_weapon) do
+			alife_create_item(v,se)
+		end
+	else
+		local le_npc = level.object_by_id(npc.id)
+		if le_npc then
+			if le_npc:character_icon() ~= "ui_inGame2_Dolg_0" then
+				le_npc:set_character_icon("ui_inGame2_Dolg_0")
+			end
+		end
+		local speaker = mob_trade.GetTalkingNpc()
+		if (speaker and speaker:id() == npc.id) and not HI(task_id.."_complete") then
+			GI(task_id.."_complete")
+		end
+	end
+end
+
+STAGE_TARGET[0] = function(tsk,task_id,stage)
+	local npc = get_story_se_object("as_npc_tdef")
+	return npc and npc.id or nil
+end
+
+STAGE_TEXT[0] = function(tsk,task_id,field,stage)
+	if (field == "title") then
+		return task_id .."_".. field
+	end
+	
+	if (field == "descr") then
+		return task_id .."_".. field
+	end
+end
+--=============================================================
+--Quest 1
+--=============================================================
+STAGE_STATUS[1] = function(tsk,task_id,stage)
+	if HI(task_id.."_reward") then
+		if not HI(task_id.."_complete") then
+			if M[task_id] then M[task_id] = nil end
+			local reward = {
+				"wpn_ak12",
+				"ammo_5.45x39_fmj",
+				"ammo_5.45x39_fmj",
+				"ammo_5.45x39_fmj",
+				"ammo_5.45x39_fmj"
+			}
+			for i,v in pairs(reward) do
+				alife_create_item(v,db.actor)
+				news_manager.relocate_item(db.actor,"in",v,1)
+			end
+			GI(task_id.."_complete")
+		end
+		return
+	end
+	
+	if not M[task_id] then M[task_id] = {} end
+	if not HI(task_id.."_spawn_1") then GI(task_id.."_spawn_1") end
+	--[[TEST
+	if HI(task_id.."_dead_1") and not HI(task_id.."_spawn_2") then
+		GI(task_id.."_spawn_2")
+	end
+	if HI(task_id.."_dead_2") and not HI(task_id.."_spawn_3") then
+		GI(task_id.."_spawn_3")
+	end
+	--]]
+	local npc = M[task_id].npc and M[task_id].npc.id and alife():object(M[task_id].npc.id)
+	if (HI(task_id.."_spawn_1") and not HI(task_id.."_kill_1"))
+	or (HI(task_id.."_spawn_2") and not HI(task_id.."_kill_2"))
+	or (HI(task_id.."_spawn_3") and not HI(task_id.."_kill_3")) then
+		if not (npc and (npc:section_name() == M[task_id].npc.section_name) and npc:alive()) then
+			local location = {
+				"ros_smart_killers1",
+				"gar_smart_terrain_8_5",
+				"mil_smart_terrain_2_6",
+			}
+			local pick = (HI(task_id.."_spawn_3") and location[3]) or (HI(task_id.."_spawn_2") and location[2]) or HI(task_id.."_spawn_1") and location[1]
+			if not pick then
+				return
+			end
+			
+			local smart	= SIMBOARD.smarts_by_names[pick]
+			local se	= alife():create("as_npc_tdef_1_monolithian_sniper",smart.position,smart.m_level_vertex_id,smart.m_game_vertex_id)
+			M[task_id].npc = {id = se.id,section_name = se:section_name()}
+			local se_data = utils_stpk.get_stalker_data(se)
+			se_data.visual_name		= [[actors\stalker_monolith\stalker_monolith1]]
+			se_data.character_name	= game.translate_string("as_npc_tdef_1_monolithian_sniper_name")
+			utils_stpk.set_stalker_data(se_data,se)
+			
+			local owned = alife():get_children(se)
+			for w in owned do
+				local weapon = alife():object(w)
+				if string.find(weapon:section_name(),"wpn_") then
+					alife_release(weapon)
+				end
+			end
+			local new_weapon = {"wpn_scar","ammo_7.62x51_ap"}
+			for i,v in pairs(new_weapon) do
+				alife_create_item(v,se)
+			end
+		else
+			local le_npc = level.object_by_id(npc.id)
+			if le_npc then
+				if le_npc:character_icon() ~= "ui_inGame2_monolith1gas" then
+					le_npc:set_character_icon("ui_inGame2_monolith1gas")
+				end
+				--The buggy ladder.
+				if (level.name() == "l06_rostok") and (le_npc:position().y < 2) then
+					le_npc:set_npc_position(vector():set(-88,5,138))
+				end
+			end
+		end
+	end
+	
+	if (HI(task_id.."_kill_1") and not HI(task_id.."_dead_1"))
+	or (HI(task_id.."_kill_2") and not HI(task_id.."_dead_2"))
+	or (HI(task_id.."_kill_3") and not HI(task_id.."_dead_3"))
+	then
+		if not mob_trade.GetTalkingNpc() then
+			if npc and (npc:section_name() == M[task_id].npc.section_name) and npc:alive() then
+				local le_npc = M[task_id].npc and M[task_id].npc.id and level.object_by_id(M[task_id].npc.id)
+				local le_bom = M[task_id].bom and M[task_id].bom.id and level.object_by_id(M[task_id].bom.id)
+				if le_npc then
+					if not M[task_id].bom then
+						local po = vector():set(le_npc:position().x,le_npc:position().y + 1,le_npc:position().z)
+						local se = alife():create("explosive_grenade",po,le_npc:level_vertex_id(),le_npc:game_vertex_id())
+						if se then
+							M[task_id].bom = {id = se.id,section_name = se:section_name()}
+						end
+					end
+					--Just in case. time_global() will be reset if the game save and load
+					if M[task_id].timer and M[task_id].timer < time_global() then
+						if (time_global() - M[task_id].timer) > 3000 then
+							if le_bom and le_bom:section() == M[task_id].bom.section_name then
+								le_bom:explode(0)
+							end
+							le_npc:kill(le_npc)
+						end
+					else
+						M[task_id].timer = time_global()
+						local voice = sound_object([[characters_voice\human\monolith_3\fight\grenade\grenade_1]])
+						local click = sound_object([[weapons\gd5\generic_checkout]])
+						if voice then voice:play_at_pos(le_npc,le_npc:position(),0) end
+						if click then click:play_at_pos(le_npc,le_npc:position(),0) end
+					end
+				end
+			else
+				if M[task_id].timer or M[task_id].bom then
+					M[task_id].timer = nil
+					M[task_id].bom = nil
+				end
+				if HI(task_id.."_kill_1") and not HI(task_id.."_dead_1") then
+					GI(task_id.."_dead_1")
+				end
+				if HI(task_id.."_kill_2") and not HI(task_id.."_dead_2") then
+					GI(task_id.."_dead_2")
+				end
+				if HI(task_id.."_kill_3") and not HI(task_id.."_dead_3") then
+					GI(task_id.."_dead_3")
+				end
+			end
+		end
+	end
+end
+
+STAGE_TARGET[1] = function(tsk,task_id,stage)
+	if HI(task_id.."_spawn_1") and not HI(task_id.."_dead_1") then
+		return M[task_id] and M[task_id].npc and M[task_id].npc.id or nil
+	end
+	if HI(task_id.."_spawn_2") and not HI(task_id.."_dead_2") then
+		return M[task_id] and M[task_id].npc and M[task_id].npc.id or nil
+	end
+	if HI(task_id.."_spawn_3") and not HI(task_id.."_dead_3") then
+		return M[task_id] and M[task_id].npc and M[task_id].npc.id or nil
+	end
+	local npc = get_story_se_object("as_npc_tdef")
+	return npc and npc.id or nil
+end
+
+STAGE_TEXT[1] = function(tsk,task_id,field,stage)
+	if (field == "title") then
+		if HI(task_id.."_spawn_1") and not HI(task_id.."_spawn_2") then
+			return task_id .."_".. field .."_".. 1
+		end
+		if HI(task_id.."_spawn_2") and not HI(task_id.."_spawn_3") then
+			return task_id .."_".. field .."_".. 2
+		end
+		if HI(task_id.."_spawn_3") then
+			return task_id .."_".. field .."_".. 3
+		end
+	end
+	
+	if (field == "descr") then
+		if HI(task_id.."_spawn_1") and not HI(task_id.."_dead_1") then
+			return task_id .."_".. field .."_".. 1
+		end
+		if HI(task_id.."_dead_1") and not HI(task_id.."_spawn_2") then
+			return task_id .."_".. field .."_".. 2
+		end
+		if HI(task_id.."_spawn_2") and not HI(task_id.."_dead_2") then
+			return task_id .."_".. field .."_".. 3
+		end
+		if HI(task_id.."_dead_2") and not HI(task_id.."_spawn_3") then
+			return task_id .."_".. field .."_".. 4
+		end
+		if HI(task_id.."_spawn_3") and not HI(task_id.."_dead_3") then
+			return task_id .."_".. field .."_".. 5
+		end
+		if HI(task_id.."_dead_3") then
+			return task_id .."_".. field .."_".. 6
+		end
+	end
+end
+
+--=============================================================
+function give_quest_1()
+	task_manager.get_task_manager():give_task("as_quest_tdef_1")
+end
+
+function give_quest_2()
+	task_manager.get_task_manager():give_task("as_quest_tdef_2")
+end
+
+--=============================================================
+function quest_progress(functor,quest_f,tsk,task_id,stage,field)
+	local quest = tonumber(quest_f)
+	if (M and quest) then
+		if functor == "status" then
+			return STAGE_STATUS[quest] and STAGE_STATUS[quest](tsk,task_id,stage)
+		end
+		if functor == "target" then
+			return STAGE_TARGET[quest] and STAGE_TARGET[quest](tsk,task_id,stage)
+		end
+		if functor == "text" then
+			return STAGE_TEXT[quest] and STAGE_TEXT[quest](tsk,task_id,stage,field)
+		end
+	end
+end
+
+function pick_logic(actor,npc,p)
+	if (p and #p == 2) then
+		local quest = p[1]
+		local index = p[2]
+		return M and M[quest] and (M[quest][index] == npc:id())
+	end
+	return false
+end

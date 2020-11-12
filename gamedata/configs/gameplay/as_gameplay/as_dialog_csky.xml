@@ -1,0 +1,775 @@
+
+<!-- Cold -->
+<dialog id="as_dialog_cold_csky_main_0_donate">
+	<has_info>as_quest_csky_main_0_started</has_info>
+	<dont_has_info>as_quest_csky_main_0_donate_1</dont_has_info>
+	<dont_has_info>as_quest_csky_main_0_donate_2</dont_has_info>
+	<dont_has_info>as_quest_csky_main_0_donate_3</dont_has_info>
+	<phrase_list>
+		<phrase id="0"><text>as_dialog_cold_csky_main_0_donate_0</text>
+			<next>1</next>
+		</phrase>
+		<phrase id="1"><text>as_dialog_cold_csky_main_0_donate_1</text>
+			<next>2</next>
+			<next>10</next>
+		</phrase>
+		<phrase id="2"><text>as_dialog_cold_csky_main_0_donate_2</text>
+			<next>3</next>
+		</phrase>
+		<phrase id="3"><text>as_dialog_cold_csky_main_0_donate_3</text>
+			<next>4</next>
+			<next>6</next>
+			<next>8</next>
+			<next>10</next>
+		</phrase>
+		
+		<phrase id="4"><text>as_dialog_cold_csky_main_0_donate_4</text><action>as_quest_csky.main_0_donate_1</action>
+			<precondition>as_quest_csky.main_0_has_1</precondition>
+			<next>5</next>
+		</phrase>
+		<phrase id="5"><text>as_dialog_cold_csky_main_0_donate_5</text>
+		</phrase>
+		<phrase id="6"><text>as_dialog_cold_csky_main_0_donate_6</text><action>as_quest_csky.main_0_donate_2</action>
+			<precondition>as_quest_csky.main_0_has_2</precondition>
+			<next>7</next>
+		</phrase>
+		<phrase id="7"><text>as_dialog_cold_csky_main_0_donate_7</text>
+		</phrase>
+		<phrase id="8"><text>as_dialog_cold_csky_main_0_donate_8</text><action>as_quest_csky.main_0_donate_3</action>
+			<precondition>as_quest_csky.main_0_has_3</precondition>
+			<next>9</next>
+		</phrase>
+		<phrase id="9"><text>as_dialog_cold_csky_main_0_donate_9</text>
+		</phrase>
+		
+		<phrase id="10"><text>as_dialog_cold_csky_main_0_donate_10</text>
+		</phrase>
+	</phrase_list>
+</dialog>
+
+<dialog id="as_dialog_cold_csky_main_0_new_base">
+	<precondition>as_quest_csky.main_0_new_base_condition</precondition>
+	<phrase_list>
+		<phrase id="0"><text>as_dialog_cold_csky_main_0_new_base_0</text>
+			<next>1</next>
+			<next>2</next>
+		</phrase>
+		<phrase id="1"><text>as_dialog_cold_csky_main_0_new_base_1</text><action>as_quest_csky.main_0_new_base_reward</action>
+			<has_info>as_quest_csky_main_0_time_up</has_info>
+		</phrase>
+		<phrase id="2"><text>as_dialog_cold_csky_main_0_new_base_2</text>
+			<dont_has_info>as_quest_csky_main_0_time_up</dont_has_info>
+		</phrase>
+	</phrase_list>
+</dialog>
+
+<!-- Leader -->
+
+<dialog id="as_dialog_leader_csky_main_0_talk">
+	<has_info>as_quest_csky_main_0_new_base</has_info>
+	<dont_has_info>as_quest_csky_main_0_talk</dont_has_info>
+	<phrase_list>
+		<phrase id="0"><text>as_dialog_leader_csky_main_0_talk_0</text>
+			<next>is_csky_0</next>
+			<next>not_csky_0</next>
+		</phrase>
+		
+			<phrase id="is_csky_0"><text/>
+				<precondition>as_quest_csky.main_0_talk_is_csky</precondition>
+				<next>is_csky_1</next>
+			</phrase>
+			<phrase id="is_csky_1"><text/>
+				<next>1</next>
+			</phrase>
+			
+			<phrase id="not_csky_0"><text>as_dialog_leader_csky_main_0_talk_not_csky_0</text>
+				<precondition>as_quest_csky.main_0_talk_not_csky</precondition>
+				<next>not_csky_1</next>
+				<next>not_csky_3</next>
+				<next>not_csky_5</next>
+				<next>not_csky_7</next>
+			</phrase>
+			<phrase id="not_csky_1"><text>as_dialog_leader_csky_main_0_talk_not_csky_1</text>
+				<next>not_csky_2</next>
+			</phrase>
+			<phrase id="not_csky_2"><text>as_dialog_leader_csky_main_0_talk_not_csky_2</text>
+				<next>not_csky_end</next>
+			</phrase>
+			<phrase id="not_csky_3"><text>as_dialog_leader_csky_main_0_talk_not_csky_3</text>
+				<next>not_csky_4</next>
+			</phrase>
+			<phrase id="not_csky_4"><text>as_dialog_leader_csky_main_0_talk_not_csky_4</text>
+				<next>not_csky_end</next>
+			</phrase>
+			<phrase id="not_csky_5"><text>as_dialog_leader_csky_main_0_talk_not_csky_5</text>
+				<next>not_csky_6</next>
+			</phrase>
+			<phrase id="not_csky_6"><text>as_dialog_leader_csky_main_0_talk_not_csky_6</text>
+				<next>not_csky_end</next>
+			</phrase>
+			<phrase id="not_csky_7"><text>as_dialog_leader_csky_main_0_talk_not_csky_7</text>
+				<next>not_csky_7</next>
+			</phrase>
+			<phrase id="not_csky_8"><text>as_dialog_leader_csky_main_0_talk_not_csky_8</text>
+				<next>not_csky_end</next>
+			</phrase>
+			<phrase id="not_csky_end"><text/>
+				<next>1</next>
+			</phrase>
+		
+		<phrase id="1"><text>as_dialog_leader_csky_main_0_talk_1</text><action>as_quest_csky.main_0_talk_reward</action>
+			<give_info>as_quest_csky_main_0_talk</give_info>
+		</phrase>
+	</phrase_list>
+</dialog>
+
+<dialog id="as_dialog_leader_csky_main_1_give">
+	<dont_has_info>as_quest_csky_main_1_started</dont_has_info>
+	<has_info>as_quest_csky_main_0_complete</has_info>
+	<phrase_list>
+		<phrase id="0"><text>as_dialog_leader_csky_main_1_give_0</text>
+			<next>1</next>
+		</phrase>
+		<phrase id="1"><text>as_dialog_leader_csky_main_1_give_1</text>
+			<next>2</next>
+		</phrase>
+		<phrase id="2"><text>as_dialog_leader_csky_main_1_give_2</text>
+			<next>3</next>
+		</phrase>
+		<phrase id="3"><text>as_dialog_leader_csky_main_1_give_3</text><action>as_quest_csky.main_1_give</action>
+		</phrase>
+	</phrase_list>
+</dialog>
+
+<dialog id="as_dialog_leader_csky_main_1_info">
+	<dont_has_info>as_quest_csky_main_1_complete</dont_has_info>
+	<has_info>as_quest_csky_main_1_started</has_info>
+	<phrase_list>
+		<phrase id="0"><text>as_dialog_leader_csky_main_1_info_0</text>
+			<next>1</next>
+		</phrase>
+		<phrase id="1"><text>as_dialog_leader_csky_main_1_info_1</text>
+			<next>start</next>
+		</phrase>
+		
+		<phrase id="start"><text/>
+			<next>skip</next>
+		</phrase>
+		<phrase id="skip"><text/>
+			<next>info_1_0</next>
+			<next>info_2_0</next>
+			<next>info_3_0</next>
+			<next>stop</next>
+		</phrase>
+		
+			<phrase id="info_1_0"><text>as_dialog_leader_csky_main_1_info_1_0</text>
+				<next>info_1_1</next>
+			</phrase>
+			<phrase id="info_1_1"><text>as_dialog_leader_csky_main_1_info_1_1</text>
+				<next>start</next>
+			</phrase>
+			<phrase id="info_2_0"><text>as_dialog_leader_csky_main_1_info_2_0</text>
+				<next>info_2_1</next>
+			</phrase>
+			<phrase id="info_2_1"><text>as_dialog_leader_csky_main_1_info_2_1</text>
+				<next>start</next>
+			</phrase>
+			<phrase id="info_3_0"><text>as_dialog_leader_csky_main_1_info_3_0</text>
+				<next>info_3_1</next>
+			</phrase>
+			<phrase id="info_3_1"><text>as_dialog_leader_csky_main_1_info_3_1</text>
+				<next>start</next>
+			</phrase>
+			
+		<phrase id="stop"><text>as_dialog_leader_csky_main_1_info_2</text>
+		</phrase>
+	</phrase_list>
+</dialog>
+
+<dialog id="as_dialog_leader_csky_main_1_reward">
+	<dont_has_info>as_quest_csky_main_1_reward</dont_has_info>
+	<has_info>as_quest_csky_trader_0_complete</has_info>
+	<has_info>as_quest_csky_tech_0_complete</has_info>
+	<has_info>as_quest_csky_medic_0_complete</has_info>
+	<phrase_list>
+		<phrase id="0"><text>as_dialog_leader_csky_main_1_reward_0</text>
+			<next>1</next>
+		</phrase>
+		<phrase id="1"><text>as_dialog_leader_csky_main_1_reward_1</text><action>as_quest_csky.main_1_reward</action>
+		</phrase>
+	</phrase_list>
+</dialog>
+
+<dialog id="as_dialog_leader_csky_main_2_give">
+	<dont_has_info>as_quest_csky_main_2_started</dont_has_info>
+	<has_info>as_quest_csky_main_1_complete</has_info>
+	<phrase_list>
+		<phrase id="0"><text>as_dialog_leader_csky_main_2_give_0</text>
+			<next>1</next>
+		</phrase>
+		<phrase id="1"><text>as_dialog_leader_csky_main_2_give_1</text><action>as_quest_csky.main_2_give</action>
+		</phrase>
+	</phrase_list>
+</dialog>
+
+<dialog id="as_dialog_leader_csky_main_3_give">
+	<dont_has_info>as_quest_csky_main_3_started</dont_has_info>
+	<has_info>as_quest_csky_main_2_complete</has_info>
+	<phrase_list>
+		<phrase id="0"><text>as_dialog_leader_csky_main_3_give_0</text>
+			<next>1</next>
+		</phrase>
+		<phrase id="1"><text>as_dialog_leader_csky_main_3_give_1</text>
+			<next>2</next>
+		</phrase>
+		<phrase id="2"><text>as_dialog_leader_csky_main_3_give_2</text>
+			<next>3</next>
+		</phrase>
+		<phrase id="3"><text>as_dialog_leader_csky_main_3_give_3</text>
+			<next>4</next>
+			<next>5</next>
+		</phrase>
+		<phrase id="4"><text>as_dialog_leader_csky_main_3_give_4</text><action>as_quest_csky.main_3_give</action>
+		</phrase>
+		<phrase id="5"><text>as_dialog_leader_csky_main_3_give_5</text>
+		</phrase>
+	</phrase_list>
+</dialog>
+
+<dialog id="as_dialog_leader_csky_main_3_reward">
+	<has_info>as_quest_csky_main_3_dead</has_info>
+	<dont_has_info>as_quest_csky_main_3_complete</dont_has_info>
+	<phrase_list>
+		<phrase id="0"><text>as_dialog_leader_csky_main_3_reward_0</text>
+			<next>1</next>
+		</phrase>
+		<phrase id="1"><text>as_dialog_leader_csky_main_3_reward_1</text>
+			<next>2</next>
+		</phrase>
+		<phrase id="2"><text>as_dialog_leader_csky_main_3_reward_2</text>
+			<next>3</next>
+		</phrase>
+		<phrase id="3"><text>as_dialog_leader_csky_main_3_reward_3</text><action>as_quest_csky.main_3_reward</action>
+		</phrase>
+	</phrase_list>
+</dialog>
+
+<dialog id="as_dialog_leader_csky_main_4_give">
+	<has_info>as_quest_csky_main_3_complete</has_info>
+	<dont_has_info>as_quest_csky_main_4_started</dont_has_info>
+	<phrase_list>
+		<phrase id="0"><text>as_dialog_leader_csky_main_4_give_0</text>
+			<next>1</next>
+		</phrase>
+		<phrase id="1"><text>as_dialog_leader_csky_main_4_give_1</text>
+			<next>2</next>
+			<next>4</next>
+		</phrase>
+		
+		<phrase id="2"><text>as_dialog_leader_csky_main_4_give_2</text>
+			<next>3</next>
+		</phrase>
+		<phrase id="3"><text>as_dialog_leader_csky_main_4_give_3</text>
+			<next>6</next>
+		</phrase>
+		<phrase id="4"><text>as_dialog_leader_csky_main_4_give_4</text>
+			<next>5</next>
+		</phrase>
+		<phrase id="5"><text>as_dialog_leader_csky_main_4_give_5</text>
+			<next>6</next>
+		</phrase>
+		
+		<phrase id="6"><text>as_dialog_leader_csky_main_4_give_6</text>
+			<next>7</next>
+		</phrase>
+		<phrase id="7"><text>as_dialog_leader_csky_main_4_give_7</text><action>as_quest_csky.main_4_give</action>
+			<next>8</next>
+		</phrase>
+		<phrase id="8"><text>as_dialog_leader_csky_main_4_give_8</text><action>dialogs.break_dialog</action>
+		</phrase>
+	</phrase_list>
+</dialog>
+
+<dialog id="as_dialog_leader_csky_main_4_reward_help">
+	<phrase_list>
+		<phrase id="0"><text>as_dialog_leader_csky_main_4_reward_help_0</text><action>as_quest_csky.main_4_reward</action>
+			<next>1</next>
+		</phrase>
+		<phrase id="1"><text>as_dialog_leader_csky_main_4_reward_help_1</text>
+		</phrase>
+	</phrase_list>
+</dialog>
+
+<dialog id="as_dialog_leader_csky_main_4_reward_flee">
+	<phrase_list>
+		<phrase id="0"><text>as_dialog_leader_csky_main_4_reward_flee_0</text><action>as_quest_csky.main_4_reward</action>
+			<next>1</next>
+		</phrase>
+		<phrase id="1"><text>as_dialog_leader_csky_main_4_reward_flee_1</text>
+		</phrase>
+	</phrase_list>
+</dialog>
+
+
+<!--============================================================-->
+<!-- TRADER -->
+<!--============================================================-->
+
+<dialog id="as_dialog_trader_csky_trader_0_talk">
+	<phrase_list>
+		<phrase id="0"><text/>
+			<next>hello</next>
+		</phrase>
+		<phrase id="hello"><text/>
+			<next>hello_0</next>
+			<next>hello_1</next>
+		</phrase>
+		
+		<phrase id="hello_0"><text>as_dialog_trader_csky_trader_0_hello_0</text>
+			<dont_has_info>as_quest_csky_trader_0_talk</dont_has_info>
+			<next>start</next>
+		</phrase>
+		<phrase id="hello_1"><text>as_dialog_trader_csky_trader_0_hello_1</text>
+		<has_info>as_quest_csky_trader_0_talk</has_info>
+			<next>start</next>
+		</phrase>
+		
+		<phrase id="start"><text/>
+			<next>skip</next>
+		</phrase>
+		<phrase id="skip"><text/>
+			<next>talk_0</next>
+			<next>talk_2</next>
+			<next>bye</next>
+		</phrase>
+		
+		<phrase id="talk_0"><text>as_dialog_trader_csky_trader_0_talk_0</text>
+			<dont_has_info>as_quest_csky_trader_0_talk</dont_has_info>
+			<next>talk_1</next>
+		</phrase>
+		<phrase id="talk_1"><text>as_dialog_trader_csky_trader_0_talk_1</text>
+			<give_info>as_quest_csky_trader_0_talk</give_info>
+			<next>start</next>
+		</phrase>
+		
+		<phrase id="talk_2"><text>as_dialog_trader_csky_trader_0_talk_2</text>
+			<has_info>as_quest_csky_trader_0_talk</has_info>
+			<next>talk_3</next>
+		</phrase>
+		<phrase id="talk_3"><text>as_dialog_trader_csky_trader_0_talk_3</text>
+			<next>start</next>
+		</phrase>
+		
+		<phrase id="bye"><script_text>dialog_manager.create_bye_phrase</script_text><action>dialogs.break_dialog</action>
+		</phrase>
+	</phrase_list>
+</dialog>
+
+<dialog id="as_dialog_trader_csky_trader_1_give">
+	<has_info>as_quest_csky_main_2_started</has_info>
+	<dont_has_info>as_quest_csky_trader_1_started</dont_has_info>
+	<phrase_list>
+		<phrase id="0"><text>as_dialog_trader_csky_trader_1_give_0</text>
+			<next>1</next>
+		</phrase>
+		<phrase id="1"><text>as_dialog_trader_csky_trader_1_give_1</text><action>as_quest_csky.trader_1_give</action>
+		</phrase>
+	</phrase_list>
+</dialog>
+<dialog id="as_dialog_trader_csky_trader_1_reward">
+	<has_info>as_quest_csky_trader_1_deal</has_info>
+	<dont_has_info>as_quest_csky_trader_1_reward</dont_has_info>
+	<phrase_list>
+		<phrase id="0"><text>as_dialog_trader_csky_trader_1_reward_0</text>
+			<next>1</next>
+		</phrase>
+		<phrase id="1"><text>as_dialog_trader_csky_trader_1_reward_1</text>
+			<give_info>as_quest_csky_trader_1_reward</give_info>
+		</phrase>
+	</phrase_list>
+</dialog>
+
+<dialog id="as_dialog_csky_trader_1_bandit">
+	<phrase_list>
+		<phrase id="0"><text/>
+			<next>talk_0</next>
+			<next>bye</next>
+		</phrase>
+		
+		<phrase id="talk_0"><text>as_dialog_csky_trader_1_bandit_0</text>
+			<dont_has_info>as_quest_csky_trader_1_deal</dont_has_info>
+			<next>talk_1</next>
+		</phrase>
+		<phrase id="talk_1"><text>as_dialog_csky_trader_1_bandit_1</text>
+			<next>talk_2</next>
+			<next>bye</next>
+		</phrase>
+		
+		<phrase id="talk_2"><text>as_dialog_csky_trader_1_bandit_2</text><action>as_quest_csky.trader_1_pay</action>
+			<precondition>as_quest_csky.trader_1_has</precondition>
+			<next>talk_3</next>
+		</phrase>
+		<phrase id="talk_3"><text>as_dialog_csky_trader_1_bandit_3</text>
+			<next>bye</next>
+		</phrase>
+		
+		<phrase id="bye"><script_text>dialog_manager.create_bye_phrase</script_text><action>dialogs.break_dialog</action>
+		</phrase>
+	</phrase_list>
+</dialog>
+
+<!-- Tech -->
+
+<dialog id="as_dialog_tech_csky_tech_0_talk">
+	<phrase_list>
+		<phrase id="0"><text/>
+			<next>hello</next>
+		</phrase>
+		<phrase id="hello"><text/>
+			<next>hello_0</next>
+			<next>hello_1</next>
+		</phrase>
+		
+		<phrase id="hello_0"><text>as_dialog_tech_csky_tech_0_hello_0</text>
+			<dont_has_info>as_quest_csky_tech_0_talk</dont_has_info>
+			<next>start</next>
+		</phrase>
+		<phrase id="hello_1"><text>as_dialog_tech_csky_tech_0_hello_1</text>
+			<has_info>as_quest_csky_tech_0_talk</has_info>
+			<next>start</next>
+		</phrase>
+		
+		<phrase id="start"><text/>
+			<next>skip</next>
+		</phrase>
+		<phrase id="skip"><text/>
+			<next>talk_0</next>
+			<next>talk_2</next>
+			<next>bye</next>
+		</phrase>
+		
+		<phrase id="talk_0"><text>as_dialog_tech_csky_tech_0_talk_0</text>
+			<dont_has_info>as_quest_csky_tech_0_talk</dont_has_info>
+			<next>talk_1</next>
+		</phrase>
+		<phrase id="talk_1"><text>as_dialog_tech_csky_tech_0_talk_1</text>
+			<give_info>as_quest_csky_tech_0_talk</give_info>
+			<next>start</next>
+		</phrase>
+		
+		<phrase id="talk_2"><text>as_dialog_tech_csky_tech_0_talk_2</text>
+			<has_info>as_quest_csky_tech_0_talk</has_info>
+			<next>talk_3</next>
+		</phrase>
+		<phrase id="talk_3"><text>as_dialog_tech_csky_tech_0_talk_3</text>
+			<next>start</next>
+		</phrase>
+		
+		<phrase id="bye"><script_text>dialog_manager.create_bye_phrase</script_text><action>dialogs.break_dialog</action>
+		</phrase>
+	</phrase_list>
+</dialog>
+
+<dialog id="as_dialog_tech_csky_tech_1_give">
+	<has_info>as_quest_csky_main_2_started</has_info>
+	<dont_has_info>as_quest_csky_tech_1_started</dont_has_info>
+	<phrase_list>
+		<phrase id="0"><text>as_dialog_tech_csky_tech_1_give_0</text>
+			<next>1</next>
+		</phrase>
+		<phrase id="1"><text>as_dialog_tech_csky_tech_1_give_1</text><action>as_quest_csky.tech_1_give</action>
+		</phrase>
+	</phrase_list>
+</dialog>
+<dialog id="as_dialog_tech_csky_tech_1_reward">
+	<has_info>as_quest_csky_tech_1_boom</has_info>
+	<dont_has_info>as_quest_csky_tech_1_reward</dont_has_info>
+	<phrase_list>
+		<phrase id="0"><text>as_dialog_tech_csky_tech_1_reward_0</text>
+			<next>1</next>
+		</phrase>
+		<phrase id="1"><text>as_dialog_tech_csky_tech_1_reward_1</text>
+			<give_info>as_quest_csky_tech_1_reward</give_info>
+		</phrase>
+	</phrase_list>
+</dialog>
+
+<!-- Medic -->
+
+<dialog id="as_dialog_medic_csky_medic_0_talk">
+	<phrase_list>
+		<phrase id="0"><text/>
+			<next>hello</next>
+		</phrase>
+		<phrase id="hello"><text/>
+			<next>hello_0</next>
+			<next>hello_1</next>
+		</phrase>
+		
+		<phrase id="hello_0"><text>as_dialog_medic_csky_medic_0_hello_0</text>
+			<dont_has_info>as_quest_csky_medic_0_talk</dont_has_info>
+			<next>start</next>
+		</phrase>
+		<phrase id="hello_1"><text>as_dialog_medic_csky_medic_0_hello_1</text>
+			<has_info>as_quest_csky_medic_0_talk</has_info>
+			<next>start</next>
+		</phrase>
+		
+		<phrase id="start"><text/>
+			<next>skip</next>
+		</phrase>
+		<phrase id="skip"><text/>
+			<next>talk_0</next>
+			<next>talk_4</next>
+			<next>talk_6</next>
+			<next>bye</next>
+		</phrase>
+		
+			<phrase id="talk_0"><text>as_dialog_medic_csky_medic_0_talk_0</text>
+				<dont_has_info>as_quest_csky_medic_0_help</dont_has_info>
+				<next>talk_1</next>
+			</phrase>
+			<phrase id="talk_1"><text>as_dialog_medic_csky_medic_0_talk_1</text>
+				<next>talk_2</next>
+				<next>bye</next>
+			</phrase>
+			<phrase id="talk_2"><text>as_dialog_medic_csky_medic_0_talk_2</text>
+				<next>talk_3</next>
+			</phrase>
+			<phrase id="talk_3"><text>as_dialog_medic_csky_medic_0_talk_3</text>
+				<give_info>as_quest_csky_medic_0_help</give_info>
+				<next>start</next>
+			</phrase>
+			
+			<phrase id="talk_4"><text>as_dialog_medic_csky_medic_0_talk_4</text>
+				<has_info>as_quest_csky_medic_0_help</has_info>
+				<dont_has_info>as_quest_csky_medic_0_talk</dont_has_info>
+				<precondition>as_quest_csky.medic_0_has_item</precondition>
+				<next>talk_5</next>
+			</phrase>
+			<phrase id="talk_5"><text>as_dialog_medic_csky_medic_0_talk_5</text>
+				<give_info>as_quest_csky_medic_0_talk</give_info>
+				<next>start</next>
+			</phrase>
+			
+			<phrase id="talk_6"><text>as_dialog_medic_csky_medic_0_talk_6</text>
+				<has_info>as_quest_csky_medic_0_talk</has_info>
+				<next>talk_7</next>
+			</phrase>
+			<phrase id="talk_7"><text>as_dialog_medic_csky_medic_0_talk_7</text>
+				<next>start</next>
+			</phrase>
+		
+		<phrase id="bye"><script_text>dialog_manager.create_bye_phrase</script_text><action>dialogs.break_dialog</action>
+		</phrase>
+	</phrase_list>
+</dialog>
+
+<dialog id="as_dialog_medic_csky_medic_1_give">
+	<has_info>as_quest_csky_main_2_started</has_info>
+	<dont_has_info>as_quest_csky_medic_1_started</dont_has_info>
+	<phrase_list>
+		<phrase id="0"><text>as_dialog_medic_csky_medic_1_give_0</text>
+			<next>1</next>
+		</phrase>
+		<phrase id="1"><text>as_dialog_medic_csky_medic_1_give_1</text>
+			<next>2</next>
+		</phrase>
+		<phrase id="2"><text>as_dialog_medic_csky_medic_1_give_2</text>
+			<next>3</next>
+		</phrase>
+		<phrase id="3"><text>as_dialog_medic_csky_medic_1_give_3</text>
+			<next>4</next>
+		</phrase>
+		<phrase id="4"><text>as_dialog_medic_csky_medic_1_give_4</text>
+			<next>5</next>
+		</phrase>
+		<phrase id="5"><text>as_dialog_medic_csky_medic_1_give_5</text><action>as_quest_csky.medic_1_give</action>
+		</phrase>
+	</phrase_list>
+</dialog>
+<dialog id="as_dialog_medic_csky_medic_1_reward">
+	<has_info>as_quest_csky_medic_1_started</has_info>
+	<dont_has_info>as_quest_csky_medic_1_reward</dont_has_info>
+	<precondition>as_quest_csky.medic_1_has_item</precondition>
+	<phrase_list>
+		<phrase id="0"><text>as_dialog_medic_csky_medic_1_reward_0</text>
+			<next>1</next>
+		</phrase>
+		<phrase id="1"><text>as_dialog_medic_csky_medic_1_reward_1</text><action>as_quest_csky.medic_1_release_item</action>
+		</phrase>
+	</phrase_list>
+</dialog>
+
+
+<!--MISC-->
+
+<dialog id="as_dialog_leader_hello">
+	<phrase_list>
+		<phrase id="0"><script_text>as_quest_csky.leader_hello</script_text>
+		</phrase>
+	</phrase_list>
+</dialog>
+
+<dialog id="as_dialog_trader_hello">
+	<phrase_list>
+		<phrase id="0"><script_text>as_quest_csky.trader_hello</script_text>
+		</phrase>
+	</phrase_list>
+</dialog>
+<dialog id="as_dialog_trader_trade">
+	<phrase_list>
+		<phrase id="0"><text>st_trader_dialog_init</text>
+			<next>1</next>
+		</phrase>
+		<phrase id="1"><script_text>as_quest_csky.trader_trade</script_text><action>dialogs.npc_is_trader</action>
+		</phrase>
+	</phrase_list>
+</dialog>
+	
+<dialog id="as_dialog_tech_hello">
+	<phrase_list>
+		<phrase id="0"><script_text>as_quest_csky.tech_hello</script_text>
+		</phrase>
+	</phrase_list>
+</dialog>
+<dialog id="as_dialog_tech_trade">
+	<phrase_list>
+		<phrase id="0"><text>st_trader_dialog_init</text>
+			<next>1</next>
+		</phrase>
+		<phrase id="1"><script_text>as_quest_csky.tech_trade</script_text><action>dialogs.npc_is_trader</action>
+		</phrase>
+	</phrase_list>
+</dialog>
+<dialog id="as_dialog_tech_mechanic">
+	<phrase_list>
+		<phrase id="0"><text>st_mechanic_dialog_init</text>
+			<next>1</next>
+		</phrase>
+		<phrase id="1"><script_text>as_quest_csky.tech_mechanic</script_text><action>dialogs.npc_is_tech</action>
+		</phrase>
+	</phrase_list>
+</dialog>
+
+
+<dialog id="as_dialog_medic_hello">
+	<phrase_list>
+		<phrase id="0"><script_text>as_quest_csky.medic_hello</script_text>
+		</phrase>
+	</phrase_list>
+</dialog>
+<dialog id="as_dialog_medic_trade">
+	<phrase_list>
+		<phrase id="0"><text>st_trader_dialog_init</text>
+			<next>1</next>
+		</phrase>
+		<phrase id="1"><script_text>as_quest_csky.medic_trade</script_text><action>dialogs.npc_is_trader</action>
+		</phrase>
+	</phrase_list>
+</dialog>
+<dialog id="as_dialog_medic_anomaly">
+	<phrase_list>
+		<phrase id="0"><text>as_dialog_medic_knowledge_0</text>
+			<next>1</next>
+		</phrase>
+		<phrase id="1"><text>as_dialog_medic_knowledge_1</text>
+			<next>list</next>
+		</phrase>
+		
+		<phrase id="list"><text/>
+			<next>skip</next>
+		</phrase>
+		<phrase id="skip"><text/>
+			<next>a0</next>
+			<next>b0</next>
+			<next>c0</next>
+			<next>d0</next>
+			<next>2</next>
+		</phrase>
+		
+			<phrase id="a0"><text>as_dialog_medic_knowledge_gravity_0</text>
+				<next>a1</next>
+			</phrase>
+			<phrase id="a1"><text>as_dialog_medic_knowledge_gravity_1</text>
+				<next>list</next>
+			</phrase>
+			<phrase id="b0"><text>as_dialog_medic_knowledge_gas_0</text>
+				<next>b1</next>
+			</phrase>
+			<phrase id="b1"><text>as_dialog_medic_knowledge_gas_1</text>
+				<next>list</next>
+			</phrase>
+			<phrase id="c0"><text>as_dialog_medic_knowledge_burner_0</text>
+				<next>c1</next>
+			</phrase>
+			<phrase id="c1"><text>as_dialog_medic_knowledge_burner_1</text>
+				<next>list</next>
+			</phrase>
+			<phrase id="d0"><text>as_dialog_medic_knowledge_electro_0</text>
+				<next>d1</next>
+			</phrase>
+			<phrase id="d1"><text>as_dialog_medic_knowledge_electro_1</text>
+				<next>list</next>
+			</phrase>
+		
+		<phrase id="2"><text>as_dialog_medic_knowledge_2</text>
+		</phrase>
+	</phrase_list>
+</dialog>
+
+<dialog id="as_dialog_leader_story_1">
+	<phrase_list>
+		<phrase id="0"><text>as_dialog_leader_story_1_0</text>
+			<next>1</next>
+		</phrase>
+		<phrase id="1"><text>as_dialog_leader_story_1_1</text>
+		</phrase>
+	</phrase_list>
+</dialog>
+<dialog id="as_dialog_leader_story_2">
+	<phrase_list>
+		<phrase id="0"><text>as_dialog_leader_story_2_0</text>
+			<next>1</next>
+		</phrase>
+		<phrase id="1"><text>as_dialog_leader_story_2_1</text>
+		</phrase>
+	</phrase_list>
+</dialog>
+<dialog id="as_dialog_leader_story_3">
+	<phrase_list>
+		<phrase id="0"><text>as_dialog_leader_story_3_0</text>
+			<next>1</next>
+		</phrase>
+		<phrase id="1"><text>as_dialog_leader_story_3_1</text>
+		</phrase>
+	</phrase_list>
+</dialog>
+
+<dialog id="as_dialog_trader_story_1">
+	<phrase_list>
+		<phrase id="0"><text>as_dialog_trader_story_1_0</text>
+			<next>1</next>
+		</phrase>
+		<phrase id="1"><text>as_dialog_trader_story_1_1</text>
+		</phrase>
+	</phrase_list>
+</dialog>
+<dialog id="as_dialog_trader_story_2">
+	<phrase_list>
+		<phrase id="0"><text>as_dialog_trader_story_2_0</text>
+			<next>1</next>
+		</phrase>
+		<phrase id="1"><text>as_dialog_trader_story_2_1</text>
+		</phrase>
+	</phrase_list>
+</dialog>
+<dialog id="as_dialog_trader_story_3">
+	<phrase_list>
+		<phrase id="0"><text>as_dialog_trader_story_3_0</text>
+			<next>1</next>
+		</phrase>
+		<phrase id="1"><text>as_dialog_trader_story_3_1</text>
+		</phrase>
+	</phrase_list>
+</dialog>

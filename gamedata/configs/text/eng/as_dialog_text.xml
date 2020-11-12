@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<string_table>
+	<!-- Verl Nut ==================================================-->
+	<string id="as_dialog_verlnut_beh_0_1_0">
+		<text>Hey, you there! Don't shoot! I don't want to hurt you.</text>
+	</string>
+	<string id="as_dialog_verlnut_beh_0_1_1">
+		<text>What? A talking snork?</text>
+	</string>
+	<string id="as_dialog_verlnut_beh_0_1_2">
+		<text>The Zone is now full of deadly anomalies, fancy artefacts, bullshit creatures... and you're surprised by a talking snork, huh? Lower your shooter then we can talk.</text>
+	</string>
+	<string id="as_dialog_verlnut_beh_0_1_3">
+		<text>Okay. Okay. But you too!</text>
+	</string>
+	<string id="as_dialog_verlnut_beh_0_1_4">
+		<text>No. You are a monster. Die!</text>
+	</string>
+	
+	<string id="as_dialog_verlnut_1_1_0">
+		<text>How did you end up like this?</text>
+	</string>
+	<string id="as_dialog_verlnut_1_1_1">
+		<text>It is a long story. But I am hungry now. Could you bring me some cooked food? For a long time, I have only eaten raw mutant meat. Let's see... a chop of boar meat grilled with vodka.</text>
+	</string>
+	<string id="as_dialog_verlnut_1_1_2">
+		<text>Okay. I will find one for you.</text>
+	</string>
+	
+	<!-- Chief ==================================================-->
+	<!-- About -->
+	<string id="as_dialog_chief_about_1_0">
+		<text>Tell me about yourself.</text>
+	</string>
+	<string id="as_dialog_chief_about_1_1">
+		<text>Call me Chief. I'm one of the bosses around the local area, like Sultan. The two brothers behind me are Eagle and Snake. We've been doing jobs back then when we used to run with one of our past Godfathers - Borov. But those days were long gone.</text>
+	</string>
+	<string id="as_dialog_chief_about_1_2">
+		<text>What happened?</text>
+	</string>
+	<string id="as_dialog_chief_about_1_3">
+		<text>We used to have a fourth guy with us, but the fucker ratted us out before a job and we were led into a setup. We managed to escape and then even iced the fucker! Since we don't have a fourth dude anymore, we can't go on jobs like we used to back then, and are now stuck doing other busywork.</text>
+	</string>
+	<string id="as_dialog_chief_about_1_4">
+		<text>Interesting!</text>
+	</string>
+	<!-- Quest -->
+	<string id="as_dialog_chief_0_1_0">
+		<text>You are Chief?</text>
+	</string>
+	<string id="as_dialog_chief_0_1_1">
+		<text>Yes. What do you need?</text>
+	</string>
+	
+	<string id="as_dialog_chief_1_1_0">
+		<text>I heard that you are hiring people.</text>
+	</string>
+	<string id="as_dialog_chief_1_1_1">
+		<text>We are going to be hitting a group of stalkers heading from Yantar through the Wild Territory. They will be carrying some rare artifacts into Rostok to trade with. I got this fresh tip from one of my informants.</text>
+	</string>
+	<string id="as_dialog_chief_1_1_2">
+		<text>How are we supposed to get to Wild Territory, when Duty has Rostok guarded like a castle?</text>
+	</string>
+	<string id="as_dialog_chief_1_1_3">
+		<text>We have these - DIY Stalker suits. We pinched some off from a few stalkers a long time ago, and have been wanting to use them for something.. and now we've got the opportunity to do so. We are going to sneak by the Duty checkpoints, hit the stalkers in Wild Territory, and quickly make it out of there before Duty sends a patrol into Wild Territory about the commotion.</text>
+	</string>
+	<string id="as_dialog_chief_1_1_4">
+		<text>Sounds good, I'm in.</text>
+	</string>
+	<string id="as_dialog_chief_1_1_5">
+		<text>Good. Repare your stuff and talk to me when you are ready.</text>
+	</string>
+	<string id="as_dialog_chief_1_1_6">
+		<text>Hmm... I'm not sure if I can handle it.</text>
+	</string>
+	
+	<string id="as_dialog_chief_1_2_0">
+		<text>I'm ready. Let's go.</text>
+	</string>
+	
+	<string id="as_dialog_chief_beh_1_1_0">
+		<text>Alright, here we are. Stay close to me and kill anything trying to stop us. Ready?</text>
+	</string>
+	<string id="as_dialog_chief_beh_1_1_1">
+		<text>Yes.</text>
+	</string>
+	<string id="as_dialog_chief_beh_1_1_2">
+		<text>Not yet. I need to prepare something.</text>
+	</string>
+	
+	<string id="as_dialog_chief_beh_1_2_0">
+		<text>Alright, have we gotten all of their stuff? Good. Put on your masks and let's head back into Dark Valley.</text>
+	</string>
+	<string id="as_dialog_chief_beh_1_2_1">
+		<text>Okay. Let's go.</text>
+	</string>
+	<string id="as_dialog_chief_beh_1_2_2">
+		<text>Not yet.</text>
+	</string>
+	
+	
+	<string id="as_dialog_chief_1_3_0">
+		<text>Ok, then.</text>
+	</string>
+	<string id="as_dialog_chief_1_3_1">
+		<text>A ha ha... Here is your reward. You did well, even better than what I expected. Perhaps I will have some job that may need your hand later.</text>
+	</string>
+	<string id="as_dialog_chief_1_3_2">
+		<text>Thank you, Chief.</text>
+	</string>
+	
+</string_table>

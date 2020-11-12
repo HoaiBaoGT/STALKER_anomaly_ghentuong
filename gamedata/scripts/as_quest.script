@@ -1,0 +1,148 @@
+local HI, GI, DI = has_alife_info, give_info, disable_info
+local DEBUG_MODE = true
+
+--[[----------------------------------------------------------------------------------------------------
+	Task
+------------------------------------------------------------------------------------------------------]]
+task_status_functor.as_quest_status = function(tsk,task_id)
+	local quest = parse_list(task_manager.task_ini,task_id,"status_functor_params")
+	if not (tsk and (#quest == 2)) then
+		return
+	end
+	local quest_s = quest[1]
+	local quest_f = quest[2]
+	
+	if (_G[quest_s] and _G[quest_s]["quest_progress"]) then
+		return _G[quest_s]["quest_progress"](quest_f,tsk,task_id,nil,nil)
+	end
+end
+
+task_functor.as_quest_target = function(task_id,field,p,tsk)
+	local quest = parse_list(task_manager.task_ini,task_id,"status_functor_params")
+	if not (tsk and (#quest == 2)) then
+		return
+	end
+	local quest_s = quest[1]
+	local quest_f = quest[2]
+	
+	if (_G[quest_s] and _G[quest_s]["quest_progress"]) then
+		local result = _G[quest_s] and _G[quest_s]["quest_progress"](quest_f,tsk,task_id,field,p)
+		if (field == "target") then
+			return result or nil
+		else --"title", "descr"
+			return result and game.translate_string(result) or "NO_TEXT"
+		end
+	end
+end
+
+--[[----------------------------------------------------------------------------------------------------
+	Utilities
+------------------------------------------------------------------------------------------------------]]
+function reward(items)
+	if not (items and #items > 0) then
+		printf("GhenTuong: as_quest.reward empty items")
+		return
+	end
+	
+	local count = {}
+	for i,v in pairs(items) do
+		if not count[v] then
+			count[v] = 1
+		else
+			count[v] = count[v] + 1
+		end
+		alife_create_item(v,db.actor)
+	end
+	for i,v in pairs(count) do
+		news_manager.relocate_item(db.actor,"in",i,v)
+	end
+end
+
+function money(how,amount)
+	if not tonumber(amount) then
+		callstack()
+		printf("as_quest.money | *amount* is not a number")
+	end
+	if (how == "has") then
+		if (db.actor:money() >= tonumber(amount)) then
+			return true
+		else
+			return false
+		end
+	end
+	if (how == "get") then
+		db.actor:give_money(tonumber(amount))
+		news_manager.relocate_money(db.actor,"in",amount)
+		return
+	end
+	if (how == "pay") then
+		db.actor:give_money(-tonumber(amount))
+		news_manager.relocate_money(db.actor,"out",amount)
+		return
+	end
+	callstack()
+	printf("as_quest.money | *how* is not defined")
+end
+
+function message(npc_id,text)
+	local npc = alife_object(npc_id)
+	if (npc and tostring(text)) then
+		local name = game.translate_string(npc:character_name())
+		local icon = npc:character_icon()
+		if (name and icon) then
+			dynamic_news_helper.send_tip(game.translate_string(tostring(text)),name,nil,nil,icon,nil,"npc")
+			return
+		end
+	end
+	printf("as_quest.message | npc_id = %s",npc_id)
+end
+
+--[[------------------------------------------------------------
+	Game start event
+--------------------------------------------------------------]]
+QUEST = {}
+QUEST["as_quest_csky_main_0"] = function(functor)
+	local task_id = "as_quest_csky_main_0"
+	if (functor == "cond") then
+		if HI(task_id.."_cancel") or HI(task_id.."_started") then
+			return false
+		end
+		if game_relations.is_factions_enemies(character_community(db.actor),"csky") then
+			GI(task_id.."_cancel")
+			return false
+		end
+		return DEBUG_MODE or (relation_registry.community_goodwill("csky",AC_ID) >=  100)
+	end
+	
+	if (functor == "give") then
+		task_manager.get_task_manager():give_task(task_id)
+		local npc = get_story_se_object("mar_smart_terrain_base_stalker_leader_marsh")
+		if (npc) then
+			_G["as_quest"]["message"](npc.id,task_id.."_give_message")
+		end
+		return true
+	end
+end
+--[[------------------------------------------------------------
+	RegisterScriptCallback
+--------------------------------------------------------------]]
+function as_quest_actor_on_first_update()
+	if not db.actor then return end
+	--Spawn npcs
+	
+	--Give quests
+	local can_give = true
+	for task_id,f in pairs(QUEST) do
+		if (can_give) then
+			if (f and f("cond")) then
+				can_give = false
+				local time_delay = math.random(15,30)
+				CreateTimeEvent(AC_ID,"as_quest_actor_on_first_update",time_delay,f,"give")
+			end
+		end
+	end
+end
+
+function on_game_start()
+	--RegisterScriptCallback("actor_on_first_update",as_quest_actor_on_first_update)
+end

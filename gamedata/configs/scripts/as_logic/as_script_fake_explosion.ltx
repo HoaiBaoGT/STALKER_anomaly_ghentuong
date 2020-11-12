@@ -1,0 +1,9 @@
+[logic]
+active = ph_idle@base
+
+[ph_idle@base]
+nonscript_usable = false
+on_info = %=script(xr_custom:self_explode)% ph_idle@idle
+
+[ph_idle@idle]
+nonscript_usable = false

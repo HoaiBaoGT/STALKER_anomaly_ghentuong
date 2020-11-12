@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<string_table>
+	<!-- Verl Nut ==================================================-->
+	<string id="as_quest_verlnut_0_title">
+		<text>With A Friend Like This</text>
+	</string>
+	<string id="as_quest_verlnut_0_descr_1">
+		<text>Investigate a strange mutant.</text>
+	</string>
+	<!-- Chief ==================================================-->
+	<string id="as_quest_chief_0_rumors">
+		<text>Have you ever heard about Chief? He is a high-rank bandit who has lead many notorious missions before. It is strange that I haven't heard any news about his operation recently. He is recruiting people at Bandit Stronghold in Dark Valley, which I think you can take advantage of.</text>
+	</string>
+	
+	<string id="as_quest_chief_0_title">
+		<text>Highwayman: Meet Chief</text>
+	</string>
+	<string id="as_quest_chief_0_descr_1">
+		<text>They said there is a man who is hiring people at Bandit Stronghold in Dark Valley.</text>
+	</string>
+	
+	<string id="as_quest_chief_1_title">
+		<text>Highwayman: The First Robbery</text>
+	</string>
+	<string id="as_quest_chief_1_descr_1">
+		<text>I need to prepare my stuff for the robbery. Talk to Chief when I'm ready.</text>
+	</string>
+	<string id="as_quest_chief_1_descr_2">
+		<text>I need to follow Chief to help him rob the Ecologists.</text>
+	</string>
+	<string id="as_quest_chief_1_descr_3">
+		<text>The robbery was successful. Talk to Chief to earn my reward.</text>
+	</string>
+	
+</string_table>

@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<string_table>
+	<string id="as_quest_stalker_0_rumors">
+		<text>Recently, I’ve overheard Wolf and Fanatic talk about certain bandits in the Cordon. And that they’ve been setting up ambushes and shit on stalkers and even the damn military. One of them - Fanatic, I think, suggested getting a helping hand from the local, more well-armed stalkers, who could have a fighting chance against drugged up bandits. And that’s all I’ve heard before they noticed me.</text>
+	</string>
+	
+	<string id="as_quest_stalker_0_title_0">
+		<text>A Familiar Situation: Speak with Wolf</text>
+	</string>
+	<string id="as_quest_stalker_0_title_1">
+		<text>A Familiar Situation: Meet up with the Rescue Squad</text>
+	</string>
+	<string id="as_quest_stalker_0_title_2">
+		<text>A Familiar Situation: Rescue the Hostage</text>
+	</string>
+	<string id="as_quest_stalker_0_title_3">
+		<text>A Familiar Situation: Report back to Wolf</text>
+	</string>
+	
+	<string id="as_quest_stalker_0_descr_0">
+		<text>They say Wolf needs a hand to deal with some bandit troubles.</text>
+	</string>
+	<string id="as_quest_stalker_0_descr_1">
+		<text>Wolf wants to rescue a hostage being held by a group of local Bandits at the Car Park.</text>
+	</string>
+	<string id="as_quest_stalker_0_descr_2">
+		<text>I got the hostage. Now I need to escort him back to the Rookie Village.</text>
+	</string>
+	<string id="as_quest_stalker_0_descr_3">
+		<text>The hostage is safe. Report to Wolf.</text>
+	</string>
+	
+	<string id="as_dialog_stalker_0_0_0">
+		<text>Stalker, we’re in some deep shit. Bandits are kidnapping and murdering local stalkers.. even got one of ours, the bastards. Avoid the Car Park and the main road. If you see them, either run or start fighting. But if you’re brave enough to help stop those asswipes, let’s talk.</text>
+	</string>
+	<string id="as_dialog_stalker_0_0_1">
+		<text>Hello, senior stalker! Heard you are in need of a brave, and maybe dumb volunteer for the trouble regarding the Bandits. How can I help?</text>
+	</string>
+	<string id="as_dialog_stalker_0_0_2">
+		<text>Enough with the jokes... Yes, I’m in need of a volunteering stalker, who can handle himself in a shootout between gangsters. Anyways, here’s what happened; The local so-called Bandits have ambushed and captured one of our fellow stalkers. After that, they brought him over to the Car Park. My scouts said that he still has to be in there, as the Bandits haven’t left the area once. He holds important information which we can't let fall into their hands. We are preparing for an attack to rescue him, but we are low on manpower.</text>
+	</string>
+	<string id="as_dialog_stalker_0_0_3">
+		<text>Count me in. What’s the plan?</text>
+	</string>
+	<string id="as_dialog_stalker_0_0_4">
+		<text>Alright. You’ll need to group up with our men at a tent located North-East of the Rookie Village. Hurry up, as the attack will begin soon.</text>
+	</string>
+	<string id="as_dialog_stalker_0_0_5">
+		<text>Huh, thanks for the warning...</text>
+	</string>
+	<string id="as_dialog_stalker_0_0_6">
+		<text>How does it go?</text>
+	</string>
+	<string id="as_dialog_stalker_0_0_7">
+		<text>TODO</text>
+	</string>
+	<string id="as_dialog_stalker_0_0_8">
+		<text>I am on the way.</text>
+	</string>
+	
+	<string id="as_dialog_stalker_0_1_0">
+		<text>Did Wolf send you? Get yourself ready. The attack will begin soon.</text>
+	</string>
+	<string id="as_dialog_stalker_0_1_1">
+		<text>I am ready.</text>
+	</string>
+	<string id="as_dialog_stalker_0_1_2">
+		<text>Is there any other options left other than attacking them?</text>
+	</string>
+	<string id="as_dialog_stalker_0_1_3">
+		<text>Well, I guess there is another option left. They demanded 30,000 Rubles in exchange for him. 30,000 Rubles my ass. What kind of Rookie would have that much money...</text>
+	</string>
+	<string id="as_dialog_stalker_0_1_4">
+		<text>Okay. I’ll try to buy him off without bloodshed.</text>
+	</string>
+	<string id="as_dialog_stalker_0_1_5">
+		<text>Wait a second. I need to prepare for this a bit more.</text>
+	</string>
+	<string id="as_dialog_stalker_0_1_6">
+		<text>It is finished, finally. I need time to recover from the killing.</text>
+	</string>
+	<string id="as_dialog_stalker_0_1_7">
+		<text>You rescued him without using a bullet! I can't believe it. The Rookie Village owes you huge thanks.</text>
+	</string>
+	<string id="as_dialog_stalker_0_1_8">
+		<text>Indeed.</text>
+	</string>
+	<string id="as_dialog_stalker_0_1_all_dead">
+		<text>Good. They are all dead. Everyone, find the hostage.</text>
+	</string>
+	
+	<string id="as_dialog_stalker_0_2_0">
+		<text>N-no, please.. I said.. I know nothing! Please don’t h-hurt me!</text>
+	</string>
+	<string id="as_dialog_stalker_0_2_1">
+		<text>Calm down, calm down. I’m not here to hurt you. Come on, stalker. Get up and let’s go to the Rookie Village.</text>
+	</string>
+	<string id="as_dialog_stalker_0_2_2">
+		<text>Thank you for saving me.</text>
+	</string>
+	<string id="as_dialog_stalker_0_2_3">
+		<text>What happened? Why did they capture you?</text>
+	</string>
+	<string id="as_dialog_stalker_0_2_4">
+		<text>I.. they.. they ambushed me along the road from the Garbage.. after which, they took my PDA and radio, and led me to the Car Park. There, they tied me up with a rope and beat the shit out of me, while asking where the damned data is. I.. I didn’t tell them anything. At some point, during my interrogation, one of them got pissed and shot me in my leg. I almost went into shock before one of them gave me some white powder and bandaged me up. That’s it, I don’t remember anything after that... And why did they capture me? Probably because of the data I carried on my person, which Sidorovich asked for. And I don’t even know how, but somehow they didn’t manage to find it.</text>
+	</string>
+	<string id="as_dialog_stalker_0_2_5">
+		<text>Well, such a brave story. Soon you will become a veteran stalker. Now you should rest to heal the wound up.</text>
+	</string>
+	<string id="as_dialog_stalker_0_2_6">
+		<text>No problem.</text>
+	</string>
+
+	
+	<string id="as_dialog_stalker_0_3_0">
+		<text>The fuck are you lookin’ at, stalker?! You want me to blow your kneecaps off and then slice you up real good like one of those pigs at the checkpoint!?</text>
+	</string>
+	<string id="as_dialog_stalker_0_3_1">
+		<text>Woah! Calm down, man! I’m just here to buy off the stalker that you’re holding hostage.</text>
+	</string>
+	<string id="as_dialog_stalker_0_3_2">
+		<text>Man?! The fuck is this word coming out of your damn mouth? You tryin’ to disrespect me? Twenty.. no, Thirty thousand and I’ll forget about your mistake. And you’ll even be able to take your buddy with you. Otherwise - get lost. Got it? Good. Chop-chop now. Make your choice.</text>
+	</string>
+	<string id="as_dialog_stalker_0_3_3">
+		<text>Here’s the money - 30,000 Rubles, cash. Where is he? %c[d_orange][30,000 RU]</text>
+	</string>
+	<string id="as_dialog_stalker_0_3_4">
+		<text>Ah, I love me the smell of some hard cash. Consider your mistake as forgiven, stalker. Next time, think about what you’re about to say to us. Call us dudes-guys-bros, and not that ‘man’ crap. Cause’ remember, we’re real dudes - not like those pigs or the stalkers who work with them... Anyways, your buddy is on the upper floor of that building. Go get him.</text>
+	</string>
+	<string id="as_dialog_stalker_0_3_5">
+		<text>Glad that we understood each other.</text>
+	</string>
+	<string id="as_dialog_stalker_0_3_6">
+		<text>No-no. Wasn’t trying to disrespect you or anything… I’ll be going on my way.</text>
+	</string>
+	
+	<string id="as_dialog_stalker_0_3_7">
+		<text>Huh? Anything else?</text>
+	</string>
+	<string id="as_dialog_stalker_0_3_8">
+		<text>I’ve been meaning to ask.. what does your Godfather need from this particular stalker?</text>
+	</string>
+	<string id="as_dialog_stalker_0_3_9">
+		<text>What does he want from that one stalkeroo? Hell if I know! Our squad leader got told the full story, who then told us the shorter story. Why do ya wanna know? What are you, a spy from the red piggies? He-he-he-he! Should’ve seen the look on your damn face when I said that! Ha-ha-ha-ha! Don’t worry, dude, I was just joking!</text>
+	</string>
+	<string id="as_dialog_stalker_0_3_10">
+		<text>Spy from the red piggies? Heh, nice one. You got me there real good!</text>
+	</string>
+	<string id="as_dialog_stalker_0_3_11">
+		<text>Nothing. On my way.</text>
+	</string>
+	
+	
+	<string id="as_quest_stalker_1_title_0">
+		<text>Foe or Ally: Find and Destroy the Bandits</text>
+	</string>
+	<string id="as_quest_stalker_1_title_1">
+		<text>Foe or Ally: Search for the Document</text>
+	</string>
+	<string id="as_quest_stalker_1_title_2">
+		<text>Foe or Ally: Search for the Document</text>
+	</string>
+	<string id="as_quest_stalker_1_title_3">
+		<text>Foe or Ally: Report to Wolf or Cpt. Gonchar</text>
+	</string>
+	<string id="as_quest_stalker_1_title_4">
+		<text>Foe or Ally: Report back to Wolf</text>
+	</string>
+	
+	<string id="as_quest_stalker_1_descr_0">
+		<text>The document has fallen into Bandit’s hands, and Duty smelled it. They are fighting against each other at the Meadow. The document must not fall into either of them.</text>
+	</string>
+	<string id="as_quest_stalker_1_descr_1">
+		<text>Bandits in the building are all dead. Probably they hold some clues about the document.</text>
+	</string>
+	<string id="as_quest_stalker_1_descr_2">
+		<text>I found a PDA. It says the document is in a truck’s cabin near this building.</text>
+	</string>
+	<string id="as_quest_stalker_1_descr_3">
+		<text>I found the document. Now I need to bring it back to Wolf. Or... perhaps the Duty commander will offer me a better reward? Duty is well known for paying people very well.</text>
+	</string>
+	<string id="as_quest_stalker_1_descr_4">
+		<text>I gave the document to the Duty commander. Now I need to explain to Wolf otherwise he will suspect.</text>
+	</string>
+	
+	<string id="as_quest_stalker_1_duty_leader_name">
+		<text>Captain Goncharov</text>
+	</string>
+	<string id="as_quest_stalker_1_bandit_leader_name">
+		<text>Badger</text>
+	</string>
+	<string id="as_quest_stalker_1_pda_name">
+		<text>Bandit Commander’s PDA</text>
+	</string>
+	<string id="as_quest_stalker_1_pda_desc">
+		<text>Message Outbox: \nFuck me, Sultan! The red-bellied pigs found out our position. They know god damn everything!! We’ll make an attempt to stand our ground and fuck those bitches up. I threw the document into a truck’s cabin near our camp. If I or the others don’t report back within an hour, you know what to do. - Badger</text>
+	</string>
+	<string id="as_quest_stalker_1_doc_name">
+		<text>Sidorovich’s Document</text>
+	</string>
+	<string id="as_quest_stalker_1_doc_desc">
+		<text>A brown document. Appears to have a special seal, completely intact too. I must not break the seal, as Wolf would most definitely kick my ass.</text>
+	</string>
+	
+	<string id="as_dialog_stalker_1_0_0">
+		<text>Quickly! Don't let it fall into the hands of either of them.</text>
+	</string>
+	<string id="as_dialog_stalker_1_0_1">
+		<text>You have come back. Did you get the document?</text>
+	</string>
+	<string id="as_dialog_stalker_1_0_2">
+		<text>Here. Is it the documents you are looking for. %c[d_orange][Give the document]</text>
+	</string>
+	<string id="as_dialog_stalker_1_0_3">
+		<text>Exactly! Here, this is the money Sidorovich told me to give you. Surely he will offer you a good deal after afterward. You know, earning goodwill from Sidorovich isn't something easy. Congratulations!</text>
+	</string>
+	<string id="as_dialog_stalker_1_0_4">
+		<text>Sorry, I couldn't make it. Duty has got the document. %c[d_orange][Lie]</text>
+	</string>
+	<string id="as_dialog_stalker_1_0_5">
+		<text>I may understand. You alone fighting those high rank equipped duties isn't a smart idea. I glad that you know when to stop. I will do the talking with Sidorovich. May time will get things away. Sadly, no reward for you this time. But we still remember what you have done. Thank you.</text>
+	</string>
+	<string id="as_dialog_stalker_1_0_6">
+		<text>Not yet. I am in it.</text>
+	</string>
+	
+	<string id="as_dialog_stalker_1_1_0">
+		<text>You there. I see you have helped us fight against these bandits. Here! Take this as a reward. We are looking for some kind of documents known to be held by these bandits. Tell me if you find any clue about it. Duty will reward you greatly.</text>
+	</string>
+	<string id="as_dialog_stalker_1_1_1">
+		<text>I will keep an eye on it.</text>
+	</string>
+	<string id="as_dialog_stalker_1_1_2">
+		<text>Huh? Have you found anything?</text>
+	</string>
+	<string id="as_dialog_stalker_1_1_3">
+		<text>Here. It looks like the documents you are looking for. %c[d_orange][Give the document]</text>
+	</string>
+	<string id="as_dialog_stalker_1_1_4">
+		<text>Exactly! Great work, stalker. Here, the bonus as I promised. And this one is from my fallen brother. He was such a good fighter as you are. But he doesn't need it anymore. I will also spread your name among Duty ranks so we will have a good look upon you.</text>
+	</string>
+	<string id="as_dialog_stalker_1_1_5">
+		<text>Thanks.</text>
+	</string>
+	<string id="as_dialog_stalker_1_1_6">
+		<text>Nothing.</text>
+	</string>
+	<string id="as_dialog_stalker_1_1_7">
+		<text>Thanks again for helping us. We will loot stuff from those bandits a little more and then return to base.</text>
+	</string>
+	<string id="as_dialog_stalker_1_1_8">
+		<text>Farewell.</text>
+	</string>
+	
+</string_table>
+

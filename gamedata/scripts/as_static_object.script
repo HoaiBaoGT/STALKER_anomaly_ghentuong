@@ -1,0 +1,203 @@
+
+--[[----------------------------------------------------------------------------------------------------
+	I don't want to mess up with map design.
+------------------------------------------------------------------------------------------------------]]
+
+local M = {}
+
+function on_game_start()
+    RegisterScriptCallback("save_state",save_state)
+    RegisterScriptCallback("load_state",load_state)
+	RegisterScriptCallback("physic_object_on_use_callback",physic_object_on_use_callback)
+end
+
+function save_state(m)
+	m.as_static_object = M
+end
+
+function load_state(m)
+	M = m.as_static_object or {}
+end
+
+function smart_static_object(actor,npc,p)
+	local smart_name = p and tostring(p[1])
+	local section = p and tostring(p[2])
+	local smart = smart_name and SIMBOARD.smarts_by_names[smart_name]
+	if not (M and smart and smart.online and smart.ini and section) then
+		return
+	end
+	local collect_line = {}
+	local ini = smart.ini
+	if (ini:section_exist(section)) then
+		local n = ini:line_count(section)
+		for k=0,n-1 do
+			local result,i,v = ini:r_line_ex(section,k)
+			if (i and v and not string.find(i,";")) then
+				local s = str_explode(v,"|")
+				if (#s == 3) then
+					local sec = s[1]
+					local tp = ((s[2] ~= nil) and str_explode(s[2],",")) or nil
+					local td = ((s[3] ~= nil) and str_explode(s[3],",")) or nil
+					local pos = tp and (#tp == 3) and vector():set(tonumber(tp[1]),tonumber(tp[2]),tonumber(tp[3]))
+					local rox = td and tonumber(td[1]) and math.rad(tonumber(td[1])) or 0
+					local roy = td and tonumber(td[2]) and math.rad(tonumber(td[2])) or 0
+					local roz = td and tonumber(td[3]) and math.rad(tonumber(td[3])) or 0
+					local ang = vector():set(rox,roy,roz)
+					
+					if (sec and pos and ang) then
+						collect_line[i] = tostring(sec)
+						if not (M[smart_name]) then
+							M[smart_name] = {}
+						end
+						if not (M[smart_name][section]) then
+							M[smart_name][section] = {}
+						end
+						local id = M[smart_name][section][i] and tonumber(M[smart_name][section][i].id)
+						local se = id and alife():object(id)
+						if (se and string.find(se:name(),sec)) then
+							TeleportObject(se.id,pos,level.vertex_id(pos),smart.m_game_vertex_id)
+							se.angle = ang
+						else
+							if (se and M[smart_name][section][i].sec and string.find(se:name(),M[smart_name][section][i].sec)) then
+								alife_release(se)
+							end
+							local new_se = alife():create(sec,pos,level.vertex_id(pos),smart.m_game_vertex_id)
+							new_se.angle = ang
+							M[smart_name][section][i] = {id = tonumber(new_se.id),sec = tostring(sec)}
+						end
+					end
+				end
+			end
+		end
+	end
+	--Release trash in M[smart_name]
+	if (M[smart_name] and M[smart_name][section]) then
+		for i,v in pairs(M[smart_name][section]) do
+			if (collect_line[i] ~= v.sec) then
+				local se = v.id and alife():object(v.id)
+				if (se) then
+					alife_release(se)
+				end
+				M[smart_name][section][i] = nil
+			end
+		end
+	end
+end
+
+function get_storage_object(smart_name,section,index)
+	if (M and M[smart_name] and M[smart_name][section] and M[smart_name][section][index]) then
+		local new_table = {id = tonumber(M[smart_name][section][index].id),sec = tostring(M[smart_name][section][index].sec)}
+		return new_table
+	end
+end
+
+--[[----------------------------------------------------------------------------------------------------
+	Lighting
+	p[1] action
+	p[2] sec
+	p[3] bone
+------------------------------------------------------------------------------------------------------]]
+local cache_light = {}
+
+function light(actor,obj,p)
+	local id = obj and obj:id()
+	local ini = id and db.storage[id] and db.storage[id].ini
+	local sec = p[2]
+	local pos = (tostring(p[3]) and utils_obj.safe_bone_pos(obj,p[3])) or obj:position()
+	
+	if not (p and ini and sec) then
+		return
+	end
+	
+	if (p[1] == "turn_on") then
+		if (cache_light[id] and cache_light[id].light and (cache_light[id].sec == sec)) then
+			--Position
+			if (pos and (cache_light[id].pos:distance_to_sqr(pos) > 0.0001)) then
+				cache_light[id].pos = vector():set(pos)
+				cache_light[id].light:set_position(pos)
+			end
+			--Turn on
+			if (cache_light[id].light.enabled ~= true) then
+				cache_light[id].light.enabled = true
+			end
+			--Update
+			cache_light[id].light:update()
+		else
+			cache_light[id] = {}
+			cache_light[id].light = script_light()
+			cache_light[id].pos = vector():set(pos)
+			cache_light[id].sec = tostring(sec)
+			
+			local n = ini:line_count(sec)
+			for k=0,n-1 do
+				local result,i,v = ini:r_line_ex(sec,k)
+				--Basic
+				if (i == "range") then
+					cache_light[id].light.range = tonumber(v)
+				end
+				if (i == "color") then
+					cache_light[id].light.color = (tonumber(v) and fcolor():set(tonumber(v)))
+				end
+				if (i == "shadow") then
+					cache_light[id].light.shadow = (v == "true")
+				end
+				--Volumetric
+				if (i == "volumetric") then
+					cache_light[id].light.volumetric = (v == "true")
+				end
+				if (i == "volumetric_quality") then
+					cache_light[id].light.volumetric_quality = tonumber(v)
+				end
+				if (i == "volumetric_distance") then
+					cache_light[id].light.volumetric_distance = tonumber(v)
+				end
+				if (i == "volumetric_intensity") then
+					cache_light[id].light.volumetric_intensity = tonumber(v)
+				end
+				--Texture/Light animation
+				if (i == "texture") then
+					cache_light[id].light.texture = tostring(v)
+				end
+				if (i == "lanim") then
+					cache_light[id].light.lanim = tostring(v)
+				end
+				if (i == "lanim_brightness") then
+					cache_light[id].light.lanim_brightness = tonumber(v)
+				end
+			end
+			
+			cache_light[id].light.enabled = true
+			cache_light[id].light:set_position(pos)
+			cache_light[id].light:update()
+		end
+	end
+	
+	if (p[1] == "turn_off") then
+		if (cache_light[id] and cache_light[id].light) then
+			if (cache_light[id].light.enabled == true) then
+				cache_light[id].light.enabled = false
+			end
+			cache_light[id].light:update()
+		end
+	end
+end
+
+function play_anim(actor,obj,p)
+	if (obj and p and p[1]) then
+		obj:play_cycle(p[1],true)
+	end
+end
+
+--[[----------------------------------------------------------------------------------------------------
+	Gay workshop.
+------------------------------------------------------------------------------------------------------]]
+
+function physic_object_on_use_callback(obj,who)
+	if (obj and string.find(obj:name(),"as_vise")) then
+		local hud = get_hud()
+		ui = ui_workshop and ui_workshop.get_workshop_ui(hud,nil,{true,true,true,false,false})
+		if (ui) then
+			ui:ShowDialog(true)
+		end
+	end
+end

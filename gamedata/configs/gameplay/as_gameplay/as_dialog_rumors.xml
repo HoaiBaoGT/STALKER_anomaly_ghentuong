@@ -1,0 +1,12 @@
+
+<dialog id="as_rumors_dialog">
+	<phrase_list>
+		<phrase id="0">
+			<text>as_rumors_question</text>
+			<next>1</next>
+		</phrase>
+		<phrase id="1">
+			<script_text>as_rumors.get_rumors</script_text>
+		</phrase>
+	</phrase_list>
+</dialog>

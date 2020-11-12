@@ -1,0 +1,86 @@
+
+<dialog id="as_dialog_misc_0_0">
+	<phrase_list>
+		<phrase id="0">
+			<text/>
+			<next>pick_dialog</next>
+		</phrase>
+		<phrase id="pick_dialog">
+			<text/>
+			<next>a</next>
+			<next>b</next>
+		</phrase>
+		
+		<phrase id="a">
+			<text>as_dialog_misc_0_0_0</text>
+			<next>1</next>
+		</phrase>
+		<phrase id="1">
+			<text>as_dialog_misc_0_0_1</text>
+			<next>2</next>
+		</phrase>
+		<phrase id="2">
+			<text>as_dialog_misc_0_0_2</text>
+			<next>3</next>
+		</phrase>
+		<phrase id="3">
+			<text>as_dialog_misc_0_0_3</text>
+			<action>dialogs.break_dialog</action>
+		</phrase>
+		
+		<phrase id="b">
+			<text>as_dialog_misc_0_0_4</text>
+			<next>5</next>
+			<next>8</next>
+		</phrase>
+		<phrase id="5">
+			<text>as_dialog_misc_0_0_5</text>
+			<next>6</next>
+		</phrase>
+		<phrase id="6">
+			<text>as_dialog_misc_0_0_6</text>
+			<next>7</next>
+		</phrase>
+		<phrase id="7">
+			<text>as_dialog_misc_0_0_7</text>
+			<action>dialogs.break_dialog</action>
+		</phrase>
+		<phrase id="8">
+			<text>as_dialog_misc_0_0_8</text>
+			<action>dialogs.break_dialog</action>
+		</phrase>
+		
+		
+		<phrase id="c">
+			<text>as_dialog_misc_0_0_0</text>
+			<give_info>as_quest_misc_0_kill</give_info>
+			<next>x</next>
+		</phrase>
+		<phrase id="x">
+			<text>as_dialog_misc_0_0_1</text>
+			<action>dialogs.break_dialog</action>
+		</phrase>
+	</phrase_list>
+</dialog>
+
+<dialog id="as_dialog_misc_1_1">
+	<phrase_list>
+		<phrase id="0">
+			<text>as_dialog_misc_1_1_0</text>
+			<next>1</next>
+		</phrase>
+		<phrase id="1">
+			<text>as_dialog_misc_1_1_1</text>
+			<next>2</next>
+		</phrase>
+		<phrase id="2">
+			<text>as_dialog_misc_1_1_2</text>
+			<give_info>as_quest_misc_1_talk</give_info>
+			<next>3</next>
+		</phrase>
+		<phrase id="3">
+			<text>as_dialog_misc_1_1_3</text>
+			<action>dialogs.break_dialog</action>
+		</phrase>
+	</phrase_list>
+</dialog>

@@ -1,0 +1,273 @@
+--[[============================================================
+	Anomaly 1.5.5.0
+	GhenTuong
+--============================================================]]
+local M = {}
+function save_state(m_data)
+	m_data.as_quest_misc = M
+end
+function load_state(m_data)
+	M = m_data.as_quest_misc or {}
+end
+function on_game_start()
+    RegisterScriptCallback("save_state",save_state)
+    RegisterScriptCallback("load_state",load_state)
+end
+--=============================================================
+local STAGE_STATUS = {[0] = {},[1] = {},[2] = {}}
+local STAGE_TARGET = {[0] = {},[1] = {},[2] = {}}
+local STAGE_TEXT = {}
+--[[============================================================
+	
+--============================================================]]
+STAGE_STATUS[0][0] = function(tsk,task_id)
+	if not M then return end
+	if not M[task_id] then M[task_id] = {} end
+	local npc = M[task_id].npc and M[task_id].npc.id and alife():object(M[task_id].npc.id)
+	if not has_alife_info("as_quest_misc_0_dead") and not (npc and npc:section_name() == M[task_id].npc.section_name and npc:alive())then
+		local smart = SIMBOARD.smarts_by_names["bar_zastava_2"]
+		if smart then
+			local se = alife():create("as_npc_chrome",smart.position,smart.m_level_vertex_id,smart.m_game_vertex_id)
+			if se then
+				se:set_character_name(game.translate_string("as_quest_misc_0_npc_name"))
+				M[task_id].npc = {id = se.id,section_name = se:section_name()}
+				return
+			end
+		end
+	end
+	if has_alife_info("as_quest_misc_0_drug") and not has_alife_info("as_quest_misc_0_stash") then
+		local item_list = {["morphine"] = 3,["bread"] = 1,["vodka"] = 1}
+		local found = true
+		for i,v in pairs(item_list) do
+			local count = itms_manager.get_avail_item_uses(i)
+			if count and count < v then
+				found = false
+			end
+		end
+		if found and not has_alife_info("as_quest_misc_0_drug_found") then
+			give_info("as_quest_misc_0_drug_found")
+		end
+		if not found and has_alife_info("as_quest_misc_0_drug_found") then
+			disable_info("as_quest_misc_0_drug_found")
+		end
+	end
+	if has_alife_info("as_quest_misc_0_dead") then
+		if npc and npc:section_name() == M[task_id].npc.section_name and npc:alive() then
+			local le = npc.id and level.object_by_id(npc.id)
+			local tear_a = particles_object("anomaly2\\body_tear_02")
+			local tear_s = sound_object("anomaly\\anomaly_body_tear_1")
+			if le and tear_a and tear_s then
+				local position, lvid, gvid = le:position(), le:level_vertex_id(), le:game_vertex_id()
+				tear_a:play_at_pos(le:position())
+				tear_s:play_at_pos(le,le:position(),0)
+				le:kill(le)
+				safe_release_manager.release(npc)
+				alife():create("af_soul",position,lvid,gvid)
+			end
+		else
+			return 1
+		end
+	end
+end
+STAGE_TARGET[0][0] = function(tsk,task_id)
+	if not M then return end
+	return M[task_id] and M[task_id].npc and M[task_id].npc.id
+end
+
+STAGE_STATUS[0][1] = function(tsk,task_id)
+	if not M then return end
+	if has_alife_info("as_quest_misc_0_complete") then return end
+	local info_list = {
+	}
+	local all_is_ok = true
+	for i,v in pairs(info_list) do
+		if has_alife_info(v) then
+			disable_info(v)
+			all_is_ok = false
+		end
+	end
+	if all_is_ok then
+		M[task_id] = nil
+		give_info("as_quest_misc_0_complete")
+	end
+end
+STAGE_TARGET[0][1] = function(tsk,task_id)
+	return nil
+end
+----------------------------------------------------
+STAGE_TEXT[0] = function(tsk,task_id,field)
+	if not tostring(field) then return end
+	return "as_quest_misc_0_" .. field .. "_0"
+end
+
+--[[============================================================
+	Destroy The Legendary Sniper
+--============================================================]]
+STAGE_STATUS[1][0] = function(tsk,task_id)
+	if not M then return end
+	if not M[task_id] then M[task_id] = {} end
+	local HI, GI, DI = has_alife_info, give_info, disable_info
+	local npc = M[task_id].npc and M[task_id].npc.id and alife():object(M[task_id].npc.id)
+	---[[TEST
+	if not HI(task_id.."_spawn_1") then
+		GI(task_id.."_spawn_1")
+		GI(task_id.."_dead_2")
+	end
+	--]]
+	--[[
+	if npc and not npc:alive() then
+		safe_release_manager.release({id = npc.id})
+	end
+	--]]
+	if ((HI(task_id.."_spawn_1") and not HI(task_id.."_kill_1"))
+	or 	(HI(task_id.."_spawn_2") and not HI(task_id.."_kill_2"))
+	or	(HI(task_id.."_spawn_3") and not HI(task_id.."_kill_3")))
+	and not (npc and (npc:section_name() == M[task_id].npc.section_name) and npc:alive()) then
+		local location = {
+			[1] = {-88,5,127,1932},
+			[2] = {275,-6,-1,672},
+			[3] = {-25,-8,412,2173},
+		}
+		local p = (HI(task_id.."_dead_2") and location[3]) or (HI(task_id.."_dead_1") and location[2]) or location[1]
+		local pos = p and p[1] and p[2] and p[3] and vector():set(p[1],p[2],p[3])
+		local lid = p and pos and level.vertex_id(pos)
+		local gid = p and p[4]
+		if pos and lid and gid then
+			local se = alife():create("as_npc_misc_1_monolith",pos,lid,gid)
+			if se then
+				se:set_character_name(game.translate_string("as_quest_misc_1_npc_name"))
+				xr_effects.update_visual(se.id,[[actors\stalker_monolith\stalker_monolith1]])
+				M[task_id].npc = {id = se.id,section_name = se:section_name()}
+				for i=1,65534 do
+					local we = alife():object(i)
+					if we and we.parent_id and we.parent_id == se.id and string.find(we:section_name(),"wpn_") then
+						alife():release(we)
+					end
+				end
+				alife():create("wpn_scar",se.position,se.m_level_vertex_id,se.m_game_vertex_id,se.id)
+				alife():create("ammo_7.62x51_ap",se.position,se.m_level_vertex_id,se.m_game_vertex_id,se.id)
+				return
+			end
+		end
+	end
+	if (HI(task_id.."_kill_1") and not HI(task_id.."_dead_1"))
+	or (HI(task_id.."_kill_2") and not HI(task_id.."_dead_2"))
+	or (HI(task_id.."_kill_3") and not HI(task_id.."_dead_3"))
+	then
+		if npc and npc:section_name() == M[task_id].npc.section_name and npc:alive() then
+			local le_npc = M[task_id].npc and M[task_id].npc.id and level.object_by_id(M[task_id].npc.id)
+			local le_bom = M[task_id].bom and M[task_id].bom.id and level.object_by_id(M[task_id].bom.id)
+			if le_npc then
+				if not M[task_id].bom then
+					local po = vector():set(le_npc:position().x,le_npc:position().y + 1,le_npc:position().z)
+					local se = alife():create("explosive_grenade",po,le_npc:level_vertex_id(),le_npc:game_vertex_id())
+					if se then
+						M[task_id].bom = {id = se.id,section_name = se:section_name()}
+					end
+				end
+				--Just in case. time_global() will be reset if the game save and load
+				if M[task_id].timer and M[task_id].timer < time_global() then
+					if (time_global() - M[task_id].timer) > 3000 then
+						if le_bom and le_bom:section() == M[task_id].bom.section_name then
+							le_bom:explode(0)
+						end
+						le_npc:kill(le_npc)
+					end
+				else
+					M[task_id].timer = time_global()
+					local voice = sound_object([[characters_voice\human\monolith_3\fight\grenade\grenade_1]])
+					local click = sound_object([[weapons\gd5\generic_checkout]])
+					if voice then voice:play_at_pos(le_npc,le_npc:position(),0) end
+					if click then click:play_at_pos(le_npc,le_npc:position(),0) end
+				end
+			end
+		else
+			if M[task_id].timer then
+				M[task_id].timer = nil
+			else
+				if HI(task_id.."_spawn_1") and HI(task_id.."_kill_1") and not HI(task_id.."_dead_1") then
+					GI(task_id.."_dead_1")
+				end
+				if HI(task_id.."_spawn_2") and HI(task_id.."_kill_2") and not HI(task_id.."_dead_2") then
+					GI(task_id.."_dead_2")
+				end
+				if HI(task_id.."_spawn_3") and HI(task_id.."_kill_3") and not HI(task_id.."_dead_3") then
+					GI(task_id.."_dead_3")
+				end
+			end
+		end
+	end
+end
+STAGE_TARGET[1][0] = function(tsk,task_id)
+	if not M then return end
+	local HI = has_alife_info
+	local story_npc = nil
+	local npc = M[task_id] and M[task_id].npc and M[task_id].npc.id and alife():object(M[task_id].npc.id)
+	if ((HI(task_id.."_spawn_1") and not HI(task_id.."_dead_1"))
+	or 	(HI(task_id.."_spawn_2") and not HI(task_id.."_dead_2"))
+	or	(HI(task_id.."_spawn_3") and not HI(task_id.."_dead_3")))
+	and npc then
+		return npc.id
+	end
+	return nil
+end
+
+STAGE_STATUS[1][1] = function(tsk,task_id)
+	if not M then return end
+	if has_alife_info(task_id.."_complete") then return end
+	local clean_info = {
+		"_spawn_1","_spawn_2","_spawn_3",
+		"_talk_1","_talk_2","_talk_3",
+		"_kill_1","_kill_2","_kill_3",
+		"_dead_1","_dead_2","_dead_3",
+	}
+	local all_is_ok = true
+	for i,v in pairs(clean_info) do
+		if has_alife_info(task_id..v) then
+			disable_info(task_id..v)
+			all_is_ok = false
+		end
+	end
+	if all_is_ok then
+		M[task_id] = nil
+		give_info(task_id.."_complete")
+	end
+end
+STAGE_TARGET[1][1] = function(tsk,task_id)
+	return nil
+end
+--[[============================================================
+--============================================================]]
+task_status_functor.as_quest_misc_status = function(tsk,task_id)
+	if not (db.actor and tsk and task_id) then return end
+	local stage = tsk.stage
+	local quest = tonumber(task_manager.task_ini:r_string_ex(task_id,"status_functor_params"))
+	
+	local progress = STAGE_STATUS[quest][stage] and STAGE_STATUS[quest][stage](tsk,task_id) or stage
+	if tonumber(progress) and (tonumber(progress) ~= stage) then
+		tsk.stage = progress
+	end
+	if (progress == "complete" or progress == "fail") then return progress end
+end
+
+task_functor.as_quest_misc_target = function(task_id,field,p,tsk)
+	if not (db.actor and tsk and task_id) then return end
+	local stage = tsk.stage
+	local quest = tonumber(task_manager.task_ini:r_string_ex(task_id,"status_functor_params"))
+	
+	if STAGE_TARGET[quest][stage] then
+		return STAGE_TARGET[quest][stage](tsk,task_id) or nil
+	end
+	return nil
+end
+
+task_functor.as_quest_misc_text = function(task_id,field,p,tsk)
+	if not (db.actor and tsk and task_id) then return end
+	local quest = tonumber(task_manager.task_ini:r_string_ex(task_id,"status_functor_params"))
+	
+	if STAGE_TEXT[quest] then
+		local new_text = STAGE_TEXT[quest](tsk,task_id,field)
+		return new_text and game.translate_string(new_text) or "nil"
+	end
+	return "nil"
+end

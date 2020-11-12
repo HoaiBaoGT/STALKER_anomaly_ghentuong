@@ -1,0 +1,205 @@
+
+[as_physic_object]
+GroupControlSection	= spawn_group
+$spawn				= "physics\object"
+$prefetch			= 8
+class				= O_PHYSIC
+remove_time			= 60
+
+[as_physic_object_script_bind]:as_physic_object
+script_binding		= bind_physic_object.init
+
+
+;------------------------------------------------------------
+;Scripted objects
+;------------------------------------------------------------
+
+[as_script_grenade]:explosive_grenade
+script_binding		= bind_physic_object.init
+custom_data			= scripts\as_logic\as_script_grenade.ltx
+
+[as_script_fake_explosion]:explosive_grenade
+script_binding		= bind_physic_object.init
+custom_data			= scripts\as_logic\as_script_fake_explosion.ltx
+
+[as_script_psy_generator]:explosive_barrel
+script_binding		= bind_physic_object.init
+visual				= dynamics\light\light_altar.ogf
+custom_data			= scripts\as_logic\as_script_psy_generator.ltx
+immunities_sect		= as_script_psy_generator_immunities_sect
+
+[as_script_psy_generator_immunities_sect]
+burn_immunity			= 0.0
+strike_immunity			= 0.0
+shock_immunity			= 0.0
+wound_immunity			= 0.0
+radiation_immunity		= 0.0
+telepatic_immunity		= 0.0
+chemical_burn_immunity	= 0.0
+explosion_immunity		= 0.1
+fire_wound_immunity		= 0.1
+
+;------------------------------------------------------------
+;Scheme object
+;------------------------------------------------------------
+
+[as_vise]:as_physic_object_script_bind
+visual			= dynamics\workshop_room\awr_tiski.ogf
+fixed_bones		= link
+is_ai_obstacle	= false
+custom_data		= scripts\as_logic\static_object\vise.ltx
+[as_disel_generator]:as_physic_object_script_bind
+visual			= dynamics\el_tehnika\disel_generator.ogf
+fixed_bones		= link
+startup_animation	= work
+custom_data		= scripts\as_logic\static_object\generic.ltx
+[as_sleepbag]:as_physic_object_script_bind
+visual			= dynamics\equipments\mattress02.ogf
+fixed_bones		= bone01_(1),bone02_(1)
+is_ai_obstacle	= false
+custom_data		= scripts\ph_sleepbag.ltx
+[as_shooting_target_1]:as_physic_object_script_bind
+visual			= dynamics\armory_room\shooting_target_1.ogf
+class			= P_DSTRBL
+fixed_bones		= link
+startup_animation	= shooting_target_1_up
+custom_data		= scripts\as_logic\static_object\shooting_target.ltx
+
+[as_child_bench]:as_physic_object
+visual			= dynamics\stul\child_bench.ogf
+fixed_bones		= link
+is_ai_obstacle	= true
+[as_taburet_wood_01]:as_physic_object
+visual			= dynamics\stul\taburet_wood_01.ogf
+fixed_bones		= link
+is_ai_obstacle	= true
+[as_box_1b]:as_physic_object
+visual			= dynamics\box\box_1b.ogf
+fixed_bones		= link
+is_ai_obstacle	= true
+
+
+;------------------------------------------------------------
+;Misc, cover objects
+;------------------------------------------------------------
+
+[as_transiver]:as_physic_object
+visual			= dynamics\el_tehnika\transiver.ogf
+fixed_bones		= link
+is_ai_obstacle	= false
+[as_surge]:as_physic_object
+visual			= dynamics\equipments\aa\surge.ogf
+fixed_bones		= bone01
+is_ai_obstacle	= false
+[as_rupor]:as_physic_object
+visual			= dynamics\el_tehnika\rupor.ogf
+fixed_bones		= link
+is_ai_obstacle	= false
+[as_mili_maps]:as_physic_object
+visual			= dynamics\equipments\trade\mili_maps.ogf
+fixed_bones		= bone01
+is_ai_obstacle	= false
+
+[as_radiola]:as_physic_object
+visual			= dynamics\el_tehnika\radiola.ogf
+fixed_bones		= link
+is_ai_obstacle	= false
+[as_awr_stol_9a]:as_physic_object
+visual			= dynamics\workshop_room\awr_stol_9a.ogf
+fixed_bones		= link
+[as_awr_stol_9a_mini]:as_physic_object
+visual			= dynamics\workshop_room\awr_stol_9a_mini.ogf
+fixed_bones		= link
+[as_hospital_wooden_board_01]:as_physic_object
+visual			= dynamics\scene_objects\hospital\hospital_wooden_board_01.ogf
+fixed_bones		= link
+[as_freezer]:as_physic_object
+visual			= dynamics\kitchen_room\freezer.ogf
+fixed_bones		= root
+
+[as_museum_ak74]:as_physic_object
+visual			= dynamics\weapons\wpn_ak74\wpn_ak74.ogf
+fixed_bones		= wpn_body
+is_ai_obstacle	= false
+[as_museum_spas12]:as_physic_object
+visual			= dynamics\weapons\wpn_spas12\wpn_spas12.ogf
+fixed_bones		= wpn_body
+is_ai_obstacle	= false
+
+[as_tech_large_parts]:as_physic_object
+visual			= dynamics\misc\large_parts.ogf
+fixed_bones		= bone01
+is_ai_obstacle	= false
+[as_tech_upgr_o_3]:as_physic_object
+visual			= dynamics\upgrade\upgr_o_3.ogf
+fixed_bones		= bone01
+is_ai_obstacle	= false
+[as_tech_dev_instrument_1]:as_physic_object
+visual			= dynamics\devices\dev_instrument_1\dev_instrument_1.ogf
+fixed_bones		= link
+is_ai_obstacle	= false
+[as_tech_kanistra]:as_physic_object
+visual			= dynamics\balon\kanistra.ogf
+fixed_bones		= link
+is_ai_obstacle	= false
+
+
+
+;------------------------------------------------------------
+;Light sources
+;------------------------------------------------------------
+
+[as_light_hanging_lamp]:as_physic_object_script_bind
+visual			= dynamics\light\light_illicha_2.ogf
+fixed_bones		= link
+is_ai_obstacle	= false
+custom_data		= scripts\as_logic\static_object\light_default.ltx
+
+[as_light_wire_1_glass]:as_physic_object_script_bind
+visual			= dynamics\light\light_wire_1_glass.ogf
+fixed_bones		= link
+is_ai_obstacle	= false
+custom_data		= scripts\as_logic\static_object\light_default.ltx
+
+[as_light_sharnir_1]:as_physic_object_script_bind
+visual			= dynamics\light\light_sharnir_1.ogf
+fixed_bones		= link,sharnir,provod
+is_ai_obstacle	= false
+custom_data		= scripts\as_logic\static_object\light_default.ltx
+
+
+
+;------------------------------------------------------------
+;
+;------------------------------------------------------------
+
+[as_quest_stalker_1_pda]:tch_quest
+quest_item			= true
+visual				= dynamics\devices\dev_pda\dev_pda.ogf
+inv_weight			= 0.1
+inv_grid_width		= 1
+inv_grid_height		= 1
+inv_grid_x			= 7
+inv_grid_y			= 3
+inv_name			= as_quest_stalker_1_pda_name
+inv_name_short		= as_quest_stalker_1_pda_name
+description			= as_quest_stalker_1_pda_desc
+custom_data			= models\objects\ignore_static.ltx
+
+[as_quest_stalker_1_doc]:tch_quest
+quest_item			= true
+visual				= dynamics\equipments\quest\notes_document_case_2.ogf
+inv_weight			= 1
+inv_grid_width		= 2
+inv_grid_height		= 1
+inv_grid_x			= 2
+inv_grid_y			= 15
+inv_name			= as_quest_stalker_1_doc_name
+inv_name_short		= as_quest_stalker_1_doc_name
+description			= as_quest_stalker_1_doc_desc
+custom_data			= models\objects\ignore_static.ltx
+
+
+
+
+

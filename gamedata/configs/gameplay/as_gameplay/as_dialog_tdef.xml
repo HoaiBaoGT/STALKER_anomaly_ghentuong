@@ -1,0 +1,267 @@
+
+<dialog id="as_dialog_tdef_idle">
+	<phrase_list>
+		<phrase id="0">
+			<text>as_dialog_tdef_idle_hello</text>
+			<next>start_npc_talk</next>
+		</phrase>
+		<phrase id="start_npc_talk">
+			<text/>
+			<next>start_actor_talk</next>
+		</phrase>
+		<phrase id="start_actor_talk">
+			<text/>
+			<next>quest_1_dead_1</next>
+			<next>quest_1_dead_2</next>
+			<next>quest_1_dead_3</next>
+			<next>quest_1_give</next>
+			<next>quest_1_info</next>
+			
+			<next>as_dialog_tdef_idle_bye</next>
+		</phrase>
+		
+			<phrase id="quest_1_give">
+				<dont_has_info>as_quest_tdef_1_started</dont_has_info>
+				
+				<text>as_dialog_tdef_1_give_0</text>
+				<next>quest_1_give_1</next>
+			</phrase>
+			<phrase id="quest_1_give_1">
+				<text>as_dialog_tdef_1_give_1</text>
+				<next>quest_1_give_2</next>
+				<next>quest_1_info_2</next>
+				<next>quest_1_info_4</next>
+				<next>quest_1_info_6</next>
+			</phrase>
+			
+			<phrase id="quest_1_give_2">
+				<dont_has_info>as_quest_tdef_1_started</dont_has_info>
+				
+				<action>as_quest_tdef.give_quest_1</action>
+				
+				<text>as_dialog_tdef_1_give_2</text>
+				<next>quest_1_give_3</next>
+			</phrase>
+			<phrase id="quest_1_give_3">
+				<text>as_dialog_tdef_1_give_3</text>
+				<next>quest_1_give_4</next>
+			</phrase>
+			<phrase id="quest_1_give_4">
+				<text>as_dialog_tdef_1_give_4</text>
+				<next>start_actor_talk</next>
+			</phrase>
+			
+			<phrase id="quest_1_info">
+				<has_info>as_quest_tdef_1_started</has_info>
+				<dont_has_info>as_quest_tdef_1_complete</dont_has_info>
+				
+				<text>as_dialog_tdef_1_info_0</text>
+				<next>quest_1_info_1</next>
+			</phrase>
+			<phrase id="quest_1_info_1">
+				<text>as_dialog_tdef_1_info_1</text>
+				<next>quest_1_give_2</next>
+				<next>quest_1_info_2</next>
+				<next>quest_1_info_4</next>
+				<next>quest_1_info_6</next>
+			</phrase>
+			
+			<phrase id="quest_1_info_2">
+				<text>as_dialog_tdef_1_info_2</text>
+				<next>quest_1_info_3</next>
+			</phrase>
+			<phrase id="quest_1_info_3">
+				<text>as_dialog_tdef_1_info_3</text>
+				<next>quest_1_give_2</next>
+				<next>quest_1_info_2</next>
+				<next>quest_1_info_4</next>
+				<next>quest_1_info_6</next>
+			</phrase>
+			<phrase id="quest_1_info_4">
+				<text>as_dialog_tdef_1_info_4</text>
+				<next>quest_1_info_5</next>
+			</phrase>
+			<phrase id="quest_1_info_5">
+				<text>as_dialog_tdef_1_info_5</text>
+				<next>quest_1_give_2</next>
+				<next>quest_1_info_2</next>
+				<next>quest_1_info_4</next>
+				<next>quest_1_info_6</next>
+			</phrase>
+			
+			<phrase id="quest_1_info_6">
+				<text>as_dialog_tdef_1_info_6</text>
+				<next>start_actor_talk</next>
+			</phrase>
+			
+			<phrase id="quest_1_dead_1">
+				<has_info>as_quest_tdef_1_dead_1</has_info>
+				<dont_has_info>as_quest_tdef_1_spawn_2</dont_has_info>
+				
+				<text>as_dialog_tdef_1_dead_1_0</text>
+				<next>quest_1_dead_1_1</next>
+			</phrase>
+			<phrase id="quest_1_dead_1_1">
+				<text>as_dialog_tdef_1_dead_1_1</text>
+				<next>quest_1_dead_1_2</next>
+			</phrase>
+			<phrase id="quest_1_dead_1_2">
+				<text>as_dialog_tdef_1_dead_1_2</text>
+				<next>quest_1_dead_1_3</next>
+			</phrase>
+			<phrase id="quest_1_dead_1_3">
+				<text>as_dialog_tdef_1_dead_1_3</text>
+				<next>quest_1_dead_1_4</next>
+			</phrase>
+			<phrase id="quest_1_dead_1_4">
+				<text>as_dialog_tdef_1_dead_1_4</text>
+				<next>quest_1_dead_1_5</next>
+			</phrase>
+			<phrase id="quest_1_dead_1_5">
+				<text>as_dialog_tdef_1_dead_1_5</text>
+				<next>quest_1_dead_1_6</next>
+			</phrase>
+			<phrase id="quest_1_dead_1_6">
+				<text>as_dialog_tdef_1_dead_1_6</text>
+				<next>quest_1_dead_1_7</next>
+			</phrase>
+			<phrase id="quest_1_dead_1_7">
+				<text>as_dialog_tdef_1_dead_1_7</text>
+				<next>quest_1_dead_1_8</next>
+			</phrase>
+			<phrase id="quest_1_dead_1_8">
+				<text>as_dialog_tdef_1_dead_1_8</text>
+				<give_info>as_quest_tdef_1_spawn_2</give_info>
+				<next>start_actor_talk</next>
+			</phrase>
+			
+			<phrase id="quest_1_dead_2">
+				<has_info>as_quest_tdef_1_dead_2</has_info>
+				<dont_has_info>as_quest_tdef_1_spawn_3</dont_has_info>
+				
+				<text>as_dialog_tdef_1_dead_2_0</text>
+				<next>quest_1_dead_2_1</next>
+			</phrase>
+			<phrase id="quest_1_dead_2_1">
+				<text>as_dialog_tdef_1_dead_2_1</text>
+				<next>quest_1_dead_2_2</next>
+			</phrase>
+			<phrase id="quest_1_dead_2_2">
+				<text>as_dialog_tdef_1_dead_2_2</text>
+				<give_info>as_quest_tdef_1_spawn_3</give_info>
+				<next>start_actor_talk</next>
+			</phrase>
+			
+			<phrase id="quest_1_dead_3">
+				<has_info>as_quest_tdef_1_dead_3</has_info>
+				<dont_has_info>as_quest_tdef_1_complete</dont_has_info>
+				
+				<text>as_dialog_tdef_1_dead_3_0</text>
+				<next>quest_1_dead_3_1</next>
+			</phrase>
+			<phrase id="quest_1_dead_3_1">
+				<text>as_dialog_tdef_1_dead_3_1</text>
+				<next>quest_1_dead_3_2</next>
+			</phrase>
+			<phrase id="quest_1_dead_3_2">
+				<text>as_dialog_tdef_1_dead_3_2</text>
+				<next>quest_1_dead_3_3</next>
+			</phrase>
+			<phrase id="quest_1_dead_3_3">
+				<text>as_dialog_tdef_1_dead_3_3</text>
+				<next>quest_1_dead_3_4</next>
+			</phrase>
+			<phrase id="quest_1_dead_3_4">
+				<text>as_dialog_tdef_1_dead_3_4</text>
+				<give_info>as_quest_tdef_1_reward</give_info>
+				<next>start_actor_talk</next>
+			</phrase>
+			
+		<phrase id="as_dialog_tdef_idle_bye">
+			<text>as_dialog_tdef_idle_bye</text>
+			<action>dialogs.break_dialog</action>
+		</phrase>
+	</phrase_list>
+</dialog>
+
+<dialog id="as_dialog_tdef_1_monolith_1">
+	<phrase_list>
+		<phrase id="0">
+			<text>as_dialog_tdef_1_monolith_1_0</text>
+			<next>1</next>
+		</phrase>
+		<phrase id="1">
+			<text>as_dialog_tdef_1_monolith_1_1</text>
+			<next>2</next>
+		</phrase>
+		<phrase id="2">
+			<text>as_dialog_tdef_1_monolith_1_2</text>
+			<give_info>as_quest_tdef_1_kill_1</give_info>
+			<next>3</next>
+		</phrase>
+		<phrase id="3">
+			<text>as_dialog_tdef_1_monolith_1_3</text>
+			<action>dialogs.break_dialog</action>
+		</phrase>
+	</phrase_list>
+</dialog>
+
+<dialog id="as_dialog_tdef_1_monolith_2">
+	<phrase_list>
+		<phrase id="0">
+			<text>as_dialog_tdef_1_monolith_2_0</text>
+			<next>1</next>
+		</phrase>
+		<phrase id="1">
+			<text>as_dialog_tdef_1_monolith_2_1</text>
+			<next>2</next>
+		</phrase>
+		<phrase id="2">
+			<text>as_dialog_tdef_1_monolith_2_2</text>
+			<give_info>as_quest_tdef_1_kill_2</give_info>
+			<next>3</next>
+		</phrase>
+		<phrase id="3">
+			<text>as_dialog_tdef_1_monolith_2_3</text>
+			<action>dialogs.break_dialog</action>
+		</phrase>
+	</phrase_list>
+</dialog>
+
+<dialog id="as_dialog_tdef_1_monolith_3">
+	<phrase_list>
+		<phrase id="0">
+			<text>as_dialog_tdef_1_monolith_3_0</text>
+			<next>1</next>
+		</phrase>
+		<phrase id="1">
+			<text>as_dialog_tdef_1_monolith_3_1</text>
+			<next>2</next>
+		</phrase>
+		<phrase id="2">
+			<text>as_dialog_tdef_1_monolith_3_2</text>
+			<next>3</next>
+		</phrase>
+		<phrase id="3">
+			<text>as_dialog_tdef_1_monolith_3_3</text>
+			<next>4</next>
+		</phrase>
+		<phrase id="4">
+			<text>as_dialog_tdef_1_monolith_3_4</text>
+			<next>5</next>
+		</phrase>
+		<phrase id="5">
+			<text>as_dialog_tdef_1_monolith_3_5</text>
+			<next>6</next>
+		</phrase>
+		<phrase id="6">
+			<text>as_dialog_tdef_1_monolith_3_6</text>
+			<give_info>as_quest_tdef_1_kill_3</give_info>
+			<next>7</next>
+		</phrase>
+		<phrase id="7">
+			<text>as_dialog_tdef_1_monolith_3_7</text>
+			<action>dialogs.break_dialog</action>
+		</phrase>
+	</phrase_list>
+</dialog>

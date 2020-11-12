@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<string_table>
+	<string id="as_npc_verlnut_name">
+		<text>Verl Nut</text>
+	</string>
+	<string id="as_npc_kiki_name">
+		<text>Kiki</text>
+	</string>
+	<string id="as_npc_tdef_name">
+		<text>T.Def - The Old</text>
+	</string>
+	<string id="as_npc_chief_name">
+		<text>Chief</text>
+	</string>
+	<string id="as_npc_eagle_name">
+		<text>Eagle</text>
+	</string>
+	<string id="as_npc_snake_name">
+		<text>Snake</text>
+	</string>
+</string_table>

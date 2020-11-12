@@ -1,0 +1,25 @@
+[logic]
+active = beh@general
+post_combat_time	= 0,0
+can_select_weapon	= true
+dont_keep_items		= true
+
+;==================================================
+[beh@base]
+meet			= no_meet
+behavior_state	= beh_move
+target			= waypoint
+path_end		= loop
+walk_anim		= assault
+jog_anim		= assault
+gather_items_enabled		= false
+help_wounded_enabled		= false
+corpse_detection_enabled	= false
+invulnerable				= true
+;combat_ignore_cond			= false
+;==================================================
+[beh@general]:beh@base
+pt1			= 999999999,threat_na | pos:-280,0,140 look:-270,0,140
+invulnerable = {+as_dialog_chief_beh_1_1 =is_enemy_actor =fighting_dist_le(60)} false, true
+
+

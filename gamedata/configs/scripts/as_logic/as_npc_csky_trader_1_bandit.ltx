@@ -1,0 +1,66 @@
+[logic]
+active = beh@general
+;==================================================
+[before_hit@base]
+ignore = {=check_enemy_name(actor)} false, true
+;----------------------------------------
+[meet@base]
+meet_dialog		= as_dialog_csky_trader_1_bandit
+close_anim 		= nil
+close_victim 	= nil
+far_anim 		= nil
+far_victim 		= nil
+close_distance  = 0
+far_distance 	= 0
+abuse           = false
+use				= true
+;----------------------------------------
+[beh@base]
+dont_keep_items						= true
+gather_items_enabled				= false
+help_wounded_enabled				= false
+corpse_detection_enabled			= false
+combat_ignore_keep_when_attacked	= false
+target				= waypoint
+path_end			= loop
+walk_dist			= 0
+jog_dist			= 0
+run_anim			= patrol
+use_camp			= false
+meet				= meet@base
+before_hit			= before_hit@base
+combat_ignore_cond	= false
+danger_ignore		= true
+;==================================================
+[beh@general]:beh@base
+on_info1	= {=script(as_quest_csky:pick_logic:as_quest_csky_trader_1:1)} beh@bandit_1
+on_info2	= {=script(as_quest_csky:pick_logic:as_quest_csky_trader_1:2)} beh@bandit_2
+on_info3	= {=script(as_quest_csky:pick_logic:as_quest_csky_trader_1:3)} beh@bandit_3
+on_info4	= {=script(as_quest_csky:pick_logic:as_quest_csky_trader_1:4)} beh@bandit_4
+on_info5	= {=script(as_quest_csky:pick_logic:as_quest_csky_trader_1:5)} beh@bandit_5
+on_info6	= {=script(as_quest_csky:pick_logic:as_quest_csky_trader_1:6)} beh@bandit_6
+on_info7	= {=script(as_quest_csky:pick_logic:as_quest_csky_trader_1:7)} beh@bandit_7
+on_info8	= {=script(as_quest_csky:pick_logic:as_quest_csky_trader_1:8)} beh@bandit_8
+on_info9	= {=script(as_quest_csky:pick_logic:as_quest_csky_trader_1:9)} beh@bandit_9
+on_info10	= {=script(as_quest_csky:pick_logic:as_quest_csky_trader_1:10)} beh@bandit_10
+;==================================================
+[beh@bandit_1]:beh@base
+pt1 = 999999,guard | pos:183,-0.10,-205 look:183,-0.10,-206
+[beh@bandit_2]:beh@base
+pt1 = 999999,guard | pos:180,-0.10,-205 look:180,-0.10,-206
+[beh@bandit_3]:beh@base
+pt1 = 999999,sit_ass | pos:177,-0.10,-193 look:177,-0.10,-192
+[beh@bandit_4]:beh@base
+pt1 = 999999,sit_ass | pos:180,-0.10,-193 look:180,-0.10,-192
+[beh@bandit_5]:beh@base
+pt1 = 999999,sit_ass | pos:176,-0.10,-204 look:177,-0.10,-204
+[beh@bandit_6]:beh@base
+pt1 = 999999,sit_ass | pos:176,-0.10,-205 look:177,-0.10,-205
+[beh@bandit_7]:beh@base
+pt1 = 999999,sit_ass | pos:176,-0.10,-206 look:177,-0.10,-206
+[beh@bandit_8]:beh@base
+pt1 = 999999,sit_ass | pos:176,-0.10,-207 look:177,-0.10,-207
+[beh@bandit_9]:beh@base
+pt1 = 999999,sit_ass | pos:182,-0.10,-196 look:181,-0.10,-195
+[beh@bandit_10]:beh@base
+pt1 = 999999,sit_ass | pos:180,-0.10,-200 look:179,-0.10,-200

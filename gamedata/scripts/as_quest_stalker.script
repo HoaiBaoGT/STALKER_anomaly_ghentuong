@@ -1,0 +1,433 @@
+--=============================================================
+--Anomaly 1.5.5.0
+--GhenTuong
+--=============================================================
+local M = {}
+function save_state(m_data)
+	m_data.as_quest_stalker = M
+end
+function load_state(m_data)
+	M = m_data.as_quest_stalker or {}
+end
+function on_game_start()
+    RegisterScriptCallback("save_state",save_state)
+    RegisterScriptCallback("load_state",load_state)
+end
+--=============================================================
+as_rumors.RUMORS_CONDITION["as_quest_stalker_0"] = function()
+	if has_alife_info("as_quest_chief_0_started") then return false end
+	local npc = mob_trade.GetTalkingNpc()
+	local npc_faction = npc and character_community(npc)
+	local actor_faction = character_community(db.actor)
+	local check_faction = not game_relations.is_factions_enemies(npc_faction,"stalker") and not game_relations.is_factions_enemies(actor_faction,"stalker")
+	if not check_faction then return false end
+	return true
+end
+as_rumors.RUMORS_ACTION["as_quest_stalker_0"] = function()
+	task_manager.get_task_manager():give_task("as_quest_stalker_0")
+	return "as_quest_stalker_0_rumors"
+end
+;--------------------------------------------------
+local STAGE_STATUS = {[0] = {},[1] = {},[2] = {}}
+local STAGE_TARGET = {[0] = {},[1] = {},[2] = {}}
+local STAGE_TEXT = {}
+--=============================================================
+--Quest 0
+--=============================================================
+STAGE_STATUS[0][0] = function(tsk,task_id)
+	local story_npc = get_story_se_object("esc_2_12_stalker_wolf")
+	if not (story_npc and story_npc:alive()) then return "fail" end
+	if (xr_meet.has_dialog(story_npc.id) == nil) then
+		xr_meet.override_dialog(story_npc.id,"as_dialog_stalker_0_0")
+	end
+	if has_alife_info("as_dialog_stalker_0_0") then
+		give_object_to_actor("medkit",3)
+		give_object_to_actor("bandage",5)
+		news_manager.relocate_item(db.actor,"in","medkit",3)
+		news_manager.relocate_item(db.actor,"in","bandage",5)
+		return 1
+	end
+end
+STAGE_TARGET[0][0] = function(tsk,task_id)
+	local npc = get_story_se_object("esc_2_12_stalker_wolf")
+	return npc and npc.id or nil
+end
+
+STAGE_STATUS[0][1] = function(tsk,task_id)
+	if not M then return end
+	local story_npc = get_story_se_object("esc_2_12_stalker_wolf")
+	if not (story_npc and story_npc:alive()) then return "fail" end
+	if (xr_meet.has_dialog(story_npc.id) == nil) then
+		xr_meet.override_dialog(story_npc.id,"as_dialog_stalker_0_0")
+	end
+	if not as_function.IsNpc(M[1]) then
+		local smart = SIMBOARD.smarts_by_names["esc_smart_terrain_7_11"]
+		if smart then
+			local npc = alife():create("as_npc_stalker_0_hostage",smart.position,smart.m_level_vertex_id,smart.m_game_vertex_id)
+			M[1] = {id = npc.id,section_name = npc:section_name()}
+			return
+		end
+	end
+	for i=2,5,1 do
+		if not as_function.IsNpc(M[i]) then
+			local smart = SIMBOARD.smarts_by_names["esc_smart_terrain_5_12"]
+			if smart then
+				local npc = alife():create("as_npc_stalker_0_stalker",smart.position,smart.m_level_vertex_id,smart.m_game_vertex_id)
+				M[i] = {id = npc.id,section_name = npc:section_name()}
+				return
+			end
+		end
+	end
+	local all_dead = true
+	for i=11,20,1 do
+		if not M[i] then
+			local smart = SIMBOARD.smarts_by_names["esc_smart_terrain_7_11"]
+			if smart then
+				local npc = alife():create("as_npc_stalker_0_bandit",smart.position,smart.m_level_vertex_id,smart.m_game_vertex_id)
+				M[i] = {id = npc.id,section_name = npc:section_name(),dialog_money = 30000}
+				return
+			end
+		end
+		if as_function.IsNpc(M[i]) then
+			all_dead = false
+		end
+	end
+	if not has_alife_info("as_quest_stalker_0_dead") and all_dead then
+		give_info("as_quest_stalker_0_dead")
+		if has_alife_info("as_dialog_stalker_0_1") and M[2] and M[2].id then
+			as_function.quest_message(M[2].id,"as_dialog_stalker_0_1_all_dead")
+		end
+	end
+	if not has_alife_info("as_quest_stalker_0_fight") and has_alife_info("as_dialog_stalker_0_1") then
+		give_info("as_quest_stalker_0_fight")
+	end
+	if has_alife_info("as_quest_stalker_0_finish") then
+		xr_effects.inc_faction_goodwill_to_actor(db.actor,nil,{"stalker",200})
+		give_object_to_actor("wpn_toz34",1)
+		create_ammo("ammo_12x70_buck",db.actor:position(),db.actor:level_vertex_id(),db.actor:game_vertex_id(),AC_ID,5)
+		news_manager.relocate_item(db.actor,"in","wpn_toz34",1)
+		news_manager.relocate_item(db.actor,"in","ammo_12x70_buck",20)
+		return 2
+	end
+	--Forces other squads to leave the smart so they don't mess the scheme.
+	xr_effects.flush_smart_terrain(db.actor,nil,{"esc_smart_terrain_5_12"})
+end
+STAGE_TARGET[0][1] = function(tsk,task_id)
+	if not M then return nil end
+	if has_alife_info("as_quest_stalker_0_safe") then
+		local npc = get_story_se_object("esc_2_12_stalker_wolf")
+		return npc and npc.id or nil
+	end
+	if has_alife_info("as_quest_stalker_0_money") or has_alife_info("as_quest_stalker_0_dead") then
+		return M[1] and M[1].id or nil
+	end
+	if has_alife_info("as_quest_stalker_0_fight") then
+		local smart = SIMBOARD.smarts_by_names["esc_smart_terrain_7_11"]
+		return smart and smart.id or nil
+	end
+	return M[2] and M[2].id or nil
+end
+
+STAGE_STATUS[0][2] = function(tsk,task_id)
+	if has_alife_info("as_quest_stalker_0_complete") then return end
+	local all_is_ok = true
+	local story_npc = get_story_se_object("esc_2_12_stalker_wolf")
+	if story_npc and story_npc:alive() then
+		if (xr_meet.has_dialog(story_npc.id) == "as_dialog_stalker_0_0") then
+			xr_meet.restore_dialog(story_npc.id)
+			all_is_ok = false
+		end
+	end
+	for i=1,20,1 do
+		local npc = M[i] and M[i].id and alife():object(M[i].id)
+		if (npc and npc:section_name() == M[i].section_name) then
+			safe_release_manager.release({id = npc.id})
+			all_is_ok = false
+		end
+	end
+	if all_is_ok then
+		M = {}
+		give_info("as_quest_stalker_0_complete")
+		task_manager.get_task_manager():give_task("as_quest_stalker_1")
+	end
+end
+STAGE_TARGET[0][2] = function(tsk,task_id)
+	return nil
+end
+----------------------------------------------------
+STAGE_TEXT[0] = function(tsk,task_id,field)
+	if not tostring(field) then return end
+	if not has_alife_info("as_dialog_stalker_0_0") then
+		return "as_quest_stalker_0_" .. field .. "_0"
+	end
+	if not has_alife_info("as_quest_stalker_0_fight") and not has_alife_info("as_quest_stalker_0_money") then
+		return "as_quest_stalker_0_" .. field .. "_1"
+	end
+	if not has_alife_info("as_quest_stalker_0_safe") then
+		return "as_quest_stalker_0_" .. field .. "_2"
+	end
+	return "as_quest_stalker_0_" .. field .. "_3"
+end
+--=============================================================
+--Quest 1
+--=============================================================
+STAGE_STATUS[1][0] = function(tsk,task_id)
+	if not M then return end
+	local story_npc = get_story_se_object("esc_2_12_stalker_wolf")
+	if not (story_npc and story_npc:alive()) then return "fail" end
+	---[[
+	if (xr_meet.has_dialog(story_npc.id) == nil) then
+		xr_meet.override_dialog(story_npc.id,"as_dialog_stalker_1_0")
+	end
+	--]]
+	for i=1,6,1 do
+		if not as_function.IsNpc(M[i]) then
+			local smart = SIMBOARD.smarts_by_names["pol_smart_terrain_2_1"]
+			local pos = vector():set(0,0,110)
+			if smart then
+				local npc = alife():create("as_npc_stalker_1_duty",pos,smart.m_level_vertex_id,smart.m_game_vertex_id)
+				M[i] = {id = npc.id,section_name = npc:section_name()}
+				if i == 1 then
+					npc:set_character_name(game.translate_string("as_quest_stalker_1_duty_leader_name"))
+				end
+				alife():create("wpn_ak74u",npc.position,npc.m_level_vertex_id,npc.m_game_vertex_id,npc.id)
+				return
+			end
+		end
+	end
+	local all_dead = true
+	for i=11,20,1 do
+		if not M[i] then
+			local smart = SIMBOARD.smarts_by_names["pol_smart_terrain_2_1"]
+			if smart then
+				local npc = alife():create("as_npc_stalker_1_bandit",smart.position,smart.m_level_vertex_id,smart.m_game_vertex_id)
+				M[i] = {id = npc.id,section_name = npc:section_name()}
+				if i == 11 then
+					npc:set_character_name(game.translate_string("as_quest_stalker_1_bandit_leader_name"))
+				end
+				return
+			end
+		end
+		if as_function.IsNpc(M[i]) then
+			all_dead = false
+		end
+	end
+	if not has_alife_info("as_quest_stalker_1_dead") and all_dead then
+		give_info("as_quest_stalker_1_dead")
+	end
+	--Duty reward for helping
+	if has_alife_info("as_quest_stalker_1_duty_money") and not has_alife_info("as_quest_stalker_1_duty_money_done") then
+		dialogs.relocate_money(db.actor,5000,"in")
+		give_info("as_quest_stalker_1_duty_money_done")
+	end
+	--Spawn pda
+	local pda = M.pda and M.pda.id and alife():object(M.pda.id)
+	if not (pda and pda:section_name() == M.pda.section_name) then
+		if has_alife_info("as_quest_stalker_1_dead") then
+			--local smart = SIMBOARD.smarts_by_names["pol_smart_terrain_2_1"]
+			--local pos = vector():set(65,6.5,165.5)
+			local npc = M[11] and M[11].id and alife():object(M[11].id)
+			if npc then
+				if not npc:alive() then
+					utils.se_obj_save_var(npc.id,nil,"dont_release",true)
+					utils.se_obj_save_var(npc.id,nil,"death_dropped",true)
+					local se = alife():create("as_quest_stalker_1_pda",npc.position,npc.m_level_vertex_id,npc.m_game_vertex_id,npc.id)
+					M.pda = {id = se.id,section_name = se:section_name()}
+					printf("GhenTuong: %s",se:name())
+				end
+			else
+				--Find a way to stop npc from released
+				--Spawn at smart when being hopeless
+				local smart = SIMBOARD.smarts_by_names["pol_smart_terrain_2_1"]
+				local se = alife():create("as_quest_stalker_1_pda",smart.position,smart.m_level_vertex_id,smart.m_game_vertex_id)
+				M.pda = {id = se.id,section_name = se:section_name()}
+				printf("GhenTuong: %s",se:name())
+			end
+		end
+	end
+	--Actor take pda
+	if not has_alife_info("as_quest_stalker_1_actor_pda") and pda and pda.parent_id and pda.parent_id == AC_ID then
+		give_info("as_quest_stalker_1_actor_pda")
+	end
+	--Spawn doc when actor haven't gotten it before
+	local doc = M.doc and M.doc.id and alife():object(M.doc.id)
+	if not (doc and doc:section_name() == M.doc.section_name) then
+		if not has_alife_info("as_quest_stalker_1_actor_doc") and has_alife_info("as_quest_stalker_1_actor_pda") then
+			local smart = SIMBOARD.smarts_by_names["pol_smart_terrain_2_1"]
+			local pos = vector():set(61.5,2,134)
+			if smart then
+				local se = alife():create("as_quest_stalker_1_doc",pos,smart.m_level_vertex_id,smart.m_game_vertex_id)
+				M.doc = {id = se.id,section_name = se:section_name()}
+			end
+		end
+	end
+	--Actor take doc
+	if not has_alife_info("as_quest_stalker_1_actor_doc") and doc and doc.parent_id and doc.parent_id == AC_ID then
+		give_info("as_quest_stalker_1_actor_doc")
+	end
+	--Give doc to duty
+	if has_alife_info("as_quest_stalker_1_duty_doc") and not has_alife_info("as_quest_stalker_1_duty_doc_done") then
+		if (doc and doc:section_name() == M.doc.section_name) then alife():release(doc) end
+		dialogs.relocate_money(db.actor,25000,"in")
+		give_object_to_actor("wpn_ak74u",1)
+		xr_effects.inc_faction_goodwill_to_actor(db.actor,nil,{"dolg",200})
+		give_info("as_quest_stalker_1_duty_doc_done")
+	end
+	--Give doc to Wolf.
+	if has_alife_info("as_quest_stalker_1_finish") then
+		if (doc and doc:section_name() == M.doc.section_name) then alife():release(doc) end
+		if has_alife_info("as_quest_stalker_1_duty_doc") then
+			xr_effects.inc_faction_goodwill_to_actor(db.actor,nil,{"stalker",-500})
+		else
+			dialogs.relocate_money(db.actor,15000,"in")
+			xr_effects.inc_faction_goodwill_to_actor(db.actor,nil,{"stalker",200})
+		end
+		return 1
+	end
+end
+STAGE_TARGET[1][0] = function(tsk,task_id)
+	local npc = get_story_se_object("esc_2_12_stalker_wolf")
+	local smart = SIMBOARD.smarts_by_names["pol_smart_terrain_2_1"]
+	local pda = M.pda and M.pda.id and alife():object(M.pda.id)
+	local doc = M.doc and M.doc.id and alife():object(M.doc.id)
+	
+	if has_alife_info("as_quest_stalker_1_actor_doc") then
+		return npc and npc.id or nil
+	end
+	
+	if doc and not has_alife_info("as_quest_stalker_1_actor_doc") then
+		return doc.id or nil
+	end
+	
+	if pda and not has_alife_info("as_quest_stalker_1_actor_pda") then
+		return pda.id or nil
+	end
+	
+	return smart and smart.id or nil
+end
+
+STAGE_STATUS[1][1] = function(tsk,task_id)
+	if not M then return end
+	if has_alife_info("as_quest_stalker_1_complete") then return end
+	local all_is_ok = true
+	local story_npc = get_story_se_object("esc_2_12_stalker_wolf")
+	local pda = M.pda and M.pda.id and alife():object(M.pda.id)
+	local doc = M.doc and M.doc.id and alife():object(M.doc.id)
+	
+	if story_npc and xr_meet.has_dialog(story_npc.id) == "as_dialog_stalker_1_0" then
+		xr_meet.restore_dialog(story_npc.id)
+		all_is_ok = false
+	end
+	
+	if (pda and pda:section_name() == M.pda.section_name) then
+		alife():release(pda)
+		all_is_ok = false
+	end
+	if (doc and doc:section_name() == M.doc.section_name) then
+		alife():release(doc)
+		all_is_ok = false
+	end
+	for i=1,20,1 do
+		local npc = M[i] and M[i].id and alife():object(M[i].id)
+		if (npc and npc:section_name() == M[i].section_name) then
+			safe_release_manager.release({id = npc.id})
+			all_is_ok = false
+		end
+	end
+	if all_is_ok then
+		M = {}
+		give_info("as_quest_stalker_1_complete")
+	end
+end
+STAGE_TARGET[1][1] = function(tsk,task_id)
+	return nil
+end
+----------------------------------------------------
+STAGE_TEXT[1] = function(tsk,task_id,field)
+	if not tostring(field) then return end
+	if not has_alife_info("as_quest_stalker_1_dead") then
+		return "as_quest_stalker_1_" .. field .. "_0"
+	end
+	if not has_alife_info("as_quest_stalker_1_actor_pda") then
+		return "as_quest_stalker_1_" .. field .. "_1"
+	end
+	if not has_alife_info("as_quest_stalker_1_actor_doc") then
+		return "as_quest_stalker_1_" .. field .. "_2"
+	end
+	if not has_alife_info("as_quest_stalker_1_duty_doc") then
+		return "as_quest_stalker_1_" .. field .. "_3"
+	end
+	return "as_quest_stalker_1_" .. field .. "_4"
+end
+--=============================================================
+--=============================================================
+task_status_functor.as_quest_stalker_status = function(tsk,task_id)
+	if not (db.actor and tsk) then return end
+	local stage = tsk.stage
+	local quest = tonumber(task_manager.task_ini:r_string_ex(task_id,"status_functor_params"))
+	
+	local progress = STAGE_STATUS[quest][stage] and STAGE_STATUS[quest][stage](tsk,task_id) or stage
+	if tonumber(progress) and (tonumber(progress) ~= stage) then
+		tsk.stage = progress
+	end
+	if (progress == "complete" or progress == "fail") then return progress end
+end
+
+task_functor.as_quest_stalker_target = function(task_id,field,p,tsk)
+	if not (db.actor and tsk) then return end
+	local stage = tsk.stage
+	local quest = tonumber(task_manager.task_ini:r_string_ex(task_id,"status_functor_params"))
+	
+	if STAGE_TARGET[quest][stage] then
+		return STAGE_TARGET[quest][stage](tsk,task_id) or nil
+	end
+	return nil
+end
+
+task_functor.as_quest_stalker_text = function(task_id,field,p,tsk)
+	if not (db.actor and tsk) then return end
+	local quest = tonumber(task_manager.task_ini:r_string_ex(task_id,"status_functor_params"))
+	
+	if STAGE_TEXT[quest] then
+		local new_text = STAGE_TEXT[quest](tsk,task_id,field)
+		return new_text and game.translate_string(new_text) or "nil"
+	end
+	return "nil"
+end
+--=============================================================
+--=============================================================
+xr_conditions.as_quest_stalker_is_npc = function(actor,npc,p)
+	local i = p and p[1]
+	if not (i and npc and M and M[i]) then
+		return false
+	end
+	return npc:id() == M[i].id
+	end
+xr_effects.as_ignore_heli = function(actor,npc)
+	if npc and (not npc:has_info("npcx_beh_ignore_combat")) then
+		npc:give_info_portion("npcx_beh_ignore_combat")
+	end
+end
+function dialog_has_money(a,b)
+	local npc = dialogs.who_is_npc(a,b)
+	if not (npc and db.actor and M) then return false end
+	for i,data in pairs(M) do
+		local dialog_money = data and (data.id == npc:id()) and data.dialog_money and (db.actor:money() >= data.dialog_money)
+		if (dialog_money) then
+			return true
+		end
+	end
+	return false
+end
+function dialog_relocate_money(a,b)
+	local npc = dialogs.who_is_npc(a,b)
+	if not (npc and db.actor and M) then return end
+	for i,data in pairs(M) do
+		local dialog_money = data and (data.id == npc:id()) and data.dialog_money
+		if tonumber(dialog_money) then
+			db.actor:transfer_money(dialog_money, npc)
+			news_manager.relocate_money(db.actor, "out", dialog_money)
+			return
+		end
+	end
+end

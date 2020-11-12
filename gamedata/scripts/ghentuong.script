@@ -1,0 +1,58 @@
+--=============================================================
+--Anomaly 1.5.5.0
+--GhenTuong
+--=============================================================
+---[[
+cmd = debug_cmd_list.command_get_list()
+
+function cmd.ghenpos()
+	local pick = ray_pick()
+	pick:set_position(device().cam_pos)
+	pick:set_direction(device().cam_dir)
+	pick:set_ignore_object(db.actor)
+	pick:set_flags(2)
+	pick:set_range(3)
+	pick:query()
+	local distance = pick:get_distance()
+	
+	local p = vector():set(0,0,0):mad(device().cam_pos,device().cam_dir,distance)
+	local text = (p and tostring(p.x)..","..tostring(p.y)..","..tostring(p.z)) or "nil"
+	printf("GhenTuong: %s",text)
+end
+
+function cmd.verlnut()
+	task_manager.get_task_manager():give_task("as_quest_verlnut_0")
+end
+function cmd.kiki()
+	task_manager.get_task_manager():give_task("as_quest_kiki_0")
+end
+function cmd.stalker0()
+	task_manager.get_task_manager():give_task("as_quest_stalker_0")
+end
+function cmd.stalker1()
+	task_manager.get_task_manager():give_task("as_quest_stalker_1")
+end
+function cmd.misc0()
+	task_manager.get_task_manager():give_task("as_quest_misc_0")
+end
+function cmd.misc1()
+	task_manager.get_task_manager():give_task("as_quest_misc_1")
+end
+function cmd.tdef0()
+	task_manager.get_task_manager():give_task("as_quest_tdef_0")
+end
+function cmd.tdef1()
+	task_manager.get_task_manager():give_task("as_quest_tdef_1")
+end
+
+function cmd.verlnut0()
+	task_manager.get_task_manager():give_task("as_quest_verlnut_0")
+end
+function cmd.verlnut1()
+	task_manager.get_task_manager():give_task("as_quest_verlnut_1")
+end
+function cmd.verlnut2()
+	task_manager.get_task_manager():give_task("as_quest_verlnut_2")
+end
+
+--]]

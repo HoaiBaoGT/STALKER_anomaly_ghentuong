@@ -1,0 +1,15 @@
+[logic]
+active = ph_idle@base
+
+[ph_idle@base]
+on_info = %=script(as_static_object:light:turn_on:lights_white_12m_glass:bone_lamp)%
+
+[lights_white_12m_glass]
+range					= 12
+color					= 4294960053
+shadow					= true
+volumetric				= true
+volumetric_quality		= 0.7
+volumetric_distance		= 2.5
+volumetric_intensity	= 0.6
+

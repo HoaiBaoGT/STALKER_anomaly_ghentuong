@@ -1,0 +1,35 @@
+--=============================================================
+--Anomaly 1.5.5.0
+--GhenTuong
+--=============================================================
+local JUST_GOT_ONE = nil
+RUMORS_CONDITION = {}
+RUMORS_ACTION = {}
+--=============================================================
+RUMORS_CONDITION["as_quest_chief_0"] = function()
+	if has_alife_info("as_quest_chief_0_started") then return false end
+	local npc = mob_trade.GetTalkingNpc()
+	local npc_faction = npc and character_community(npc)
+	local actor_faction = character_community(db.actor)
+	local check_faction = not game_relations.is_factions_enemies(npc_faction,"bandit") and not game_relations.is_factions_enemies(actor_faction,"bandit")
+	if not check_faction then return false end
+	return true
+end
+RUMORS_ACTION["as_quest_chief_0"] = function()
+	task_manager.get_task_manager():give_task("as_quest_chief_0")
+	return "as_quest_chief_0_rumors"
+end
+--=============================================================
+function get_rumors()
+	if not (JUST_GOT_ONE) then
+		JUST_GOT_ONE = true
+	else
+		return "as_rumors_no_rumors"
+		end
+	for id in pairs(RUMORS_CONDITION) do
+		if (RUMORS_CONDITION[id]()) then
+			return RUMORS_ACTION[id]() or "GhenTuong: WARNING\n File: as_rumors.script\n Function: get_rumors()\n RUMORS_ACTION[\"".. id .."\"]() must return a string."
+		end
+	end
+	return "as_rumors_no_rumors"
+end

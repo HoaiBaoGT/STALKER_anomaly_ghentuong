@@ -1,0 +1,48 @@
+﻿
+<character id="as_npc_csky_leader">
+<class>as_npc_csky_leader</class>
+<specific_character>as_npc_csky_leader</specific_character>
+</character>
+<character id="as_npc_csky_trader">
+<class>as_npc_csky_trader</class>
+<specific_character>as_npc_csky_trader</specific_character>
+</character>
+<character id="as_npc_csky_tech">
+<class>as_npc_csky_tech</class>
+<specific_character>as_npc_csky_tech</specific_character>
+</character>
+<character id="as_npc_csky_medic">
+<class>as_npc_csky_medic</class>
+<specific_character>as_npc_csky_medic</specific_character>
+</character>
+
+<character id="as_npc_verlnut">
+<class>as_npc_verlnut</class>
+<specific_character>as_npc_verlnut</specific_character>
+</character>
+
+<character id="as_npc_preacher">
+<class>as_npc_preacher</class>
+<specific_character>as_npc_preacher</specific_character>
+</character>
+
+<character id="as_npc_kiki">
+<class>as_npc_kiki</class>
+<specific_character>as_npc_kiki</specific_character>
+</character>
+
+<character id="as_npc_chief">
+<class>as_npc_chief</class>
+<specific_character>as_npc_chief</specific_character>
+</character>
+
+<character id="as_npc_eagle">
+<class>as_npc_eagle</class>
+<specific_character>as_npc_eagle</specific_character>
+</character>
+
+<character id="as_npc_snake">
+<class>as_npc_snake</class>
+<specific_character>as_npc_snake</specific_character>
+</character>
+

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<string_table>
+	<string id="as_rumors_question">
+		<text>Heard any rumors lately?</text>
+	</string>
+	<string id="as_rumors_no_rumors">
+		<text>Hmm... Nothing.</text>
+	</string>	
+</string_table>

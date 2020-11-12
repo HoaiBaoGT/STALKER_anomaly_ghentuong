@@ -1,0 +1,139 @@
+[logic]
+active				= beh@general
+post_combat_time	= 0,0
+;==================================================
+[before_hit@invulnerable]
+ignore = invulnerable
+;----------------------------------------
+[meet@base]
+close_distance 		= 0
+close_snd_distance 	= 0
+close_victim		= nil
+far_distance		= 0
+far_snd_distance	= 0
+far_victim			= nil
+use					= false
+;----------------------------------------
+[beh@base]
+dont_keep_items						= true
+gather_items_enabled				= false
+help_wounded_enabled				= false
+corpse_detection_enabled			= false
+combat_ignore_keep_when_attacked	= true
+target				= waypoint
+path_end			= loop
+walk_dist			= 0
+jog_dist			= 0
+run_anim			= assault
+meet				= no_meet
+before_hit			= before_hit@invulnerable
+combat_ignore_cond	= true
+danger_ignore		= true
+;==================================================
+[beh@general]:beh@base
+on_info		= {=check_npc_name(controller)} beh@controller, {!check_npc_name(zombied)} beh@verlnut_1
+on_info1	= {=script(as_quest_verlnut:pick_logic:as_quest_verlnut_1:1)} beh@zombied_1
+on_info2	= {=script(as_quest_verlnut:pick_logic:as_quest_verlnut_1:2)} beh@zombied_2
+on_info3	= {=script(as_quest_verlnut:pick_logic:as_quest_verlnut_1:3)} beh@zombied_3
+on_info4	= {=script(as_quest_verlnut:pick_logic:as_quest_verlnut_1:4)} beh@zombied_4
+on_info5	= {=script(as_quest_verlnut:pick_logic:as_quest_verlnut_1:5)} beh@zombied_5
+on_info6	= {=script(as_quest_verlnut:pick_logic:as_quest_verlnut_1:6)} beh@zombied_6
+on_info7	= {=script(as_quest_verlnut:pick_logic:as_quest_verlnut_1:7)} beh@zombied_7
+on_info8	= {=script(as_quest_verlnut:pick_logic:as_quest_verlnut_1:8)} beh@zombied_8
+on_info9	= {=script(as_quest_verlnut:pick_logic:as_quest_verlnut_1:9)} beh@zombied_9
+on_info10	= {=script(as_quest_verlnut:pick_logic:as_quest_verlnut_1:10)} beh@zombied_10
+on_info11	= {=script(as_quest_verlnut:pick_logic:as_quest_verlnut_1:11)} beh@body_guard_1
+on_info12	= {=script(as_quest_verlnut:pick_logic:as_quest_verlnut_1:12)} beh@body_guard_2
+on_info13	= {=script(as_quest_verlnut:pick_logic:as_quest_verlnut_1:13)} beh@body_guard_3
+on_info14	= {=script(as_quest_verlnut:pick_logic:as_quest_verlnut_1:14)} beh@body_guard_4
+
+;==================================================
+[meet@verlnut]:meet@base
+meet_dialog	= as_dialog_verlnut_1_verlnut
+use			= {=beh_reached -as_quest_verlnut_1_talk} true, {=beh_reached +as_quest_verlnut_1_dead} true, false
+
+[beh@verlnut_info]
+meet		= meet@verlnut
+target		= {=beh_has_enemy =beh_reached} %=beh_shoot_enemy(threat_fire) =play_sound(fight_attack)%, waypoint
+on_info1	= %=script(as_quest_verlnut:heal_aura)%
+
+[beh@verlnut_1]:beh@base,beh@verlnut_info
+pt1 = 999999,guard | pos:-164,4,389 look:-164,4,390
+on_info	= {+as_quest_verlnut_1_talk} beh@verlnut_2
+custom_combat_cond = {=check_enemy_name(as_npc_verlnut)} true, false
+
+[beh@verlnut_2]:beh@base,beh@verlnut_info
+pt1 = 999999,threat_na | pos:-259,4,409.5 look:-260,4,409.5
+on_info	= {+as_quest_verlnut_1_gate_1} beh@verlnut_3, {=beh_reached =dist_to_actor_le(5)} %+as_quest_verlnut_1_gate_1%
+
+[beh@verlnut_3]:beh@base,beh@verlnut_info
+pt1 = 999999,threat_na | pos:-283,4,403 look:-284,4,403
+on_info	= {+as_quest_verlnut_1_gate_2} beh@verlnut_4, {=beh_reached =dist_to_actor_le(5)} %+as_quest_verlnut_1_gate_2%
+
+[beh@verlnut_4]:beh@base,beh@verlnut_info
+pt1 = 999999,threat_na | pos:-317,5,410.5 look:-318,5,410.5
+on_info	= {+as_quest_verlnut_1_dead} beh@verlnut_5
+
+[beh@verlnut_5]:beh@base,beh@verlnut_info
+pt1 = 999999,guard | pos:-350,4,410 look:-349,4,410
+custom_combat_cond = {=check_enemy_name(as_npc_verlnut)} true, false
+
+;==================================================
+[before_hit@boss]
+ignore = {=check_enemy_name(actor)} false, {=health_le(0.9)} false, true
+modify = 0.5
+
+[beh@boss_info]
+before_hit	= before_hit@boss
+target		= {=beh_has_enemy} %=beh_shoot_enemy(threat_fire) =play_sound(fight_attack)%, waypoint
+on_info		= {+as_quest_verlnut_1_dead} beh@kill, {=check_npc_name(controller)} %=script(as_quest_verlnut:quest_1_psy_field)%
+custom_combat_cond = {-as_quest_verlnut_1_gate_2 =check_enemy_name(as_npc_verlnut)} true, false
+
+[beh@controller]:beh@base,beh@boss_info
+pt1 = 999999,guard | pos:-350,4,410 look:-340,4,410
+[beh@body_guard_1]:beh@base,beh@boss_info
+pt1 = 999999,guard | pos:-344,4,413 look:-334,4,413
+[beh@body_guard_2]:beh@base,beh@boss_info
+pt1 = 999999,guard | pos:-345,4,405 look:-335,4,405
+[beh@body_guard_3]:beh@base,beh@boss_info
+pt1 = 999999,guard | pos:-342,4,402 look:-332,4,402
+[beh@body_guard_4]:beh@base,beh@boss_info
+pt1 = 999999,guard | pos:-341,4,414 look:-331,4,414
+
+;----------------------------------------
+[before_hit@zombied]
+ignore = {=check_enemy_name(actor)} false, {=health_le(0.9)} false, true
+modify = 1
+
+[beh@zombied_info]
+before_hit	= before_hit@zombied
+on_info		= {+as_quest_verlnut_1_dead} beh@kill
+combat_ignore_cond = {-as_quest_verlnut_1_talk =check_enemy_name(as_npc_verlnut)} true, false
+
+[beh@zombied_1]:beh@base,beh@zombied_info
+pt1 = 999999,guard | pos:-288,4,403 look:-278,4,403
+[beh@zombied_2]:beh@base,beh@zombied_info
+pt1 = 999999,guard | pos:-302,4,403 look:-292,4,403
+[beh@zombied_3]:beh@base,beh@zombied_info
+pt1 = 999999,guard | pos:-302,4,412 look:-292,4,412
+[beh@zombied_4]:beh@base,beh@zombied_info
+pt1 = 999999,guard | pos:-314,4,410 look:-304,4,410
+[beh@zombied_5]:beh@base,beh@zombied_info
+pt1 = 999999,guard | pos:-313,5,400 look:-313,5,410
+[beh@zombied_6]:beh@base,beh@zombied_info
+pt1 = 999999,guard | pos:-316,5,397 look:-316,5,407
+[beh@zombied_7]:beh@base,beh@zombied_info
+pt1 = 999999,guard | pos:-315,5,409 look:-315,5,399
+[beh@zombied_8]:beh@base,beh@zombied_info
+pt1 = 999999,guard | pos:-318,4,403 look:-308,4,403
+[beh@zombied_9]:beh@base,beh@zombied_info
+pt1 = 999999,guard | pos:-317,5,411 look:-307,5,411
+[beh@zombied_10]:beh@base,beh@zombied_info
+pt1 = 999999,guard | pos:-309,5,400 look:-299,5,400
+
+;----------------------------------------
+[beh@kill]:beh@base
+target		= task_target_hostage
+wait_anim	= wounded_zombie
+before_hit	= before_hit@zombied
+on_timer	= 30000 | %=kill_npc%

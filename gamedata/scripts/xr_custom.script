@@ -1,0 +1,473 @@
+
+function get_waypoint(npc,section,pt)
+	local st = npc and db.storage[npc:id()]
+	if (st and st.ini and (section or st.active_section) and pt and tostring(pt)) then
+		local str = st.ini:r_string_ex(section or st.active_section,tostring(pt))
+		if str then
+			for s in string.gmatch(str,"pos:(%A+)") do
+				local v = str_explode(s,",")
+				if (tonumber(v[1]) and tonumber(v[2]) and tonumber(v[3])) then
+					return vector():set(tonumber(v[1]),tonumber(v[2]),tonumber(v[3]))
+				end
+			end
+		end
+	end
+end
+
+--[[----------------------------------------------------------------------------------------------------
+	Movement
+------------------------------------------------------------------------------------------------------]]
+local function validate(npc,vid)
+	if (vid and vid < 4294967295 and npc:accessible(vid) and vid ~= npc:level_vertex_id()) then 
+		return db.used_level_vertex_ids[vid] == nil or db.used_level_vertex_ids[vid] == npc:id()
+	end 
+	return false
+end 
+
+local function lmove(npc,vid,st)
+	if (vid == nil or vid >= 4294967295) then 
+		return 
+	end
+	
+	if (db.used_level_vertex_ids[vid] == npc:id()) then
+		npc:set_dest_level_vertex_id(vid)
+		return vid 
+	end
+	
+	if (st.vid) then 
+		db.used_level_vertex_ids[st.vid] = nil
+	end
+	
+	if not (npc:accessible(vid)) then
+		local vtemp = VEC_ZERO
+		vid, vtemp = npc:accessible_nearest(vid and level.vertex_position(vid) or npc:position(), vtemp )
+	end
+
+	db.used_level_vertex_ids[vid] = npc:id()
+	st.vid = vid
+	
+	npc:set_dest_level_vertex_id(vid)
+	return vid
+end
+
+function try_go_cover(npc,npc_pos,ene_pos,radius)
+	local st = npc and db.storage[npc:id()]
+	local vid = utils_obj.find_close_cover(npc,npc_pos,ene_pos,1,1,radius)
+	if (validate(npc,vid)) then
+		return lmove(npc,vid,st)
+	end
+end
+
+--[[----------------------------------------------------------------------------------------------------
+	Conditions
+------------------------------------------------------------------------------------------------------]]
+function shoot_enemy(actor,npc,p)
+	local st = npc and db.storage[npc:id()]
+	local id = st and tonumber(st.xr_custom_enemy_id)
+	if not (id) then
+		return false
+	end
+	
+	local enemy = db.storage[id] and db.storage[id].object or level.object_by_id(id)
+	if not (enemy and enemy:alive()) then
+		st.xr_custom_enemy_id = nil
+		return false
+	end
+	
+	local tg = time_global()
+	if ((tg - npc:memory_time(enemy)) > 10000) then
+		
+	end
+	
+	
+	
+	if (npc:path_type() ~= game_object.level_path) then
+		npc:set_path_type(game_object.level_path)
+	end
+	
+	
+	--Sometime he won't look_object if he only performs look_object.
+	--look_position when he doesn't see enemy seems fixes it. axr_fight_from_cover.script
+	
+	local now_state = state_mgr.get_state(npc)
+	local new_state = p and p[1]
+	if (state) then
+		if npc:see(enemy) then
+			state_mgr.set_state(npc,state,nil,nil,{look_object = enemy},{fast_set = true})
+		else
+			local pos = utils_obj.safe_bone_pos(enemy,"bip01_neck") or enemy:position()
+			state_mgr.set_state(npc,state,nil,nil,{look_position = pos},{fast_set = true})
+		end
+	end
+	return true
+end
+
+function has_enemy(actor,npc)
+	local st = npc and db.storage[npc:id()]
+	if (st and tonumber(st.xr_custom_enemy_id)) then
+		return true
+	end
+	return false
+end
+
+
+local cache_ffw = {}
+
+function fight_from_waypoint(actor,npc,p)
+	local npc_id = npc and npc:id()
+	local st = npc_id and db.storage[npc_id]
+	if not (st and (st.active_scheme == "beh") and st.ini and st.active_section) then
+		return
+	end
+	if not (cache_ffw[npc_id]) then
+		cache_ffw[npc_id] = {}
+	end
+	local ss = (p and p[1]) or st.active_section
+	local pt = (p and p[2]) or "pt1"
+	if not (cache_ffw[npc_id].lvid and (cache_ffw[npc_id].ss == ss) and (cache_ffw[npc_id].pt == pt)) then
+		local pos = get_waypoint(npc,ss,pt)
+		if (pos) then
+			cache_ffw[npc_id].lvid = level.vertex_id(pos)
+			cache_ffw[npc_id].ss = ss
+			cache_ffw[npc_id].pt = pt
+		else
+			return
+		end
+	end
+	if (load_var(npc,"fight_from_point") ~= cache_ffw[npc_id].lvid) then
+		save_var(npc,"fight_from_point",cache_ffw[npc_id].lvid)
+	end
+end
+
+--[[----------------------------------------------------------------------------------------------------
+	Animpoints
+------------------------------------------------------------------------------------------------------]]
+
+local animpoint_random = {
+	["animpoint_sit_normal"] = {"","_eat_bread","_eat_kolbasa","_drink_vodka","_drink_energy","_weapon"},
+	["animpoint_sit_low"] = {"","_drink_vodka","_drink_energy","_weapon"},
+	["animpoint_sit_knee"] = {"","_eat_bread","_eat_kolbasa","_drink_vodka","_drink_energy"},
+}
+
+function animpoint(actor,npc,p)
+	local st = npc and db.storage[npc:id()]
+	if not (st and (st.active_scheme == "beh") and st.beh and st.beh.am_i_reached) then
+		return false
+	end
+	
+	local desired_target = st and st.beh and st.beh.desired_target
+	local pos = desired_target and desired_target.position
+	if not (pos) then
+		return false
+	end
+	if (npc:position():distance_to_sqr(pos) > 0.5) then
+		return false
+	end
+	
+	local new_state = p and p[1]
+	local state = state_mgr.get_state(npc)
+	if not (state and new_state) then
+		return false
+	end
+	
+	if ((string.find(state,new_state) == nil) and (state ~= "animpoint_reach")) then
+		local anim_dir = desired_target and vector():set(desired_target.animpoint_dir):normalize()
+		state_mgr.set_state(npc,"animpoint_reach",{turn_end_func = function() return end},nil,{look_dir = anim_dir})
+	end
+	
+	if ((state == "animpoint_reach") and not (st.callback and st.callback.turn_end_func)) then
+		--printf("GhenTuong: animpoint %s",state)
+		local anim_pos = desired_target and vector():set(desired_target.animpoint)
+		local anim_dir = desired_target and vector():set(desired_target.animpoint_dir):normalize()
+		local look_pos = anim_pos and anim_dir and vector():set(anim_pos.x + 10*anim_dir.x,anim_pos.y,anim_pos.z + 10*anim_dir.z)
+		if (p[2] == "random") then
+			new_state = new_state .. (animpoint_random[new_state] and animpoint_random[new_state][math.random(#animpoint_random[new_state])] or "")
+		end
+		state_mgr.set_state(npc,new_state,nil,nil,{look_position = look_pos},{animation_position = anim_pos, animation_direction = anim_dir})
+	end
+	return true
+end
+
+function play_music(actor,npc,p)
+	local st = npc and db.storage[npc:id()]
+	if not (st and (st.active_scheme == "beh") and st.beh and st.beh.am_i_reached) then
+		return false
+	end
+	
+	local desired_target = st and st.beh and st.beh.desired_target
+	local pos = desired_target and desired_target.position
+	if not (pos) then
+		return false
+	end
+	if (npc:position():distance_to_sqr(pos) > 0.5) then
+		return false
+	end
+	
+	local check = false
+	local smart = p and p[1] and SIMBOARD.smarts_by_names[p[1]]
+	if (smart) then
+		for i=2,#p do
+			local ss = p[i]
+			local id = smart.npc_by_job_section["logic@"..ss]
+			local who = id and db.storage[id] and db.storage[id].object
+			if (who and who:alive()) then
+				check = true
+				break
+			end
+		end
+	end
+	local state = state_mgr.get_state(npc)
+	if (check) then
+		if not (string.find(state,"play_guitar") or string.find(state,"play_harmonica")) then
+			local music_state = {"play_guitar","play_harmonica"}
+			local new_state = music_state[math.random(#music_state)]
+			local look_pos = desired_target and desired_target.look_position
+			state_mgr.set_state(npc,new_state,nil,nil,{look_position = look_pos})
+		end
+		if (string.find(state,"play_guitar")) then
+			xr_sound.set_sound_play(npc:id(),"play_guitar")
+		end
+		if (string.find(state,"play_harmonica")) then
+			xr_sound.set_sound_play(npc:id(),"play_harmonica")
+		end
+	else
+		if not (string.find(state,"sit_knee")) then
+			local look_pos = desired_target and desired_target.look_position
+			state_mgr.set_state(npc,"sit_knee",nil,nil,{look_position = look_pos})
+		end
+	end
+	
+	return true
+end
+
+--[[----------------------------------------------------------------------------------------------------
+	Effects
+------------------------------------------------------------------------------------------------------]]
+function move_pos(actor,npc,p)
+	local pos = p and p[1] and p[2] and get_waypoint(npc,p[1],p[2])
+	if (pos) then
+		local vid = level.vertex_id(pos)
+		utils_obj.send_to_nearest_accessible_vertex(npc,vid)
+	end
+end
+
+function sound(actor,npc,p)
+	if not (npc and p) then
+		return
+	end
+	local theme = p[1]
+	local faction = p[2]
+	xr_sound.set_sound_play(npc:id(),theme,faction)
+end
+
+function set_position(actor,npc,p)
+	local pos = p and p[1] and p[2] and get_waypoint(npc,p[1],p[2])
+	if (pos) then
+		npc:set_npc_position(pos)
+	end
+end
+
+function set_weapon(actor,npc,p)
+	local se = npc and alife():object(npc:id())
+	local owned = se and alife():get_children(se)
+	local check = false
+	for w in owned do
+		local weapon = alife():object(w)
+		if (weapon and string.find(weapon:name(),"wpn_")) then
+			if (string.find(weapon:name(),p[1])) then
+				check = true
+			else
+				if not (get_object_story_id(w)) then
+					alife_release(weapon)
+				end
+			end
+		end
+	end
+	if not (check) then
+		for i,v in pairs(p) do
+			alife_create_item(v,se)
+		end
+	end
+end
+
+function self_explode(actor,obj)
+	if (obj) then
+		obj:explode(0)
+	end
+end
+
+function self_release(actor,obj)
+	if (obj) then
+		alife_release_id(obj:id())
+	end
+end
+
+function psy_field(actor,obj,p)
+	if (obj and p and tonumber(p[1])) then
+		local range = tonumber(p[1]) * tonumber(p[1])
+		local distance = db.actor and obj:position():distance_to_sqr(db.actor:position())
+		if (distance < range) then
+			level.remove_pp_effector(666)
+			level.add_pp_effector("psi_fade.ppe",666,false)
+		end
+	end
+end
+
+function psy_hit(actor,obj,p)
+	if (obj and p and tonumber(p[1]) and tonumber(p[2])) then
+		local range = tonumber(p[1]) * tonumber(p[1])
+		local power = tonumber(p[2])
+		local distance = db.actor and obj:position():distance_to_sqr(db.actor:position())
+		if (distance and (distance < range)) then
+			hit_power =  (math.cos(distance * math.pi / range) + 1) * power / 2
+			local h = hit()
+			h.type = hit.telepatic
+			if (level_environment.is_actor_immune() or dialogs_yantar.actor_has_psi_helmet()) then 
+				h.power = 0
+			else
+				h.power = surge_manager.SurgeManager:hit_power(hit_power,h.type)
+			end
+			h.impulse = 0
+			h.direction = VEC_Z
+			h.draftsman = db.actor
+			
+			db.actor:hit(h)
+			
+			level.remove_pp_effector(39568)
+			level.add_pp_effector("yantar_underground_psi.ppe",39568,false)
+			
+			local sound = xr_sound.get_safe_sound_object([[monsters\controller\controller_tube_prepare]])
+			if sound then
+				sound:play_at_pos(db.actor,db.actor:position(),sound_object.s2d)
+			end
+		end
+	end
+end
+
+function bone_particles(actor,obj,p)
+	if (obj and p and p[1] and p[2]) then
+		obj:start_particles(p[1],p[2])
+	end
+end
+	
+function play_particles(actor,obj,p)
+	if not (obj and p) then
+		return
+	end
+	local s = tostring(p[1]) and particles_object(p[1])
+	local pos = (tostring(p[2]) and utils_obj.safe_bone_pos(obj,p[2])) or obj:position()
+	if (s and pos) then
+		s:play_at_pos(pos)
+	end
+end
+
+function play_sound(actor,obj,p)
+	if not (obj and p) then
+		return
+	end
+	local s = tostring(p[1]) and xr_sound.get_safe_sound_object(p[1])
+	if (s) then
+		s:play_at_pos(obj,obj:position(),sound_object.s3d)
+	end
+end
+
+
+
+--[[----------------------------------------------------------------------------------------------------
+	Callbacks
+------------------------------------------------------------------------------------------------------]]
+function CB_on_before_hit(npc,shit,bone_id,flags)
+	local st = npc and db.storage[npc:id()]
+	if not (st and (st.active_scheme == "beh")) then
+		return
+	end
+	
+	local str = st.ini and st.active_section and st.ini:r_string_ex(st.active_section,"before_hit")
+	if (str) then
+		if string.find(str,"invulnerable") then
+			if (tonumber(npc.health) < 1) then
+				npc:set_health_ex(1)
+			end
+			flags.ret_value = false
+			return
+		end
+		
+		if string.find(str,"@") then
+			local p = str_explode(str,"@")
+			if (p and #p == 2) then
+				local s = p[1]
+				local f = p[2]
+				local v = _G[s][f](npc,shit,bone_id,flags)
+				
+				if (tostring(v) and string.find(tostring(v),"invulnerable")) then
+					if (tonumber(npc.health) < 1) then
+						npc:set_health_ex(1)
+					end
+					flags.ret_value = false
+				end
+			end
+		end
+	end
+end
+
+function CB_npc_on_eval_danger(npc,flags)
+	local st = npc and db.storage[npc:id()]
+	if not (st and (st.active_scheme == "beh")) then
+		return
+	end
+	
+	local cond = st.ini and st.active_section and st.ini:r_string_to_condlist(st.active_section,"danger_ignore")
+	if (cond) then
+		if (xr_logic.pick_section_from_condlist(db.actor,npc,cond) == "true") then
+			flags.ret_value = false
+			return
+		end
+	end
+end
+
+function CB_npc_on_net(npc,se_obj)
+	local st = npc and db.storage[npc:id()]
+	if not (st and (st.active_scheme == "beh") and st.ini and st.active_section and st.ini:section_exist(st.active_section)) then
+		return
+	end
+	if not (st.ini:line_exist(st.active_section,"beh_net_spawn")) then
+		return
+	end
+	
+	local beh_net_spawn_cond = st.ini:r_string_to_condlist(st.active_section,"beh_net_spawn")
+	local beh_net_spawn = beh_net_spawn_cond and xr_logic.pick_section_from_condlist(db.actor,npc,beh_net_spawn_cond)
+	local str = beh_net_spawn and st.ini:r_string_ex(st.active_section,beh_net_spawn)
+	if (str) then
+		for s in string.gmatch(str,"pos:(%A+)") do
+			local p = str_explode(s,",")
+			if (tonumber(p[1]) and tonumber(p[2]) and tonumber(p[3])) then
+				npc:set_npc_position(vector():set(tonumber(p[1]),tonumber(p[2]),tonumber(p[3])))
+			end
+		end
+	end
+end
+
+function CB_npc_on_enemy_eval(npc,enemy,flags)
+	local st = npc and db.storage[npc:id()]
+	if not (st and (st.active_scheme == "beh") and st.ini and st.active_section and st.ini:section_exist(st.active_section)) then
+		return
+	end
+	if not (st.ini:line_exist(st.active_section,"beh_combat_cond") and (npc:relation(enemy) >= game_object.enemy)) then
+		return
+	end
+	local beh_combat_cond = st.ini:r_string_to_condlist(st.active_section,"beh_combat_cond")
+	local beh_combat = beh_combat_cond and xr_logic.pick_section_from_condlist(enemy,npc,beh_combat_cond)
+	if (beh_combat == "true") then
+		st.xr_custom_enemy_id = tonumber(enemy:id())
+		st.xr_custom_enemy_time = tonumber(time_global())
+		flags.override = true
+	end
+end
+
+function on_game_start()
+	RegisterScriptCallback("npc_on_before_hit",CB_on_before_hit)
+	RegisterScriptCallback("monster_on_before_hit",CB_on_before_hit)
+	RegisterScriptCallback("npc_on_eval_danger",CB_npc_on_eval_danger)
+	RegisterScriptCallback("npc_on_net_spawn",CB_npc_on_net)
+	RegisterScriptCallback("on_enemy_eval",CB_npc_on_enemy_eval)
+end

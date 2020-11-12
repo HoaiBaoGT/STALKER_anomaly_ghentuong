@@ -1,0 +1,62 @@
+
+<dialog id="as_dialog_kiki_idle">
+	<phrase_list>
+		<phrase id="0">
+			<text/>
+			<next>pick_dialog</next>
+		</phrase>
+		<phrase id="pick_dialog">
+			<text/>
+			<next>a</next>
+		</phrase>
+		
+		<phrase id="a">
+			<text>as_dialog_kiki_idle_0</text>
+			<next>1</next>
+		</phrase>
+		<phrase id="1">
+			<text>as_dialog_kiki_idle_1</text>
+			<action>dialogs.break_dialog</action>
+		</phrase>
+		
+	</phrase_list>
+</dialog>
+
+<dialog id="as_dialog_kiki_0_0">
+	<phrase_list>
+		<phrase id="0">
+			<text/>
+			<next>pick_dialog</next>
+		</phrase>
+		<phrase id="pick_dialog">
+			<text/>
+			<next>a</next>
+			<next>b</next>
+		</phrase>
+		
+		<phrase id="a">
+			<dont_has_info>as_quest_kiki_0_escape</dont_has_info>
+			<text>as_dialog_kiki_0_0_0</text>
+			<next>1</next>
+		</phrase>
+		<phrase id="1">
+			<text>as_dialog_kiki_0_0_1</text>
+			<give_info>as_quest_kiki_0_escape</give_info>
+			<action>dialogs.break_dialog</action>
+		</phrase>
+		
+		<phrase id="b">
+			<has_info>as_quest_kiki_0_escape</has_info>
+			<text>as_dialog_kiki_0_0_2</text>
+			<give_info>as_quest_kiki_0_reward</give_info>
+			<next>3</next>
+		</phrase>
+		<phrase id="3">
+			<text>as_dialog_kiki_0_0_3</text>
+			<action>dialogs.break_dialog</action>
+		</phrase>
+	</phrase_list>
+</dialog>
+
+
+

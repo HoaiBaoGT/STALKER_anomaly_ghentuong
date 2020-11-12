@@ -1,0 +1,236 @@
+
+<dialog id="as_dialog_verlnut_idle">
+	<phrase_list>
+		<phrase id="0">
+			<text>as_dialog_verlnut_idle_hello</text>
+			<next>start_npc_talk</next>
+		</phrase>
+		<phrase id="start_npc_talk">
+			<text/>
+			<next>start_actor_talk</next>
+		</phrase>
+		<phrase id="start_actor_talk">
+			<text/>
+			<next>quest_0_talk</next>
+			<next>quest_0_item</next>
+			
+			<next>quest_1_give</next>
+			<next>quest_1_move</next>
+			<next>quest_1_reward</next>
+			
+			<next>idle_info_1</next>
+			<next>idle_info_2</next>
+			<next>idle_info_3</next>
+			
+			<next>as_dialog_verlnut_idle_bye</next>
+		</phrase>
+		
+			<phrase id="quest_0_talk">
+					<dont_has_info>as_quest_verlnut_0_talk</dont_has_info>
+				<text>as_dialog_verlnut_0_talk_0</text>
+				<next>quest_0_talk_1</next>
+			</phrase>
+			<phrase id="quest_0_talk_1">
+				<text>as_dialog_verlnut_0_talk_1</text>
+				<next>quest_0_talk_2</next>
+			</phrase>
+			<phrase id="quest_0_talk_2">
+				<text>as_dialog_verlnut_0_talk_2</text>
+				<next>quest_0_talk_3</next>
+			</phrase>
+			<phrase id="quest_0_talk_3">
+				<text>as_dialog_verlnut_0_talk_3</text>
+				<next>quest_0_talk_4</next>
+				<next>quest_0_talk_7</next>
+			</phrase>
+			<phrase id="quest_0_talk_4">
+				<text>as_dialog_verlnut_0_talk_4</text>
+				<next>quest_0_talk_5</next>
+			</phrase>
+			<phrase id="quest_0_talk_5">
+				<text>as_dialog_verlnut_0_talk_5</text>
+					<give_info>as_quest_verlnut_0_talk</give_info>
+				<next>quest_0_talk_6</next>
+			</phrase>
+			<phrase id="quest_0_talk_6">
+				<text>as_dialog_verlnut_0_talk_6</text>
+				<next>start_actor_talk</next>
+			</phrase>
+			<phrase id="quest_0_talk_7">
+				<text>as_dialog_verlnut_0_talk_7</text>
+				<next>quest_0_talk_8</next>
+			</phrase>
+			<phrase id="quest_0_talk_8">
+				<text>as_dialog_verlnut_0_talk_8</text>
+				<next>start_npc_talk</next>
+			</phrase>
+			
+			<phrase id="quest_0_item">
+					<has_info>as_quest_verlnut_0_talk</has_info>
+					<dont_has_info>as_quest_verlnut_0_reward</dont_has_info>
+					<precondition>as_quest_verlnut.quest_0_has_item</precondition>
+				<text>as_dialog_verlnut_0_item_0</text>
+				<next>quest_0_item_1</next>
+			</phrase>
+			<phrase id="quest_0_item_1">
+				<text>as_dialog_verlnut_0_item_1</text>
+					<give_info>as_quest_verlnut_0_reward</give_info>
+					<action>as_quest_verlnut.quest_0_release_item</action>
+				<next>start_npc_talk</next>
+			</phrase>
+			
+			<phrase id="quest_1_give">
+					<dont_has_info>as_quest_verlnut_1_started</dont_has_info>
+					<has_info>as_quest_verlnut_1_available</has_info>
+				<text>as_dialog_verlnut_1_give_0</text>
+				<next>quest_1_give_1</next>
+			</phrase>
+			<phrase id="quest_1_give_1">
+				<text>as_dialog_verlnut_1_give_1</text>
+				<next>quest_1_give_2</next>
+				<next>quest_1_give_6</next>
+			</phrase>
+			<phrase id="quest_1_give_2">
+				<text>as_dialog_verlnut_1_give_2</text>
+				<next>quest_1_give_3</next>
+			</phrase>
+			<phrase id="quest_1_give_3">
+				<text>as_dialog_verlnut_1_give_3</text>
+				<next>quest_1_give_4</next>
+				<next>quest_1_give_8</next>
+			</phrase>
+			<phrase id="quest_1_give_4">
+				<text>as_dialog_verlnut_1_give_4</text>
+				<next>quest_1_give_5</next>
+			</phrase>
+			<phrase id="quest_1_give_5">
+				<text>as_dialog_verlnut_1_give_5</text>
+					<action>as_quest_verlnut.give_quest_1</action>
+				<next>start_npc_talk</next>
+			</phrase>
+				<phrase id="quest_1_give_6">
+					<text>as_dialog_verlnut_1_give_6</text>
+					<next>quest_1_give_7</next>
+				</phrase>
+				<phrase id="quest_1_give_7">
+					<text>as_dialog_verlnut_1_give_7</text>
+					<next>start_npc_talk</next>
+				</phrase>
+					<phrase id="quest_1_give_8">
+						<text>as_dialog_verlnut_1_give_8</text>
+						<next>quest_1_give_9</next>
+					</phrase>
+					<phrase id="quest_1_give_9">
+						<text>as_dialog_verlnut_1_give_9</text>
+						<next>start_npc_talk</next>
+					</phrase>
+			
+			<phrase id="quest_1_move">
+					<dont_has_info>as_quest_verlnut_1_dead</dont_has_info>
+					<has_info>as_quest_verlnut_1_started</has_info>
+				<text>as_dialog_verlnut_1_move_0</text>
+					<action>as_quest_verlnut.quest_1_teleport_actor_jupiter</action>
+					<action>dialogs.break_dialog</action>
+			</phrase>
+			
+			<phrase id="quest_1_reward">
+					<dont_has_info>as_quest_verlnut_1_reward</dont_has_info>
+					<has_info>as_quest_verlnut_1_dead</has_info>
+				<text>as_dialog_verlnut_1_reward_0</text>
+				<next>quest_1_reward_1</next>
+			</phrase>
+			<phrase id="quest_1_reward_1">
+				<text>as_dialog_verlnut_1_reward_1</text>
+					<give_info>as_quest_verlnut_1_reward</give_info>
+				<next>quest_1_reward_2</next>
+			</phrase>
+			<phrase id="quest_1_reward_2">
+				<text>as_dialog_verlnut_1_reward_2</text>
+				<next>start_actor_talk</next>
+			</phrase>
+		
+		
+		
+		<phrase id="idle_info_1">
+				<has_info>as_quest_verlnut_0_complete</has_info>
+			<text>as_dialog_verlnut_idle_info_1_0</text>
+			<next>idle_info_1_1</next>
+		</phrase>
+		<phrase id="idle_info_1_1">
+			<text>as_dialog_verlnut_idle_info_1_1</text>
+				<action>as_quest_verlnut.quest_1_available</action>
+			<next>start_npc_talk</next>
+		</phrase>
+		
+		<phrase id="idle_info_2">
+				<has_info>as_quest_verlnut_0_complete</has_info>
+			<text>as_dialog_verlnut_idle_info_2_0</text>
+			<next>idle_info_2_1</next>
+		</phrase>
+		<phrase id="idle_info_2_1">
+			<text>as_dialog_verlnut_idle_info_2_1</text>
+			<next>start_npc_talk</next>
+		</phrase>
+		
+		<phrase id="idle_info_3">
+				<has_info>as_quest_verlnut_0_complete</has_info>
+			<text>as_dialog_verlnut_idle_info_3_0</text>
+			<next>idle_info_3_1</next>
+		</phrase>
+		<phrase id="idle_info_3_1">
+			<text>as_dialog_verlnut_idle_info_3_1</text>
+			<next>start_npc_talk</next>
+		</phrase>
+		
+		<phrase id="as_dialog_verlnut_idle_bye">
+			<text>as_dialog_verlnut_idle_bye</text>
+				<action>dialogs.break_dialog</action>
+		</phrase>
+	</phrase_list>
+</dialog>
+
+<dialog id="as_dialog_verlnut_1_verlnut">
+	<phrase_list>
+		<phrase id="0">
+			<text/>
+			<next>start</next>
+		</phrase>
+		<phrase id="start">
+			<text/>
+			<next>talk</next>
+			<next>dead</next>
+		</phrase>
+		
+			<phrase id="talk">
+					<dont_has_info>as_quest_verlnut_1_dead</dont_has_info>
+				<text>as_dialog_verlnut_1_talk_0</text>
+				<next>talk_1</next>
+				<next>talk_2</next>
+			</phrase>
+			<phrase id="talk_1">
+				<text>as_dialog_verlnut_1_talk_1</text>
+					<give_info>as_quest_verlnut_1_talk</give_info>
+					<action>dialogs.break_dialog</action>
+			</phrase>
+			<phrase id="talk_2">
+				<text>as_dialog_verlnut_1_talk_2</text>
+					<action>dialogs.break_dialog</action>
+			</phrase>
+			
+			<phrase id="dead">
+					<has_info>as_quest_verlnut_1_dead</has_info>
+				<text>as_dialog_verlnut_1_dead_0</text>
+				<next>dead_1</next>
+				<next>dead_2</next>
+			</phrase>
+			<phrase id="dead_1">
+				<text>as_dialog_verlnut_1_dead_1</text>
+					<action>as_quest_verlnut.quest_1_teleport_actor_zaton</action>
+					<action>dialogs.break_dialog</action>
+			</phrase>
+			<phrase id="dead_2">
+				<text>as_dialog_verlnut_1_dead_2</text>
+					<action>dialogs.break_dialog</action>
+			</phrase>
+	</phrase_list>
+</dialog>

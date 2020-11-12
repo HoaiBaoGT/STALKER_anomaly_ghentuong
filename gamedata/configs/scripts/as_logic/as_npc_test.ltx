@@ -1,0 +1,25 @@
+[logic]
+active				= %=script(xr_custom:set_weapon:wpn_ak74u:ammo_5.45x39_fmj)% beh@general
+post_combat_time	= 0,0
+;==================================================
+[beh@base]
+dont_keep_items						= true
+gather_items_enabled				= false
+help_wounded_enabled				= false
+corpse_detection_enabled			= false
+combat_ignore_keep_when_attacked	= true
+target				= waypoint
+path_end			= loop
+walk_dist			= 0
+jog_dist			= 0
+run_anim			= patrol
+beh_net_spawn		= pt1
+use_camp			= false
+meet				= no_meet
+before_hit			= invulnerable
+combat_ignore_cond	= false
+danger_ignore		= true
+;==================================================
+[beh@general]:beh@base
+pt1 = 999999,raid | pos:-375,11,0 look:-376,11,0
+on_info = %=script(xr_custom:fight_from_waypoint)%

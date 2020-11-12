@@ -1,0 +1,61 @@
+[logic]
+active				= %=script(xr_custom:set_weapon:wpn_svu_alt_1p29:ammo_7.62x54_7h1)% beh@general
+post_combat_time	= 0,0
+trade				= items\trade\tradr_as_npc_csky_medic.ltx
+level_spot			= medic
+;==================================================
+[meet@base]
+close_anim 		= nil
+close_victim 	= nil
+far_anim 		= nil
+far_victim 		= nil
+close_distance  = 0
+far_distance 	= 0
+abuse           = false
+;----------------------------------------
+[meet@stay_base]:meet@base
+close_snd_distance	= 3
+close_snd_hello		= meet_hello
+;----------------------------------------
+[meet@escort]:meet@base
+meet_dialog = as_dialog_medic_csky_medic_0_talk
+;----------------------------------------
+[beh@base]
+dont_keep_items						= true
+gather_items_enabled				= false
+help_wounded_enabled				= false
+corpse_detection_enabled			= false
+combat_ignore_keep_when_attacked	= true
+target								= waypoint
+path_end							= loop
+walk_dist							= 0
+jog_dist							= 0
+run_anim							= patrol
+use_camp							= false
+meet								= no_meet
+before_hit							= invulnerable
+combat_ignore_cond					= false
+danger_ignore						= true
+;==================================================
+[beh@general]:beh@base
+on_info1 = {=npc_on_level(jupiter)} %=script(as_static_object:smart_static_object:jup_b205_smart_terrain:static_object_medic) =script(xr_custom:set_position:beh@stay_base:pt1)% beh@stay_base
+on_info2 = {=npc_on_level(k00_marsh) -as_quest_csky_medic_0_tele} %=script(xr_custom:set_position:beh@escort:pt1)% beh@escort
+
+;==================================================
+[beh@stay_base]:beh@base
+pt1 = 999999,guard | pos:-396.5,11.42,-10.0 animpoint:-396.5,11.42,-10.0,-1,0,0
+target = {=script(xr_custom:animpoint:animpoint_sit_normal_no_rnd)} nil, waypoint
+meet = meet@stay_base
+on_info1 = {=has_enemy !npc_talking} beh@defend_base
+on_info2 = {+as_quest_csky_defend_base !npc_talking} beh@defend_base
+;----------------------------------------
+[beh@defend_base]:beh@base
+pt1 = 999999,raid | pos:-385.0,10.10,40.0 look:-290.0,8.0,-5.0
+run_anim = assault
+on_info1 = {-as_quest_csky_defend_base} beh@stay_base
+;==================================================
+[beh@escort]:beh@base
+pt1 = 999999,scaner_stand | pos:-190,1,220 look:-180,1,230
+meet = meet@escort
+;==================================================
+

@@ -1,0 +1,149 @@
+
+<dialog id="as_dialog_chief_0_1">
+	<dont_has_info>as_dialog_chief_0_1</dont_has_info>
+	<phrase_list>
+		<phrase id="0">
+			<text>as_dialog_chief_0_1_0</text>
+			<next>1</next>
+		</phrase>
+		<phrase id="1">
+			<text>as_dialog_chief_0_1_1</text>
+			<give_info>as_dialog_chief_0_1</give_info>
+		</phrase>
+	</phrase_list>
+</dialog>
+
+<dialog id="as_dialog_chief_about_1">
+	<has_info>as_quest_chief_0_complete</has_info>
+	<phrase_list>
+		<phrase id="0">
+			<text>as_dialog_chief_about_1_0</text>
+			<next>1</next>
+		</phrase>
+		<phrase id="1">
+			<text>as_dialog_chief_about_1_1</text>
+			<next>2</next>
+			<next>4</next>
+		</phrase>
+		<phrase id="2">
+			<text>as_dialog_chief_about_1_2</text>
+			<next>3</next>
+		</phrase>
+		<phrase id="3">
+			<text>as_dialog_chief_about_1_3</text>
+			<next>4</next>
+		</phrase>
+		<phrase id="4">
+			<text>as_dialog_chief_about_1_4</text>
+		</phrase>
+	</phrase_list>
+</dialog>
+
+<dialog id="as_dialog_chief_1_1">
+	<has_info>as_quest_chief_0_complete</has_info>
+	<dont_has_info>as_quest_chief_1_started</dont_has_info>
+	<phrase_list>
+		<phrase id="0">
+			<text>as_dialog_chief_1_1_0</text>
+			<next>1</next>
+		</phrase>
+		<phrase id="1">
+			<text>as_dialog_chief_1_1_1</text>
+			<next>2</next>
+		</phrase>
+		<phrase id="2">
+			<text>as_dialog_chief_1_1_2</text>
+			<next>3</next>
+		</phrase>
+		<phrase id="3">
+			<text>as_dialog_chief_1_1_3</text>
+			<next>4</next>
+			<next>6</next>
+		</phrase>
+		<phrase id="4">
+			<text>as_dialog_chief_1_1_4</text>
+			<give_info>as_dialog_chief_1_1</give_info>
+			<action>as_quest_chief.give_quest_1</action>
+			<next>5</next>
+		</phrase>
+		<phrase id="5">
+			<text>as_dialog_chief_1_1_5</text>
+		</phrase>
+		<phrase id="6">
+			<text>as_dialog_chief_1_1_6</text>
+		</phrase>
+	</phrase_list>
+</dialog>
+
+<dialog id="as_dialog_chief_1_2">
+	<dont_has_info>as_dialog_chief_1_2</dont_has_info>
+	<has_info>as_dialog_chief_1_1</has_info>
+	<phrase_list>
+		<phrase id="0">
+			<text>as_dialog_chief_1_2_0</text>
+			<give_info>as_dialog_chief_1_2</give_info>
+			<action>dialogs.break_dialog</action>
+		</phrase>
+	</phrase_list>
+</dialog>
+
+<dialog id="as_dialog_chief_beh_1_1">
+	<dont_has_info>as_dialog_chief_beh_1_1</dont_has_info>
+	<has_info>as_dialog_chief_1_2</has_info>
+	<phrase_list>
+		<phrase id="0">
+			<text>as_dialog_chief_beh_1_1_0</text>
+			<next>1</next>
+			<next>2</next>
+		</phrase>
+			<phrase id="1">
+				<text>as_dialog_chief_beh_1_1_1</text>
+				<give_info>as_dialog_chief_beh_1_1</give_info>
+				<action>dialogs.break_dialog</action>
+			</phrase>
+			<phrase id="2">
+				<text>as_dialog_chief_beh_1_1_2</text>
+				<action>dialogs.break_dialog</action>
+			</phrase>
+	</phrase_list>
+</dialog>
+
+<dialog id="as_dialog_chief_beh_1_2">
+	<dont_has_info>as_dialog_chief_beh_1_2</dont_has_info>
+	<has_info>as_quest_chief_1_target_dead</has_info>
+	<phrase_list>
+		<phrase id="0">
+			<text>as_dialog_chief_beh_1_2_0</text>
+			<next>1</next>
+			<next>2</next>
+		</phrase>
+		<phrase id="1">
+			<text>as_dialog_chief_beh_1_2_1</text>
+			<give_info>as_dialog_chief_beh_1_2</give_info>
+			<action>dialogs.break_dialog</action>
+		</phrase>
+		<phrase id="2">
+			<text>as_dialog_chief_beh_1_2_2</text>
+			<action>dialogs.break_dialog</action>
+		</phrase>
+	</phrase_list>
+</dialog>
+
+<dialog id="as_dialog_chief_1_3">
+	<dont_has_info>as_dialog_chief_1_3</dont_has_info>
+	<has_info>as_dialog_chief_beh_1_2</has_info>
+	<phrase_list>
+		<phrase id="0">
+			<text>as_dialog_chief_1_3_0</text>
+			<next>1</next>
+		</phrase>
+		<phrase id="1">
+			<text>as_dialog_chief_1_3_1</text>
+			<next>2</next>
+		</phrase>
+		<phrase id="2">
+			<text>as_dialog_chief_1_3_2</text>
+			<give_info>as_dialog_chief_1_3</give_info>
+		</phrase>
+	</phrase_list>
+</dialog>

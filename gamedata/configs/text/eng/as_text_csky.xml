@@ -1,0 +1,770 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<string_table>
+	<string id="as_npc_csky_leader_name">
+		<text>Pilman</text>
+	</string>
+	<string id="as_npc_csky_trader_name">
+		<text>Arkady</text>
+	</string>
+	<string id="as_npc_csky_tech_name">
+		<text>Cygnus</text>
+	</string>
+	<string id="as_npc_csky_medic_name">
+		<text>Dr.Lyuger</text>
+	</string>
+	
+	<!-- QUEST RELATED TEXTS -->
+	
+		<string id="as_quest_csky_main_0_title">
+			<text>Clear Sky: New Sky</text>
+		</string>
+		<string id="as_quest_csky_main_0_descr_1">
+			<text>Cold has asked to see me. I can find him in the Clear Sky base.</text>
+		</string>
+		<string id="as_quest_csky_main_0_descr_2">
+			<text>I've donated some funds to Cold for the new Clear Sky base. Report back to him when seven days are up.</text>
+		</string>
+		<string id="as_quest_csky_main_0_descr_3">
+			<text>I've donated some funds to Cold for the new Clear Sky base. Report back to him when five days are up.</text>
+		</string>
+		<string id="as_quest_csky_main_0_descr_4">
+			<text>I've donated some funds to Cold for the new Clear Sky base. Report back to him when two days are up.</text>
+		</string>
+		<string id="as_quest_csky_main_0_descr_5">
+			<text>Clear Sky plans to build a new base in Jupiter. It is time to see Cold and plan the next move.</text>
+		</string>
+		<string id="as_quest_csky_main_0_descr_6">
+			<text>I have promised to assist Clear Sky in building the new base. Cold told me to go to Jupiter and talk with the leader there.</text>
+		</string>
+	
+	<string id="as_dialog_cold_csky_main_0_message">
+		<text>Are you looking for me?</text>
+	</string>
+	
+	<string id="as_dialog_cold_csky_main_0_donate_0">
+		<text>Are you looking for me?</text>
+	</string>
+	<string id="as_dialog_cold_csky_main_0_donate_1">
+		<text>Yes. Your recent actions have caught my attention. I'm looking for someone capable like you to help with a new undertaking.</text>
+	</string>
+	<string id="as_dialog_cold_csky_main_0_donate_2">
+		<text>What is it?</text>
+	</string>
+	<string id="as_dialog_cold_csky_main_0_donate_3">
+		<text>We plan to build a new base in Jupiter so that we can more effectively operate in the north. In addition to providing research opportunities, it could open up new sources of revenue to all of us. Naturally, this is an expensive operation and we've never been swimming in cash - one hundred thousand roubles more should get us off the ground. Since you have been so helpful to the interests of Clear Sky recently, would you consider making a significant donation?</text>
+	</string>
+	<string id="as_dialog_cold_csky_main_0_donate_4">
+		<text>That's certainly no small figure. However, I think I can help with half of it. %c[d_orange][50000 RU]</text>
+	</string>
+	<string id="as_dialog_cold_csky_main_0_donate_5">
+		<text>Thank you for your contribution. We'll have to find some other way to gather the rest; with some luck, it should take no more than a week. Come back and see me then.</text>
+	</string>
+	<string id="as_dialog_cold_csky_main_0_donate_6">
+		<text>I can contribute seventy thousand. The rest is up to you. %c[d_orange][70000 RU]</text>
+	</string>
+	<string id="as_dialog_cold_csky_main_0_donate_7">
+		<text>Your assistance is highly appreciated! We just have to gather together the rest of the funds - should take around five days. Why don't you come back then?</text>
+	</string>
+	<string id="as_dialog_cold_csky_main_0_donate_8">
+		<text>Always happy to help Clear Sky. Here's the whole thing. %c[d_orange][100000 RU]</text>
+	</string>
+	<string id="as_dialog_cold_csky_main_0_donate_9">
+		<text>What a magnanimous stalker! We'll have a drink to your generosity! This makes things much more simple for us - we should be able to start in two days. Come see me then.</text>
+	</string>
+	<string id="as_dialog_cold_csky_main_0_donate_10">
+		<text>Sorry. I really can't help you with that.</text>
+	</string>
+	
+	<string id="as_dialog_cold_csky_main_0_new_base_0">
+		<text>How's it coming?</text>
+	</string>
+	<string id="as_dialog_cold_csky_main_0_new_base_1">
+		<text>The operation is successful. The advance teams have already swept the area and it's now safe and under our control. We would be grateful if you could stop in to see the new base commander; I'm sure there's plenty of things they could use your help with. The new outpost is situated in an old checkpoint south of Yanov station. Once again, thanks for your help - Clear Sky will never forget what you've done here. As a token of our gratitude, please take this rifle. I think you could make more use of it than I can.</text>
+	</string>
+	<string id="as_dialog_cold_csky_main_0_new_base_2">
+		<text>Operations are still proceeding; there are still things that have yet to be done. You should come back later.</text>
+	</string>
+	
+	<string id="as_dialog_leader_csky_main_0_hello_0">
+		<text>Who are you? What brings you here?</text>
+	</string>
+	<string id="as_dialog_leader_csky_main_0_talk_0">
+		<text>I came here on Cold's suggestion - he thought you might need an extra hand.</text>
+	</string>
+	<string id="as_dialog_leader_csky_main_0_talk_1">
+		<text>Well then, welcome to our new outpost! Maybe you should get some rest before we talk business.</text>
+	</string>
+	<string id="as_dialog_leader_csky_main_0_talk_not_csky_0">
+		<text>I'm quite surprised that an outsider is so eager to assist Clear Sky. Why? Knowing Clear Sky's delicate position, I'm sure you can understand why we would be curious to know who our friends are.</text>
+	</string>
+	<string id="as_dialog_leader_csky_main_0_talk_not_csky_1">
+		<text>My reasons are my own.</text>
+	</string>
+	<string id="as_dialog_leader_csky_main_0_talk_not_csky_2">
+		<text>I guess I'll just have to accept that. Cold obviously trusts you, and I trust him. I hope you'll be honest with us.</text>
+	</string>
+	<string id="as_dialog_leader_csky_main_0_talk_not_csky_3">
+		<text>Clear Sky is one of our allies; what is good for you is good for us.</text>
+	</string>
+	<string id="as_dialog_leader_csky_main_0_talk_not_csky_4">
+		<text>Well, we're always happy to see volunteers. When we're full established here, we'll be happy to repay the kindness to your people.</text>
+	</string>
+	<string id="as_dialog_leader_csky_main_0_talk_not_csky_5">
+		<text>The Zone is fraught with hostility and animosity. We don't have a chance if we're not looking out for one-another.</text>
+	</string>
+	<string id="as_dialog_leader_csky_main_0_talk_not_csky_6">
+		<text>Wise words. We may have different ideas about the Zone, but mutual respect is the way to survive.</text>
+	</string>
+	<string id="as_dialog_leader_csky_main_0_talk_not_csky_7">
+		<text>I'm just here to help. I hope I can earn your trust.</text>
+	</string>
+	<string id="as_dialog_leader_csky_main_0_talk_not_csky_8">
+		<text>I hope so too. Most enemies around here usually go straight to the shooting, so you've made a good start. It's our policy to ask questions, you understand.</text>
+	</string>
+	
+		<string id="as_quest_csky_main_1_title">
+			<text>Clear Sky: My Gun Is Yours</text>
+		</string>
+		<string id="as_quest_csky_main_1_descr_1">
+			<text>Pilman asked me to escort three persons to the new base. Their names are Arkady, Cygnus and Lyuger.</text>
+		</string>
+		<string id="as_quest_csky_main_1_descr_2">
+			<text>I have escorted Arkady, Cygnus and Lyuger to the new base. Now I need to report to Pilman.</text>
+		</string>
+	
+	<string id="as_dialog_leader_csky_main_1_give_0">
+		<text>So, what can I do to help?</text>
+	</string>
+	<string id="as_dialog_leader_csky_main_1_give_1">
+		<text>Seeing that Cold chose you to come here, I'm guessing that he has some plans for you - more than just running around doing busywork. In that case, I think this job is for you.</text>
+	</string>
+	<string id="as_dialog_leader_csky_main_1_give_2">
+		<text>I am listening.</text>
+	</string>
+	<string id="as_dialog_leader_csky_main_1_give_3">
+		<text>I have some old friends. In the days under Lebedev we worked together running special assignments for Clear Sky. After the catastrophe with Strelok, we decided to disband. Now times have changed, and I need their help again. I need you to escort them here. Their names are Arkady, Cygnus and Lyuger. I will send their location to your PDA. Just use my name, Pilman, they'll know what it means.</text>
+	</string>
+	
+	<string id="as_dialog_leader_csky_main_1_info_0">
+		<text>Can you tell me about those men I have to escort?</text>
+	</string>
+	<string id="as_dialog_leader_csky_main_1_info_1">
+		<text>Sure.</text>
+	</string>
+	<string id="as_dialog_leader_csky_main_1_info_2">
+		<text>Okay. That is enough.</text>
+	</string>
+	<string id="as_dialog_leader_csky_main_1_info_1_0">
+		<text>Tell me about Arkady.</text>
+	</string>
+	<string id="as_dialog_leader_csky_main_1_info_1_1">
+		<text>Arkady was a businessman kidnapped by bandits and ended up in the Zone against his will. After we had rescued him from the bandits, he decided to join us. We're all pretty handy with a shooter, but he's good at cutting deals too. He has always negotiated the best prices for us, whether he's selling artefacts or buying weapons at the flea market. Now they've got him doing paperwork at our base in the Great Swamp.</text>
+	</string>
+	<string id="as_dialog_leader_csky_main_1_info_2_0">
+		<text>Tell me about Cygnus.</text>
+	</string>
+	<string id="as_dialog_leader_csky_main_1_info_2_1">
+		<text>Cygnus is a damn good shooter and is pretty much obsessed with firearms. After leaving, he stuck around at the Skadovsk in Zaton to study gunsmithing from a local technician. I believe it is time to put his skills to use.</text>
+	</string>
+	<string id="as_dialog_leader_csky_main_1_info_3_0">
+		<text>Tell me about Lyuger.</text>
+	</string>
+	<string id="as_dialog_leader_csky_main_1_info_3_1">
+		<text>Lyuger was a doctor from the outside world, came to the Zone with an Ecologist expedition. He discovered some artifacts that were effective in treating wounds but the Ecologists objected to the experiments he was doing. Seeing his talents go unappreciated, he joined us. You can find him wandering around the north of our base in the Great Swamp looking for artefacts.</text>
+	</string>
+	
+		<string id="as_quest_csky_trader_0_title">
+			<text>Clear Sky: My Gun Is Yours</text>
+		</string>
+		<string id="as_quest_csky_trader_0_descr">
+			<text>I have to escort Arkady to the new base in Jupiter. Currently, he is staying at the Clear Sky base in the the Great Swamp.</text>
+		</string>
+	
+	<string id="as_dialog_trader_csky_trader_0_hello_0">
+		<text>Huh? What is it?</text>
+	</string>
+	<string id="as_dialog_trader_csky_trader_0_hello_1">
+		<text>Oh, nothing.</text>
+	</string>
+	<string id="as_dialog_trader_csky_trader_0_talk_0">
+		<text>Pilman needs your help.</text>
+	</string>
+	<string id="as_dialog_trader_csky_trader_0_talk_1">
+		<text>Ah yes, I heard about that. He told me that he wants me to head up to the new site in Jupiter after his guys are done setting everything up. To be honest, I was getting a little bored with this busywork.</text>
+	</string>
+	<string id="as_dialog_trader_csky_trader_0_talk_2">
+		<text>He told me to escort you.</text>
+	</string>
+	<string id="as_dialog_trader_csky_trader_0_talk_3">
+		<text>That's just like him: he thinks that I can't get myself up there without his help. Hey, just because I know how to use my head doesn't mean I can't handle a shooter. You can leave now, I'll head out after I pack my belongings.</text>
+	</string>
+	
+		<string id="as_quest_csky_tech_0_title">
+			<text>Clear Sky: My Gun Is Yours</text>
+		</string>
+		<string id="as_quest_csky_tech_0_descr">
+			<text>I have to escort Cygnus to the new base in Jupiter. Currently, he stuck around at the Skadovsk in Zaton.</text>
+		</string>
+	
+	<string id="as_dialog_tech_csky_tech_0_hello_0">
+		<text>What's up, man?</text>
+	</string>
+	<string id="as_dialog_tech_csky_tech_0_hello_1">
+		<text>Ha, Pilman will want to see what I'm working on.</text>
+	</string>
+	<string id="as_dialog_tech_csky_tech_0_talk_0">
+		<text>Pilman needs your help.</text>
+	</string>
+	<string id="as_dialog_tech_csky_tech_0_talk_1">
+		<text>Pilman, eh? So I guess the rumor about the new base in Jupiter is true. Interesting. Well, thanks for letting me know. I'll make my way there pretty soon.</text>
+	</string>
+	<string id="as_dialog_tech_csky_tech_0_talk_2">
+		<text>He told me to escort you.</text>
+	</string>
+	<string id="as_dialog_tech_csky_tech_0_talk_3">
+		<text>That's alright, I can handle it myself - haven't forgotten how to shoot a gun just yet. However, I've had a drink or two and it isn't a good idea to travel like that. Tell him... I'll get up there as soon as I can.</text>
+	</string>
+	
+		<string id="as_quest_csky_medic_0_title">
+			<text>Clear Sky: My Gun Is Yours</text>
+		</string>
+		<string id="as_quest_csky_medic_0_descr_1">
+			<text>I have to escort Lyuger to the new base in Jupiter. I can find him wandering around the notrh of the Clear Sky base in the the Great Swamp.</text>
+		</string>
+		<string id="as_quest_csky_medic_0_descr_2">
+			<text>I agreed to help Lyuger finding a Soul artefact hiding between those gas anomalies nearby.</text>
+		</string>
+		<string id="as_quest_csky_medic_0_descr_3">
+			<text>I had found the Soul artefact as Lyuger mentioned but I lost it. Now, I have to find another one in replacement.</text>
+		</string>
+		<string id="as_quest_csky_medic_0_descr_4">
+			<text>I had found the Soul artefact as Lyuger mentioned. Now I need to bring it to him.</text>
+		</string>
+	
+	<string id="as_dialog_medic_csky_medic_0_hello_0">
+		<text>Yes?</text>
+	</string>
+	<string id="as_dialog_medic_csky_medic_0_hello_1">
+		<text>Hm, Pilman. That never bodes well.</text>
+	</string>
+	<string id="as_dialog_medic_csky_medic_0_talk_0">
+		<text>Pilman needs your help.</text>
+	</string>
+	<string id="as_dialog_medic_csky_medic_0_talk_1">
+		<text>I bet he does. Very well. It's just that... according to my model, this anomaly field should have certainly created a Soul artefact today. It is very important for my research that I obtain it. But the damn detector... it isn't working properly.</text>
+	</string>
+	<string id="as_dialog_medic_csky_medic_0_talk_2">
+		<text>I know a thing or two about finding artefacts. I can get it for you.</text>
+	</string>
+	<string id="as_dialog_medic_csky_medic_0_talk_3">
+		<text>You? Okay, but use caution. One step in a gas anomaly and your leg will have to be amputated - I've done it before.</text>
+	</string>
+	<string id="as_dialog_medic_csky_medic_0_talk_4">
+		<text>Here. %c[d_orange][Soul]</text>
+	</string>
+	<string id="as_dialog_medic_csky_medic_0_talk_5">
+		<text>On second thought, you just keep it. Clear Sky is about fair rewards for good work, not contracting Mercenary scumbags for suicide missions. It would just be a waste if we left it here, wouldn't it? So, the old Checkpoint in Jupiter, right? He's already told me about the situation. Okay, I will see you there.</text>
+	</string>
+	<string id="as_dialog_medic_csky_medic_0_talk_6">
+		<text>He wanted me to escort you.</text>
+	</string>
+	<string id="as_dialog_medic_csky_medic_0_talk_7">
+		<text>If you want to escort some useless egghead, then go see those lazy-ass Ecologists in Yantar. I can make my own way.</text>
+	</string>
+	
+	<string id="as_dialog_leader_csky_main_1_reward_0">
+		<text>The team is back together.</text>
+	</string>
+	<string id="as_dialog_leader_csky_main_1_reward_1">
+		<text>Thank you stalker. Thought they might have wanted to come without a guide - they're stubborn like that. Still, thought I'd offer it... If you ever command a squad yourself, you'll understand the caution.</text>
+	</string>
+	
+		<string id="as_quest_csky_main_2_title">
+			<text>Clear Sky: Stronger Sky</text>
+		</string>
+		<string id="as_quest_csky_main_2_descr">
+			<text>Clear Sky is looking to strengthen its new position. I was told to see Arkady, Dr. Lyuger and Cygnus.</text>
+		</string>
+	
+	<string id="as_dialog_leader_csky_main_2_give_0">
+		<text>What happens next?</text>
+	</string>
+	<string id="as_dialog_leader_csky_main_2_give_1">
+		<text>Well, we're still looking into our next move; I need to have a talk with Cold as to the current situation. In the meantime, why don't you ask our three new arrivals? I'm sure they've come up with something useful to do.</text>
+	</string>
+	
+		<string id="as_quest_csky_trader_1_title">
+			<text>Clear Sky: It's Just Business</text>
+		</string>
+		<string id="as_quest_csky_trader_1_descr_1">
+			<text>A group of bandits is harassing our supply chain from somewhere in the Red Forest. Time to put an end to them.</text>
+		</string>
+		<string id="as_quest_csky_trader_1_descr_2">
+			<text>A group of bandits is harassing our supply chain from somewhere in the Red Forest. It's best not to escalate the situation with our allies. It might be a good idea to talk with them.</text>
+		</string>
+		<string id="as_quest_csky_trader_1_descr_3">
+			<text>The bandit nuisance has been cleared up. I need to report back to Arkady.</text>
+		</string>
+	
+	<string id="as_dialog_trader_csky_trader_1_give_0">
+		<text>Can I help you with anything?</text>
+	</string> 
+	<string id="as_dialog_trader_csky_trader_1_give_1">
+		<text>So you're our hero, eh? I got a problem right here: bandits have sniffed out our activities in this area, they're harassing our supply chain in Red Forest. If we don't clear them out soon, we're going to be crippled up here. Sending out a whole squad doesn't work - they always see us coming. Why don't you give it a shot? Head over there, smoke them out and teach them that they never should have messed with Clear Sky.</text>
+	</string>
+	
+	<string id="as_dialog_trader_csky_trader_1_reward_0">
+		<text>The bandit trouble is no more.</text>
+	</string>
+	<string id="as_dialog_trader_csky_trader_1_reward_1">
+		<text>Well done. Now the route's open and we've got our supplies coming in nicely. Here, this is for you.</text>
+	</string>
+	
+	<string id="as_dialog_csky_trader_1_bandit_0">
+		<text>Why don't you lay off the Clear Sky supply chain? My faction doesn't like seeing our friends getting ripped off.</text>
+	</string>
+	<string id="as_dialog_csky_trader_1_bandit_1">
+		<text>Is that so? Ok, bro, I'm reasonable: let's not let this get in the way of a happy partnership. But you have to understand it's a long, shitty trip to come up here and we'd like to see something for it. We can make this easy: just give us, eh... twenty thousand and my boys and I will skip town. You've got my word on it. Is it a deal?</text>
+	</string>
+	<string id="as_dialog_csky_trader_1_bandit_2">
+		<text>Here. Now, piss off. %c[d_orange][20000]</text>
+	</string>
+	<string id="as_dialog_csky_trader_1_bandit_3">
+		<text>Hah, glad to see reasonable stalkers around here. Okay, you can tell whoever sent you that we'll steer clear of their shit.</text>
+	</string>
+	
+		<string id="as_quest_csky_tech_1_title">
+			<text>Clear Sky: Theory Isn't Enough</text>
+		</string>
+		<string id="as_quest_csky_tech_1_descr_1">
+			<text>I have to use the modified shotgun that Cygnus gave me to kill ten mutants.</text>
+		</string>
+		<string id="as_quest_csky_tech_1_descr_2">
+			<text>The gun Cygnus gave me exploded to pieces when I shot. I'm sure he'll be interested to hear about it.</text>
+		</string>
+		<string id="as_quest_csky_tech_1_wpn_toz34_mark4_name">
+			<text>Cygnus' modified TOZ-34 Bizon</text>
+		</string>
+	
+	<string id="as_dialog_tech_csky_tech_1_give_0">
+		<text>Have anything I can help with?</text>
+	</string>
+	<string id="as_dialog_tech_csky_tech_1_give_1">
+		<text>I'm sure Pilman has told you about my hobbies during my time on the Skadovsk; I picked up all sorts of interesting things regarding gunsmithing, upgrading weapons, improving equipment and the like. I brought some of my work with me, but I haven't had the chance to test anything out. Here's a special project of mine: a TOZ-34 Bizon with some... adjustments. Take it and go try it out. I want plenty of feedback, so be thorough and kill, let's say, ten mutants. Good hunting!</text>
+	</string>
+	
+	<string id="as_dialog_tech_csky_tech_1_reward_0">
+		<text>I think your shooter needs some more work. It exploded to shit in my hands.</text>
+	</string>
+	<string id="as_dialog_tech_csky_tech_1_reward_1">
+		<text>Hmm... looks like those new barrels aren't sturdy enough - should have done my dispersion tests with heavier loads. Spleen was right again: you just can't go cheap on materials. Oh, and sorry about that, you alright? Here, for your trouble. I think that's all I've got for testing at the moment; I'll just be fine-tuning for a while. Come see me if you need help with your equipment.</text>
+	</string>
+	
+		<string id="as_quest_csky_medic_1_title">
+			<text>Clear Sky: The Physician's Instruments</text>
+		</string>
+		<string id="as_quest_csky_medic_1_descr">
+			<text>Lyuger needs some medical instruments. They are:</text>
+		</string>
+	
+	<string id="as_dialog_medic_csky_medic_1_give_0">
+		<text>Need anything?</text>
+	</string>
+	<string id="as_dialog_medic_csky_medic_1_give_1">
+		<text>Ah yes, I remember you from the swamp: you did some neat work navigating anomaly fields. You actually remind me of someone I knew long ago.</text>
+	</string>
+	<string id="as_dialog_medic_csky_medic_1_give_2">
+		<text>Who is that?</text>
+	</string>
+	<string id="as_dialog_medic_csky_medic_1_give_3">
+		<text>I'm sure you've heard the name Scar? A painful name these days: it's hard not to think of the disaster... Anyway, there is indeed something I could use you for.</text>
+	</string>
+	<string id="as_dialog_medic_csky_medic_1_give_4">
+		<text>What would that be?</text>
+	</string>
+	<string id="as_dialog_medic_csky_medic_1_give_5">
+		<text>I need some tools for my trade: specialized medical instruments, you understand. As you can guess, it's not easy to procure such things in this circus. Even Hawaiian at the train station can't help me with these. However, I'm confident that someone around here has such items for sale. I would go looking myself but... my leg, you know. If you would like to assist me, here is the list of the things I need.</text>
+	</string>
+	
+	<string id="as_dialog_medic_csky_medic_1_reward_0">
+		<text>I managed to track down what you were looking for.</text>
+	</string>
+	<string id="as_dialog_medic_csky_medic_1_reward_1">
+		<text>Job well done! You've come through for me again. And, as I once said, fair rewards for honest work.</text>
+	</string>
+	
+		<string id="as_quest_csky_main_3_title">
+			<text>Clear Sky: The Past Sky</text>
+		</string>
+		<string id="as_quest_csky_main_3_descr_1">
+			<text>I have agreed with Pilman to kill a group of Monolith at Dredge Station in Zaton. They are very dangerous, for they were once Clear Sky elite fighters, but Pilman promised a fine payment.</text>
+		</string>
+		<string id="as_quest_csky_main_3_descr_2">
+			<text>I have killed the Monolith group. They were setting up a weird device, but I had destroyed it. Looks like they were up to something suspicious. I would better report it to Pilman.</text>
+		</string>
+	
+	<string id="as_dialog_leader_csky_main_3_give_0">
+		<text>Anything new?</text>
+	</string>
+	<string id="as_dialog_leader_csky_main_3_give_1">
+		<text>Just in time. I think we should start from the disaster. Maybe you don't know about it, for you have just come to the Zone lately. A couple of years ago, the Zone became unstable, for a man named Strelok tried to reach the north of the Zone. We chased him all the way to the Nuclear Power Plant, and we succeeded in stopping him. But then right at this moment, a big emission occurred causing massive casualties to us. Even worse, after that, we have found some of our men being among Monolith ranks. One of our highly skilled assault forces was reported in responsibility for countless murder cases. How shame?</text>
+	</string>
+	<string id="as_dialog_leader_csky_main_3_give_2">
+		<text>I guess they are our target, aren't they?</text>
+	</string>
+	<string id="as_dialog_leader_csky_main_3_give_3">
+		<text>Exactly. Also, they have many handsome bounties on their head, so you better believe. They have set up a camp at Dredge Station in Zaton reacently, and surely they won't leave anytime soon. Remember, they were Clear Sky veteran fighters and all well trained, you better use caution when approaching. There are still works to be done here, so I can't leave the base for now. You have to carry this mission alone, perhaps with your gang, I suppose. All I care about is a cure for them. You take the bounty money.</text>
+	</string>
+	<string id="as_dialog_leader_csky_main_3_give_4">
+		<text>Consider it done.</text>
+	</string>
+	<string id="as_dialog_leader_csky_main_3_give_5">
+		<text>Ehh... Monolith is too dangerous. I can't help with it.</text>
+	</string>
+	
+	<string id="as_dialog_leader_csky_main_3_reward_0">
+		<text>They are dead. Seems they were setting up a weird device.</text>
+	</string>
+	<string id="as_dialog_leader_csky_main_3_reward_1">
+		<text>Device? Wait. I have a bad feeling about this. How does it look?</text>
+	</string>
+	<string id="as_dialog_leader_csky_main_3_reward_2">
+		<text>It is a kind of machine creating a psi field around. I have destroyed it.</text>
+	</string>
+	<string id="as_dialog_leader_csky_main_3_reward_3">
+		<text>Damn, exactly it... Well. Well done, friend. These are all of their bounties Arkady could collect from his... sources. Spend them wisely.</text>
+	</string>
+	
+		<string id="as_quest_csky_main_4_title">
+			<text>Clear Sky: Defend Clear Sky Base</text>
+		</string>
+		<string id="as_quest_csky_main_4_descr_1">
+			<text>An unknown monolith force is attacking us. I have to help Pilman defend the base.</text>
+		</string>
+		<string id="as_quest_csky_main_4_descr_2">
+			<text>The monolith force has been pushed back. Pilman want to see me.</text>
+		</string>
+		<string id="as_quest_csky_main_4_descr_3">
+			<text>I have run away from the conflict. It was a shame, but I have to explain to Pilman.</text>
+		</string>
+	
+	<string id="as_dialog_leader_csky_main_4_give_0">
+		<text>You seem to know what is behind it, aren't you?</text>
+	</string>
+	<string id="as_dialog_leader_csky_main_4_give_1">
+		<text>Yes. Have you ever heard of the Miracle Machine in Yantar factory? We've had a research team studying the psi field around it before. We even made a small psi emitter to simulate the big one in the factory.</text>
+	</string>
+	<string id="as_dialog_leader_csky_main_4_give_2">
+		<text>It would be quite dangerous, if you ask me.</text>
+	</string>
+	<string id="as_dialog_leader_csky_main_4_give_3">
+		<text>Of course. Even though it didn't harm anyone, we decided to stop and destroy all documents related to it. The only person who knows how to make it is Deneb, the one who led the research team, and he was missing in the emission back in the day.</text>
+	</string>
+	<string id="as_dialog_leader_csky_main_4_give_4">
+		<text>I guess Lebedev wasn't happy with that.</text>
+	</string>
+	<string id="as_dialog_leader_csky_main_4_give_5">
+		<text>Sure, why would he? He disapproved, but he got the point. It was too dangerous. We decided to stop and destroy all documents related to it. The only person who knows how to make it is Deneb, the one who led the research team, and he was missing in the emission back in the day.</text>
+	</string>
+	<string id="as_dialog_leader_csky_main_4_give_6">
+		<text>You mean he is among Monolith ranks and has responsibility for that psi emitter?</text>
+	</string>
+	<string id="as_dialog_leader_csky_main_4_give_7">
+		<text>I'm afraid so. Great Swamp Base has been attacked by Monolith force before. Information found from their bodies via PDA said that Deneb was behind the attack. So you knew why we decided to build this base here. Research is just an excuse. We want to learn what he is after, not to mention that he has such dangerous knowledge.</text>
+	</string>
+	<string id="as_dialog_leader_csky_main_4_give_8">
+		<text>Well. Then what should we...</text>
+	</string>
+	
+	<string id="as_dialog_leader_csky_main_4_fight_begin_0">
+		<text>What is this noise?</text>
+	</string>
+	<string id="as_dialog_leader_csky_main_4_fight_begin_1">
+		<text>The monolith is attacking us. Where do they come from?</text>
+	</string>
+	<string id="as_dialog_leader_csky_main_4_fight_begin_2">
+		<text>Everyone! We are in a situation. Stay sharp and stick together.</text>
+	</string>
+	<string id="as_dialog_leader_csky_main_4_fight_state_1">
+		<text>Don't let your guard down. Stay close and watch each others' backs.</text>
+	</string>
+	<string id="as_dialog_leader_csky_main_4_fight_state_2">
+		<text>They are more coming in. Keep it up.</text>
+	</string>
+	<string id="as_dialog_leader_csky_main_4_fight_state_3">
+		<text>Seems like they have stopped. Hey buddy, come see me. We need to talk.</text>
+	</string>
+	
+	<string id="as_dialog_leader_csky_main_4_reward_help_0">
+		<text>Glad to see you stood with us in the fight. I was nervous to let you know about our plan, but your actions have proved yourself a trustworthy person. Men like you are hard to find these days.</text>
+	</string>
+	<string id="as_dialog_leader_csky_main_4_reward_help_1">
+		<text>You would better believe.</text>
+	</string>
+	<string id="as_dialog_leader_csky_main_4_reward_flee_0">
+		<text>The assault was a surprise for us, but we managed to hold the base, and they were retreated. However, I am disappointed to hear that you fled from the field of battle. I know the fight was tough and retreating would be a better choice, but such coward behaviors won't be rewarded. It reminded me too much of the Clear Sky I once knew. I hope that you won't let me down next time.</text>
+	</string>
+	<string id="as_dialog_leader_csky_main_4_reward_flee_1">
+		<text>I'm sorry. It will never happen again.</text>
+	</string>
+	
+	
+	
+	
+	
+	
+	<!-- NON QUEST RELATED TEXTS -->
+	
+	<string id="as_dialog_leader_hello_idle_1">
+		<text>Any news?</text>
+	</string>
+	<string id="as_dialog_leader_hello_idle_2">
+		<text>Anything to report?</text>
+	</string>
+	<string id="as_dialog_leader_hello_idle_3">
+		<text>Hm?</text>
+	</string>
+	<string id="as_dialog_leader_hello_idle_4">
+		<text>Yes?</text>
+	</string>
+	<string id="as_dialog_leader_hello_idle_5">
+		<text>Good to see you.</text>
+	</string>
+	
+	<string id="as_dialog_trader_hello_idle_1">
+		<text>Welcome.</text>
+	</string>
+	<string id="as_dialog_trader_hello_idle_2">
+		<text>Hello, friend.</text>
+	</string>
+	<string id="as_dialog_trader_hello_idle_3">
+		<text>What do you need?</text>
+	</string>
+	<string id="as_dialog_trader_hello_idle_4">
+		<text>What's up?</text>
+	</string>
+	<string id="as_dialog_trader_hello_idle_5">
+		<text>Huh? What is it?</text>
+	</string>
+	
+	<string id="as_dialog_trader_trade_1">
+		<text>Take a look.</text>
+	</string>
+	<string id="as_dialog_trader_trade_2">
+		<text>The best weapons and armor.</text>
+	</string>
+	<string id="as_dialog_trader_trade_3">
+		<text>Here's what I can spare.</text>
+	</string>
+	<string id="as_dialog_trader_trade_5">
+		<text>You've come to the right place.</text>
+	</string>
+	<string id="as_dialog_trader_trade_4">
+		<text>Welcome to my humble store.</text>
+	</string>
+	
+	<string id="as_dialog_tech_hello_idle_1">
+		<text>How's it going?</text>
+	</string>
+	<string id="as_dialog_tech_hello_idle_2">
+		<text>Greetings, stalker.</text>
+	</string>
+	<string id="as_dialog_tech_hello_idle_3">
+		<text>Need to fix something?</text>
+	</string>
+	<string id="as_dialog_tech_hello_idle_4">
+		<text>Good day!</text>
+	</string>
+	<string id="as_dialog_tech_hello_idle_5">
+		<text>Hello there.</text>
+	</string>
+	
+	<string id="as_dialog_tech_trade_1">
+		<text>Tools, repair kits, oil...</text>
+	</string>
+	<string id="as_dialog_tech_trade_2">
+		<text>Want to do it yourself, huh?</text>
+	</string>
+	<string id="as_dialog_tech_trade_3">
+		<text>Don't ever think you can replace me, buddy.</text>
+	</string>
+	<string id="as_dialog_tech_trade_4">
+		<text>I usually don't want to share them. But for you is fine.</text>
+	</string>
+	<string id="as_dialog_tech_trade_5">
+		<text>So you are a technician, then.</text>
+	</string>
+	
+	<string id="as_dialog_tech_mechanic_1">
+		<text>My specialty.</text>
+	</string>
+	<string id="as_dialog_tech_mechanic_2">
+		<text>Let me see.</text>
+	</string>
+	<string id="as_dialog_tech_mechanic_3">
+		<text>Guns can solve every problem.</text>
+	</string>
+	<string id="as_dialog_tech_mechanic_4">
+		<text>The finest equipments for the best stalker.</text>
+	</string>
+	<string id="as_dialog_tech_mechanic_5">
+		<text>Western shooters, russian shooters, nothing I can't handle.</text>
+	</string>
+	
+	<string id="as_dialog_medic_hello_idle_1">
+		<text>Yes?</text>
+	</string>
+	<string id="as_dialog_medic_hello_idle_2">
+		<text>Speak.</text>
+	</string>
+	<string id="as_dialog_medic_hello_idle_3">
+		<text>Talk.</text>
+	</string>
+	<string id="as_dialog_medic_hello_idle_4">
+		<text>Hm?</text>
+	</string>
+	<string id="as_dialog_medic_hello_idle_5">
+		<text>I'm listening.</text>
+	</string>
+	
+	<string id="as_dialog_medic_trade_1">
+		<text>Bandages, medkits, medicines...</text>
+	</string>
+	<string id="as_dialog_medic_trade_2">
+		<text>See for yourself.</text>
+	</string>
+	<string id="as_dialog_medic_trade_3">
+		<text>Use them wisely.</text>
+	</string>
+	<string id="as_dialog_medic_trade_4">
+		<text>I don't have many of these.</text>
+	</string>
+	<string id="as_dialog_medic_trade_5">
+		<text>Preparation is fine, but not having to use any of these would be better.</text>
+	</string>
+	
+	<!-- IDLE STORIES -->
+	<string id="as_dialog_leader_story_1_0">
+		<text>Is it a bit too much reinforcement for the base?</text>
+	</string>
+	<string id="as_dialog_leader_story_1_1">
+		<text>Perhaps. But once a situation is in, every bit of it count. More is better than not enough.</text>
+	</string>
+	<string id="as_dialog_leader_story_2_0">
+		<text>You can definitely have guns that are better than an AK-74u.</text>
+	</string>
+	<string id="as_dialog_leader_story_2_1">
+		<text>I spent most of my time to train recruits. It isn't wise to use a fancy shooter that they can't own one for themself anytime soon. Besides that, using the same weapon as they are works best for earning their trust.</text>
+	</string>
+	<string id="as_dialog_leader_story_3_0">
+		<text>TODO</text>
+	</string>
+	<string id="as_dialog_leader_story_3_1">
+		<text>TODO</text>
+	</string>
+	
+	<string id="as_dialog_trader_story_1_0">
+		<text>What kind of business were you doing before entering the Zone?</text>
+	</string>
+	<string id="as_dialog_trader_story_1_1">
+		<text>So what is it that you are expecting? It is the same as what I'm doing right now, dealling weapons. One day, a group of bandits had enough balls to raid a supply convoy of Ukraine Military which I taked part in and held me as a hostage. Time passed long enough for me to know that there wouldn't be any rescuing from those corrupted lame troops. Eventually, Pilman and his gang attacked the bandits and found me and I found myself among Clear Sky ranks.</text>
+	</string>
+	<string id="as_dialog_trader_story_2_0">
+		<text>PKM huh? A weird weapon choice for an elegant trader, I guess.</text>
+	</string>
+	<string id="as_dialog_trader_story_2_1">
+		<text>Not that heavy comparing to a PKM sealed in a wooden box. Carrying goods everyday keeps my old age a bay. I can definitely take two lazy Military guards in a brawl.</text>
+	</string>
+	<string id="as_dialog_trader_story_3_0">
+		<text>What? You are selling toolkits?</text>
+	</string>
+	<string id="as_dialog_trader_story_3_1">
+		<text>Gotcha. Can you believe it? No a single technician in the Zone has a set of toolkits for himself but seeking stalkers around to fetch it for him. And even more than that, no a single trader bothers selling it. A good opportunity I could say.</text>
+	</string>
+	
+	<string id="as_dialog_tech_story_1_0">
+		<text>Can I use the vise?</text>
+	</string>
+	<string id="as_dialog_tech_story_1_1">
+		<text>Feel free to use it. There is nothing to bargain with our friends. Just make sure to clean it up afterward.</text>
+	</string>
+	<string id="as_dialog_tech_story_2_0">
+		<text>Shotguns are a powerful type of firearm, indeed.</text>
+	</string>
+	<string id="as_dialog_tech_story_2_1">
+		<text>Here in the Zone, we use weapons for self-defense against mutants more than hostile stalkers. One hit will kill most of the mutants you would face. If one hit doesn't work, two hits will definitely do. But don't afraid to use more since buckshot shells are very cheap comparing to the shells of other calibers.</text>
+	</string>
+	<string id="as_dialog_tech_story_3_0">
+		<text>TODO</text>
+	</string>
+	<string id="as_dialog_tech_story_3_1">
+		<text>TODO</text>
+	</string>
+	
+	<string id="as_dialog_medic_story_1_0">
+		<text>How is your leg?</text>
+	</string>
+	<string id="as_dialog_medic_story_1_1">
+		<text>What can I say? One less leg to worry about when hacking my way around anomalies, I suppose. You should try it sometime.</text>
+	</string>
+	<string id="as_dialog_medic_story_2_0">
+		<text>Sniper rifle? Very much expected weapon for a medic.</text>
+	</string>
+	<string id="as_dialog_medic_story_2_1">
+		<text>I prefer "doctor". It is just recently since I lost the leg. Less movement, you know. It is quite decent for scouting an area before seaching for artefacts. But sticking on high ground and snipping dogs and snorks isn't a fun experience.</text>
+	</string>
+	
+	<string id="as_dialog_leader_wisdom_0">
+		<text>Can you tell me about factions?</text>
+	</string>
+	<string id="as_dialog_leader_wisdom_1">
+		<text>Yes.</text>
+	</string>
+	<string id="as_dialog_leader_wisdom_2">
+		<text>Thanks for sharing the knowledge.</text>
+	</string>
+	<string id="as_dialog_leader_wisdom_csky_0">
+		<text>I want to learn more about Clear Sky.</text>
+	</string>
+	<string id="as_dialog_leader_wisdom_csky_1">
+		<text>I want to learn more about Clear Sky.</text>
+	</string>
+	
+	
+	<string id="as_dialog_medic_knowledge_0">
+		<text>Can you tell me about anomalies?</text>
+	</string>
+	<string id="as_dialog_medic_knowledge_1">
+		<text>Sure.</text>
+	</string>
+	<string id="as_dialog_medic_knowledge_2">
+		<text>Thanks for sharing the knowledge.</text>
+	</string>
+	<string id="as_dialog_medic_knowledge_gravity_0">
+		<text>I want to learn more about Gravity.</text>
+	</string>
+	<string id="as_dialog_medic_knowledge_gravity_1">
+		<text>Springboard, Vortex, Whirligig are in this category. Though they all are gravity-based anomalies, their behavior is different. From cheap blasts of the Springboard, draging victims to the center of the Vortex to snatching victims up in the air and dismembering them to non-existing of the Whirligig. Bolts can easily spot them but they can't tell you the size.</text>
+	</string>
+	<string id="as_dialog_medic_knowledge_gas_0">
+		<text>I want to learn more about Gas.</text>
+	</string>
+	<string id="as_dialog_medic_knowledge_gas_1">
+		<text>Those acid clouds erode cells of living creatures extremely quickly. You've known why I lost my leg already. The toxic isn't much of an issue. Even a cheap cloth mask would keep you alive long enough to comfortably search for artefacts. Bolts won't help you much with this type. Better keep a keen eye on your steps as they are fairly easy to be spotted.</text>
+	</string>
+	<string id="as_dialog_medic_knowledge_burner_0">
+		<text>I want to learn more about Burner.</text>
+	</string>
+	<string id="as_dialog_medic_knowledge_burner_1">
+		<text>They are strange fire sourses, burn like hell even in rain. You can easily recognize them by the sight of structures being burned down around and the heat in the air. Tossing a bolt will definitely smoke them out. But the worst part is that the heat will destroy equipment very quickly. Impatient stalkers usually end up dead in this kind of anomaly, for they fear their expensive equipment being ruined.</text>
+	</string>
+	<string id="as_dialog_medic_knowledge_electro_0">
+		<text>I want to learn more about Electro.</text>
+	</string>
+	<string id="as_dialog_medic_knowledge_electro_1">
+		<text>They are static electricity sources, charge up like capacitors, and discharge on contact with conductive materials. The worst thing, the resistor of living creature cells is low than enough to trigger them so you would better believe. They are easily to be spotted by both eyes and bolts but they are always in clusters with each other. You won't find a Electro staying alone.</text>
+	</string>
+	
+	
+	
+</string_table>

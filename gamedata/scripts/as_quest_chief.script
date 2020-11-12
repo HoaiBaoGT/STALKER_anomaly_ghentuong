@@ -1,0 +1,216 @@
+--=============================================================
+--Anomaly 1.5.5.0
+--GhenTuong
+--=============================================================
+local STAGE_STATUS = {[0] = {},[1] = {},[2] = {}}
+local STAGE_TARGET = {[0] = {},[1] = {},[2] = {}}
+local QUEST_LIST = {
+	[1] = "as_quest_chief_1",
+	[2] = "as_quest_chief_2",
+}
+function give_quest_1()
+	task_manager.get_task_manager():give_task(QUEST_LIST[1])
+end
+--[[
+cmd = debug_cmd_list.command_get_list()
+function cmd.chief_0()
+	task_manager.get_task_manager():give_task("as_quest_chief_0")
+end
+
+function cmd.chief_1()
+	task_manager.get_task_manager():give_task(QUEST_LIST[1])
+end
+function cmd.chief_2()
+	task_manager.get_task_manager():give_task(QUEST_LIST[2])
+end
+--]]
+--=============================================================
+--Quest 0
+--=============================================================
+STAGE_STATUS[0][0] = function(tsk,task_id)
+	local smart = SIMBOARD.smarts_by_names["val_smart_terrain_7_3"]
+	if not (smart) then return 1 end
+	alife():create("as_npc_chief",smart.position,smart.m_level_vertex_id,smart.m_game_vertex_id)
+	alife():create("as_npc_eagle",smart.position,smart.m_level_vertex_id,smart.m_game_vertex_id)
+	alife():create("as_npc_snake",smart.position,smart.m_level_vertex_id,smart.m_game_vertex_id)
+	return 1
+end
+STAGE_TARGET[0][0] = function(tsk,task_id)
+	return nil
+end
+
+STAGE_STATUS[0][1] = function(tsk,task_id)
+	local se_npc = get_story_se_object("as_npc_chief")
+	local ob_npc = get_story_object("as_npc_chief")
+	local check = (not se_npc) or (ob_npc and not ob_npc:alive())
+	if check or has_alife_info("as_dialog_chief_0_1") then
+		if not has_alife_info("as_quest_chief_0_complete") then
+			give_info("as_quest_chief_0_complete")
+		end
+	end
+end
+STAGE_TARGET[0][1] = function(tsk,task_id)
+	local npc = get_story_se_object("as_npc_chief")
+	return npc and npc.id or nil
+end
+
+--=============================================================
+--Quest 1
+--=============================================================
+STAGE_STATUS[1][0] = function(tsk,task_id)
+	alife():create("stalker_outfit", db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), AC_ID)
+	alife():create("wpn_mosin", db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), AC_ID)
+	create_ammo("ammo_7.62x54_7h1", db.actor:position(), db.actor:level_vertex_id(), db.actor:game_vertex_id(), AC_ID, 40)
+	news_manager.relocate_item(db.actor,"in","wpn_mosin",1)
+	news_manager.relocate_item(db.actor,"in","stalker_outfit",1)
+	news_manager.relocate_item(db.actor,"in","ammo_7.62x54_7h1",40)
+	return 1
+end
+STAGE_TARGET[1][0] = function(tsk,task_id)
+	return nil
+end
+
+STAGE_STATUS[1][1] = function(tsk,task_id)
+	if (has_alife_info("as_dialog_chief_1_2")) then
+		local location = vector():set(36,0,128)
+		local lvid = 68067
+		local gvid = 1925
+		ChangeLevel(location ,lvid, gvid, VEC_ZERO, true)
+		return 2
+	end
+end
+STAGE_TARGET[1][1] = function(tsk,task_id)
+	local npc = get_story_se_object("as_npc_chief")
+	return npc and npc.id or nil
+end
+
+STAGE_STATUS[1][2] = function(tsk,task_id)
+	local CACHE = utils.load_var(db.actor, task_id) or {}
+	if not has_alife_info("as_chief_on_mission") then
+		give_info("as_chief_on_mission")
+	end
+	local story_npc_list = {"as_npc_chief","as_npc_eagle","as_npc_snake"}
+	for index,story_id in pairs(story_npc_list) do
+		local npc = get_story_se_object(story_id)
+		if npc and (level.name() == "l06_rostok") and (alife():level_name(game_graph():vertex(npc.m_game_vertex_id):level_id()) ~= "l06_rostok") then
+			local location = vector():set(27,0,127)
+			local lvid = 67680
+			local gvid = 1925
+			TeleportObject(npc.id, location, lvid, gvid)
+		end
+	end
+	if not (CACHE.enemy) then
+		CACHE.enemy = {}
+		local npc = {}
+		local smart = SIMBOARD.smarts_by_names["ros_smart_monster5"]
+		if (smart) then
+			npc = alife():create("as_npc_chief_enemy_ecolog", smart.position, smart.m_level_vertex_id, smart.m_game_vertex_id)
+			CACHE.enemy[1] = {id = npc.id,section_name = npc:section_name()}
+			npc = alife():create("as_npc_chief_enemy_stalker", smart.position, smart.m_level_vertex_id, smart.m_game_vertex_id)
+			CACHE.enemy[2] = {id = npc.id,section_name = npc:section_name()}
+			npc = alife():create("as_npc_chief_enemy_stalker", smart.position, smart.m_level_vertex_id, smart.m_game_vertex_id)
+			CACHE.enemy[3] = {id = npc.id,section_name = npc:section_name()}
+			npc = alife():create("as_npc_chief_enemy_stalker", smart.position, smart.m_level_vertex_id, smart.m_game_vertex_id)
+			CACHE.enemy[4] = {id = npc.id,section_name = npc:section_name()}
+			npc = alife():create("as_npc_chief_enemy_stalker", smart.position, smart.m_level_vertex_id, smart.m_game_vertex_id)
+			CACHE.enemy[5] = {id = npc.id,section_name = npc:section_name()}
+			utils.save_var(db.actor,task_id,CACHE)
+		end
+	else
+		local enemy_all_dead = true
+		for index, enemy in pairs(CACHE.enemy) do
+			if (as_function.IsNpc(enemy)) then
+				if (enemy_all_dead) then
+					enemy_all_dead = false
+				end
+				if (enemy and enemy.id and level.map_has_object_spot(enemy.id,"secondary_task_location") == 0) then
+					local text = task_id.."_descr_"..tsk.stage
+					level.map_add_object_spot(enemy.id, "secondary_task_location",text)
+				end
+			else
+				if (enemy and enemy.id and level.map_has_object_spot(enemy.id,"secondary_task_location") == 1) then
+					level.map_remove_object_spot(enemy.id, "secondary_task_location")
+				end
+			end
+		end
+		if enemy_all_dead and (not has_alife_info("as_quest_chief_1_target_dead")) then
+			give_info("as_quest_chief_1_target_dead")
+		end
+	end
+	if (has_alife_info("as_dialog_chief_beh_1_2")) then
+		local smart = SIMBOARD.smarts_by_names["val_smart_terrain_7_3"]
+		if smart then
+			ChangeLevel(smart.position ,smart.m_level_vertex_id, smart.m_game_vertex_id, VEC_ZERO, true)
+		end
+		return 3
+	end
+end
+STAGE_TARGET[1][2] = function(tsk,task_id)
+	local npc = get_story_se_object("as_npc_chief")
+	return npc and npc.id or nil
+end
+
+STAGE_STATUS[1][3] = function(tsk,task_id)
+	local CACHE = utils.load_var(db.actor, task_id)
+	if (CACHE) then
+		utils.save_var(db.actor, task_id, nil)
+	end
+	if has_alife_info("as_chief_on_mission") then
+		disable_info("as_chief_on_mission")
+	end
+	local story_npc_list = {"as_npc_chief","as_npc_eagle","as_npc_snake"}
+	for index,story_id in pairs(story_npc_list) do
+		local npc = get_story_se_object(story_id)
+		if npc and (level.name() == "l04_darkvalley") and (alife():level_name(game_graph():vertex(npc.m_game_vertex_id):level_id()) ~= "l04_darkvalley") then
+			local smart = SIMBOARD.smarts_by_names["val_smart_terrain_7_3"]
+			if (smart) then
+				TeleportObject(npc.id, smart.position, smart.m_level_vertex_id, smart.m_game_vertex_id)
+			end
+		end
+	end
+	if (not has_alife_info("as_quest_chief_1_complete")) and has_alife_info("as_dialog_chief_1_3") then
+		xr_effects.reward_random_money(db.actor,db.actor,{10000,10000})
+		xr_effects.reward_random_item(db.actor,db.actor,{"af_fireball"})
+		give_info("as_quest_chief_1_complete")
+	end
+end
+STAGE_TARGET[1][3] = function(tsk,task_id)
+	local npc = get_story_se_object("as_npc_chief")
+	return npc and npc.id or nil
+end
+--=============================================================
+--=============================================================
+task_status_functor.as_quest_chief_status = function(tsk,task_id)
+	if not (db.actor and tsk) then return end
+	local stage = tsk.stage
+	local quest = tonumber(task_manager.task_ini:r_string_ex(task_id,"status_functor_params"))
+	
+	local progress = STAGE_STATUS[quest][stage] and STAGE_STATUS[quest][stage](tsk,task_id) or stage
+	if tonumber(progress) and (tonumber(progress) ~= stage) then
+		tsk.stage = progress
+	end
+	if (progress == "complete" or progress == "fail") then return progress end
+end
+
+task_functor.as_quest_chief_target = function(task_id,field,p,tsk)
+	if not (db.actor and tsk) then return end
+	local stage = tsk.stage
+	local quest = tonumber(task_manager.task_ini:r_string_ex(task_id,"status_functor_params"))
+	
+	if STAGE_TARGET[quest][stage] then
+		return STAGE_TARGET[quest][stage](tsk,task_id) or nil
+	end
+	return nil
+end
+
+task_functor.as_quest_chief_text = function(task_id,field,p,tsk)
+	if not (db.actor and tsk) then return end
+	local stage = tsk.stage
+	if (field == "title") then
+		return game.translate_string(task_id .. "_title")
+	end
+	if (field == "descr") then
+		return game.translate_string(task_id .. "_descr_" .. stage)
+	end
+	return ""
+end

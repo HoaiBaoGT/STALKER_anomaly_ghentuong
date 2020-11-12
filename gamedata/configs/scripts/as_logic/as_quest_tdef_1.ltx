@@ -1,0 +1,164 @@
+[logic]
+active				= beh@general
+post_combat_time	= 0,0
+;==================================================
+;==================================================
+[wounded@ignore]
+hp_state        = 0|wounded_heavy@help_heavy
+hp_state_see    = 0|wounded_heavy@help_heavy
+hp_victim       = 0|nil
+hp_fight        = 0|false
+hp_cover        = 0|false
+
+[before_hit@base]
+ignore = {=check_enemy_name(actor)} false, true
+modify = 0.1
+lowest = 0.15
+;----------------------------------------
+[meet@base]
+close_distance 		= 0
+close_snd_distance 	= 0
+far_distance		= 0
+far_snd_distance	= 0
+allow_break 		= true
+use					= false
+abuse				= false
+trade_enable		= false
+meet_on_talking		= false
+can_gtfo			= false
+;----------------------------------------
+[beh@base]
+dont_keep_items						= true
+gather_items_enabled				= false
+help_wounded_enabled				= false
+corpse_detection_enabled			= false
+combat_ignore_keep_when_attacked	= true
+target				= waypoint
+path_end			= loop
+walk_dist			= 0
+jog_dist			= 0
+run_anim			= assault
+meet				= meet@base
+before_hit			= before_hit@base
+wounded 			= wounded@ignore
+combat_ignore_cond	= true
+danger_ignore		= true
+;==================================================
+[beh@general]:beh@base
+on_info1 = {=npc_on_level(l06_rostok)} beh@monolith_a_none_1
+on_info2 = {=npc_on_level(l02_garbage)} beh@monolith_b_none_1
+on_info3 = {=npc_on_level(l07_military)} beh@monolith_c_none_1
+
+[beh@shoot]
+run_anim	= {=beh_can_shoot} assault_fire, assault
+sound_idle	= fight_attack
+;----------------------------------------
+[beh@monolith_a]:beh@base
+on_info1 = {=health_le(0.2)} beh@monolith_wounded_a
+[beh@monolith_b]:beh@base
+on_info1 = {=health_le(0.2)} beh@monolith_wounded_b
+[beh@monolith_c]:beh@base
+on_info1 = {=health_le(0.2)} beh@monolith_wounded_c
+;==================================================
+[beh@monolith_a_none_1]:beh@monolith_a
+pt1			= 999999,hide_na	| pos:-88,5,138 look:-87,5,138
+on_info		= {=beh_see_enemy} beh@monolith_a_fire_1
+[beh@monolith_a_fire_1]:beh@monolith_a,beh@shoot
+pt1			= 5000,hide_fire	| pos:-88,5,138 look_move:xr_custom_combat@look_enemy
+on_info		= {!beh_see_enemy} beh@monolith_a_none_1, {=beh_reached} %=beh_shoot_enemy%
+path_end	= {=random_chance(33)} beh@monolith_a_fire_1, {=random_chance(50)} beh@monolith_a_fire_2, beh@monolith_a_fire_3
+
+[beh@monolith_a_none_2]:beh@monolith_a
+pt1			= 999999,hide_na	| pos:-88,5,130 look:-87,5,130
+on_info		= {=beh_see_enemy} beh@monolith_a_fire_2
+[beh@monolith_a_fire_2]:beh@monolith_a,beh@shoot
+pt1			= 5000,hide_fire	| pos:-88,5,130 look_move:xr_custom_combat@look_enemy
+on_info		= {!beh_see_enemy} beh@monolith_a_none_2, {=beh_reached} %=beh_shoot_enemy%
+path_end	= {=random_chance(33)} beh@monolith_a_fire_1, {=random_chance(50)} beh@monolith_a_fire_2, beh@monolith_a_fire_3
+
+[beh@monolith_a_none_3]:beh@monolith_a
+pt1			= 999999,hide_na	| pos:-88,5,127.5 look:-87,5,128
+on_info		= {=beh_see_enemy} beh@monolith_a_fire_3
+[beh@monolith_a_fire_3]:beh@monolith_a,beh@shoot
+pt1			= 5000,hide_fire	| pos:-88,5,127.5 look_move:xr_custom_combat@look_enemy
+on_info		= {!beh_see_enemy} beh@monolith_a_none_3, {=beh_reached} %=beh_shoot_enemy%
+path_end	= {=random_chance(33)} beh@monolith_a_fire_1, {=random_chance(50)} beh@monolith_a_fire_2, beh@monolith_a_fire_3
+
+;--------------------------------------------------
+[beh@monolith_b_none_1]:beh@monolith_b
+pt1			= 999999,hide_na	| pos:275,-6,-1 look:230,-3,-10
+on_info		= {=beh_see_enemy} beh@monolith_b_fire_1
+[beh@monolith_b_fire_1]:beh@monolith_b,beh@shoot
+pt1			= 5000,hide_fire	| pos:275,-6,-1 look_move:xr_custom_combat@look_enemy
+on_info		= {!beh_see_enemy} beh@monolith_b_none_1, {=beh_reached} %=beh_shoot_enemy%
+path_end	= {=random_chance(33)} beh@monolith_b_fire_1, {=random_chance(50)} beh@monolith_b_fire_2, beh@monolith_b_fire_3
+
+[beh@monolith_b_none_2]:beh@monolith_b
+pt1			= 999999,threat_na	| pos:279,-6,-3 look:278,-6,-3
+on_info		= {=beh_see_enemy} beh@monolith_b_fire_2
+[beh@monolith_b_fire_2]:beh@monolith_b,beh@shoot
+pt1			= 5000,threat_fire	| pos:279,-6,-3 look_move:xr_custom_combat@look_enemy
+on_info		= {!beh_see_enemy} beh@monolith_b_none_2, {=beh_reached} %=beh_shoot_enemy%
+path_end	= {=random_chance(33)} beh@monolith_b_fire_1, {=random_chance(50)} beh@monolith_b_fire_2, beh@monolith_b_fire_3
+
+[beh@monolith_b_none_3]:beh@monolith_b
+pt1			= 999999,threat_na	| pos:278,-6,10 look:230,-3,-10
+on_info		= {=beh_see_enemy} beh@monolith_b_fire_3
+[beh@monolith_b_fire_3]:beh@monolith_b,beh@shoot
+pt1			= 5000,threat_fire	| pos:278,-6,10 look_move:xr_custom_combat@look_enemy
+on_info		= {!beh_see_enemy} beh@monolith_b_none_3, {=beh_reached} %=beh_shoot_enemy%
+path_end	= {=random_chance(33)} beh@monolith_b_fire_1, {=random_chance(50)} beh@monolith_b_fire_2, beh@monolith_b_fire_3
+
+;--------------------------------------------------
+[beh@monolith_c_none_1]:beh@monolith_c
+pt1			= 999999,threat_na	| pos:-25,-8,412 look:-25,-8,411
+on_info		= {=beh_see_enemy} beh@monolith_c_fire_1
+[beh@monolith_c_fire_1]:beh@monolith_c,beh@shoot
+pt1			= 5000,threat_fire	| pos:-25,-8,412 look_move:xr_custom_combat@look_enemy
+on_info		= {!beh_see_enemy} beh@monolith_c_none_1, {=beh_reached} %=beh_shoot_enemy%
+path_end	= {=random_chance(33)} beh@monolith_c_fire_1, {=random_chance(50)} beh@monolith_c_fire_2, beh@monolith_c_fire_3
+
+[beh@monolith_c_none_2]:beh@monolith_c
+pt1			= 999999,hide_na	| pos:-7,-8,421 look:-7,-8,420
+on_info		= {=beh_see_enemy} beh@monolith_c_fire_2
+[beh@monolith_c_fire_2]:beh@monolith_c,beh@shoot
+pt1			= 5000,hide_fire	| pos:-7,-8,421 look_move:xr_custom_combat@look_enemy
+on_info		= {!beh_see_enemy} beh@monolith_c_none_2, {=beh_reached} %=beh_shoot_enemy%
+path_end	= {=random_chance(33)} beh@monolith_c_fire_1, {=random_chance(50)} beh@monolith_c_fire_2, beh@monolith_c_fire_3
+
+[beh@monolith_c_none_3]:beh@monolith_c
+pt1			= 999999,hide_na	| pos:-31,-5,418 look:-31,-5,417
+on_info		= {=beh_see_enemy} beh@monolith_c_fire_3
+[beh@monolith_c_fire_3]:beh@monolith_c,beh@shoot
+pt1			= 5000,hide_fire	| pos:-31,-5,418 look_move:xr_custom_combat@look_enemy
+on_info		= {!beh_see_enemy} beh@monolith_c_none_3, {=beh_reached} %=beh_shoot_enemy%
+path_end	= {=random_chance(33)} beh@monolith_c_fire_1, {=random_chance(50)} beh@monolith_c_fire_2, beh@monolith_c_fire_3
+
+;==================================================
+[meet@wounded_a]:meet@base
+meet_dialog	= as_dialog_tdef_1_monolith_1
+use			= {-as_quest_tdef_1_kill_1} true, {=talking} true, false
+[meet@wounded_b]:meet@base
+meet_dialog	= as_dialog_tdef_1_monolith_2
+use			= {-as_quest_tdef_1_kill_2} true, {=talking} true, false
+[meet@wounded_c]:meet@base
+meet_dialog	= as_dialog_tdef_1_monolith_3
+use			= {-as_quest_tdef_1_kill_3} true, {=talking} true, false
+;----------------------------------------
+[beh@monolith_wounded_info]:beh@base
+enemy_ignore_cond	= true
+on_info1 = {!health_le(0.2) =npc_on_level(l06_rostok)} beh@monolith_a_none_1
+on_info2 = {!health_le(0.2) =npc_on_level(l02_garbage)} beh@monolith_b_none_1
+on_info3 = {!health_le(0.2) =npc_on_level(l07_military)} beh@monolith_c_none_1
+
+[beh@monolith_wounded_a]:beh@monolith_wounded_info
+pt1		= 999999,wounded_heavy_3 | pos:-88,4,122 look:-88,4,123
+meet	= meet@wounded_a
+
+[beh@monolith_wounded_b]:beh@monolith_wounded_info
+pt1		= 999999,wounded_heavy_3 | pos:277,-6,7 look:277,-6,6
+meet	= meet@wounded_b
+
+[beh@monolith_wounded_c]:beh@monolith_wounded_info
+pt1		= 999999,wounded_heavy_3 | pos:-19,-5,428 look:-18,-5,428
+meet	= meet@wounded_c

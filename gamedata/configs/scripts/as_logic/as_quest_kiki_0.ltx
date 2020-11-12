@@ -1,0 +1,89 @@
+[logic]
+active				= {!check_npc_name(as_npc_kiki_0_chimera)} beh@general, meh@general
+post_combat_time	= 0,0
+;==================================================
+[before_hit@npc]
+ignore = invulnerable
+
+[before_hit@mon]
+ignore = {!check_enemy_name(actor)} true
+modify = 0.5
+;----------------------------------------
+[meet@base]
+close_distance 		= 0
+close_snd_distance 	= 0
+far_distance		= 0
+far_snd_distance	= 0
+allow_break 		= true
+use					= false
+abuse				= false
+trade_enable		= false
+meet_on_talking		= false
+can_gtfo			= false
+;----------------------------------------
+[beh@base]
+dont_keep_items						= true
+gather_items_enabled				= false
+help_wounded_enabled				= false
+corpse_detection_enabled			= false
+combat_ignore_keep_when_attacked	= true
+target				= waypoint
+path_end			= loop
+walk_dist			= 0
+jog_dist			= 1000
+run_anim			= assault
+meet				= meet@base
+before_hit			= before_hit@npc
+invulnerable		= true
+combat_ignore_cond	= true
+danger_ignore		= true
+;----------------------------------------
+[meh@base]
+before_hit			= before_hit@mon
+wait_anim			= stand_idle
+path_anim			= stand_idle
+move_anim			= walk_fwd
+walk_dist			= 0
+rush_dist			= 1000
+target				= waypoint
+path_end			= loop
+combat_ignore_cond	= true
+combat_ignore_keep_when_attacked = true
+;==================================================
+[meet@general]:meet@base
+meet_dialog		= as_dialog_kiki_0_0
+use				= {+as_quest_kiki_0_dead} true, false
+close_distance	= {+as_quest_kiki_0_dead} 5, 0
+close_victim	= actor
+close_anim		= guard
+;----------------------------------------look_object_f:xr_custom_combat@look_enemy
+[beh@general]:beh@base
+pt1		= 999999,hide		| pos:42.5,14,-27 look:42.5,6,0
+meet	= meet@general
+on_info	= {=beh_see_enemy} beh@general_f, {+as_quest_kiki_0_escape} beh@escape
+
+[beh@general_f]:beh@base
+pt1		= 999999,hide_fire	| pos:42.5,14,-27
+on_info	= {!beh_see_enemy} beh@general, {=beh_reached} %=beh_shoot_enemy%
+;----------------------------------------
+[beh@escape]:beh@base
+pt1			= 1000,guard	| pos:-320,6,85 look:-321,6,85
+on_info		= {=beh_see_enemy} beh@escape_f, {=dist_to_actor_ge(10)} beh@escape_n
+path_end	= {!npc_on_level(l05_bar)} %=script(as_xr_effects:teleport_to_smart:bar_zastava)%, %=script(as_xr_effects:reset_logic)%
+
+[beh@escape_n]:beh@base
+behavior_state	= beh_wait
+target			= actor
+wait_anim		= hide
+on_info			= {=beh_see_enemy} beh@escape_f, {!dist_to_actor_ge(10)} beh@escape
+
+[beh@escape_f]:beh@base
+on_info		= {!beh_see_enemy} beh@escape, %=beh_shoot_enemy(threat_fire)%
+
+;==================================================
+[meh@general]:meh@base
+pt1 = 0,stand_idle | pos:55,5,0
+pt2 = 0,stand_idle | pos:20,5,-10
+pt3 = 0,stand_idle | pos:40,6,-40
+combat_ignore_cond	= {=check_enemy_name(as_npc_kiki:actor)} true, {!is_enemy_actor =fighting_dist_ge(20)} true, false
+enemy_ignore_cond	= {=fighting_dist_ge(20)} true, false

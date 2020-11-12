@@ -1,0 +1,363 @@
+--TODO: Find a way to set npc voice to [[characters_voice\human\zombied_1\]]
+
+local M = {}
+local HI, GI, DI = has_alife_info, give_info, disable_info
+
+function on_game_start()
+    RegisterScriptCallback("save_state",save_state)
+    RegisterScriptCallback("load_state",load_state)
+end
+
+function save_state(m)
+	m.as_quest_verlnut = M
+end
+
+function load_state(m)
+	M = m.as_quest_verlnut or {}
+end
+--=============================================================
+local STAGE_STATUS = {}
+local STAGE_TARGET = {}
+local STAGE_TEXT = {}
+--=============================================================
+--Quest 0 Meet Verl Nut, fetch Verl Nut 1 boar chop cooked
+--=============================================================
+STAGE_STATUS[0] = function(tsk,task_id,stage)
+	if HI(task_id.."_reward") then
+		if not HI(task_id.."_complete") then
+			if M[task_id] then M[task_id] = nil end
+			local reward = {
+				"bandage",
+				"bandage",
+				"bandage",
+				"bandage",
+				"bandage",
+				"medkit_army",
+				"medkit_army",
+				"medkit_army"
+			}
+			_G["as_quest"]["reward"](reward)
+			GI(task_id.."_complete")
+		end
+		return
+	end
+	
+	local npc = get_story_se_object("as_npc_verlnut")
+	if not npc then
+		local smart	= SIMBOARD.smarts_by_names["zat_stalker_base_smart"]
+		local se = alife():create("as_npc_verlnut",smart.position,smart.m_level_vertex_id,smart.m_game_vertex_id)
+		local se_data = utils_stpk.get_stalker_data(se)
+		se_data.visual_name		= [[actors\as_visual\armor_snork]]
+		se_data.character_name	= game.translate_string("as_npc_verlnut_name")
+		se_data.specific_character = "sim_default_zombied_4_default_0"
+		utils_stpk.set_stalker_data(se_data,se)
+		
+		local owned = alife():get_children(se)
+		for w in owned do
+			local weapon = alife():object(w)
+			if string.find(weapon:section_name(),"wpn_") then
+				alife_release(weapon)
+			end
+		end
+		local new_weapon = {"wpn_aks74","ammo_5.45x39_fmj"}
+		for i,v in pairs(new_weapon) do
+			alife_create_item(v,se)
+		end
+	else
+		local le_npc = level.object_by_id(npc.id)
+		if le_npc then
+			if le_npc:character_icon() ~= "ui_inGame2_Snork" then
+				le_npc:set_character_icon("ui_inGame2_Snork")
+			end
+		end
+	end
+end
+
+STAGE_TARGET[0] = function(tsk,task_id,stage)
+	local npc = get_story_se_object("as_npc_verlnut")
+	if not HI(task_id.."_talk") then
+		return npc and npc.id
+	end
+	
+	if not HI(task_id.."_reward") then
+		if quest_0_has_item(0,0) then
+			return npc and npc.id
+		end
+		return
+	end
+	
+	return npc and npc.id
+end
+
+STAGE_TEXT[0] = function(tsk,task_id,stage,field)
+	if (field == "title") then
+		return task_id .."_".. field
+	end
+	
+	if (field == "descr") then
+		if not HI(task_id.."_dead") then
+			return task_id .."_".. field .."_".. 1
+		end
+		return task_id .."_".. field .."_".. 2
+	end
+end
+
+function quest_0_has_item(a,b)
+	local p = {"meat_boar_a"}
+	return xr_conditions.has_item(0,0,p)
+end
+
+function quest_0_release_item(a,b)
+	local p = {"meat_boar_a"}
+	news_manager.relocate_item(0,"out",p[1],1)
+	xr_effects.release_item(0,0,p)
+end
+
+--=============================================================
+--Quest 1 Kill the controller
+--=============================================================
+STAGE_STATUS[1] = function(tsk,task_id,stage)
+	if HI(task_id.."_reward") then
+		if not HI(task_id.."_complete") then
+			if M[task_id] then M[task_id] = nil end
+			local reward = {
+				"medkit_army",
+				"medkit_army",
+				"medkit_army",
+				"vodka"
+			}
+			_G["as_quest"]["reward"](reward)
+			_G["as_quest"]["money"](14000)
+			GI(task_id.."_complete")
+		end
+		return
+	end
+	
+	if not M[task_id] then M[task_id] = {} end
+	if not M[task_id][0] then
+		local smart	= SIMBOARD.smarts_by_names["jup_b1"]
+		local se = alife():create("as_npc_verlnut_1_controller",smart.position,smart.m_level_vertex_id,smart.m_game_vertex_id)
+		M[task_id][0] = se.id
+		
+		local se_data = utils_stpk.get_stalker_data(se)
+		se_data.visual_name		= [[actors\as_visual\stalker_controller]]
+		se_data.character_name	= game.translate_string("as_npc_verlnut_2_controller_name")
+		utils_stpk.set_stalker_data(se_data,se)
+		
+		local owned = alife():get_children(se)
+		for w in owned do
+			local weapon = alife():object(w)
+			if string.find(weapon:section_name(),"wpn_") then
+				alife_release(weapon)
+			end
+		end
+		local new_weapon = {"wpn_akm","ammo_7.62x39_fmj"}
+		for i,v in pairs(new_weapon) do
+			alife_create_item(v,se)
+		end
+	else
+		local npc = M[task_id][0] and alife():object(M[task_id][0])
+		if (npc and (npc:section_name() == "as_npc_verlnut_1_controller") and npc:alive()) then
+			local le_npc = npc and level.object_by_id(npc.id)
+			if le_npc then
+				if le_npc:character_icon() ~= "ui_inGame2_Controller" then
+					le_npc:set_character_icon("ui_inGame2_Controller")
+				end
+			end
+		else
+			GI(task_id.."_dead")
+		end
+	end
+	
+	for i=1,14,1 do
+		if not M[task_id][i] then
+			local smart	= SIMBOARD.smarts_by_names["jup_b1"]
+			local se = alife():create("as_npc_verlnut_1_zombied",smart.position,smart.m_level_vertex_id,smart.m_game_vertex_id)
+			M[task_id][i] = se.id
+			
+			if (i > 10) then
+				local weapon_pool = {
+					[11] = {"wpn_ak74u","ammo_5.45x39_fmj"},
+					[12] = {"wpn_fort","ammo_9x18_fmj"},
+					[13] = {"wpn_mp5","ammo_9x19_fmj"},
+					[14] = {"wpn_toz34","ammo_12x70_buck"},
+				}
+				
+				local owned = alife():get_children(se)
+				for w in owned do
+					local weapon = alife():object(w)
+					if string.find(weapon:section_name(),"wpn_") then
+						alife_release(weapon)
+					end
+				end
+				local new_weapon = weapon_pool[i]
+				for i,v in pairs(new_weapon) do
+					alife_create_item(v,se)
+				end
+			end
+		end
+	end
+	
+	if not HI(task_id.."_dead") then
+		local npc = get_story_se_object("as_npc_verlnut")
+		local lvl = npc and alife():level_name(game_graph():vertex(npc.m_game_vertex_id):level_id())
+		if lvl and (lvl ~= "jupiter") and (level.name() == "jupiter") then
+			local smart = SIMBOARD.smarts_by_names["jup_b46"]
+			local position = vector():set(smart.position)
+			local lvid = tonumber(smart.m_level_vertex_id)
+			local gvid = tonumber(smart.m_game_vertex_id)
+			if position and lvid and gvid then
+				TeleportObject(npc.id,position,lvid,gvid)
+			end
+		end
+	else
+		local npc = get_story_se_object("as_npc_verlnut")
+		local lvl = npc and alife():level_name(game_graph():vertex(npc.m_game_vertex_id):level_id())
+		if lvl and (lvl ~= "zaton") and (level.name() == "zaton") then
+			local smart = SIMBOARD.smarts_by_names["zat_stalker_base_smart"]
+			local position = vector():set(smart.position)
+			local lvid = tonumber(smart.m_level_vertex_id)
+			local gvid = tonumber(smart.m_game_vertex_id)
+			if position and lvid and gvid then
+				TeleportObject(npc.id,position,lvid,gvid)
+			end
+		end
+	end
+end
+
+STAGE_TARGET[1] = function(tsk,task_id,stage)
+	local npc = get_story_se_object("as_npc_verlnut")
+	return npc and npc.id or nil
+end
+
+STAGE_TEXT[1] = function(tsk,task_id,stage,field)
+	if (field == "title") then
+		return task_id .."_".. field
+	end
+	
+	if (field == "descr") then
+		if not HI(task_id.."_talk") then
+			return task_id .."_".. field .."_".. 1
+		end
+		if not HI(task_id.."_dead") then
+			return task_id .."_".. field .."_".. 2
+		end
+		return task_id .."_".. field .."_".. 3
+	end
+end
+
+function quest_1_available(a,b)
+	local info = "as_quest_verlnut_1_available"
+	if not HI(info) then
+		GI(info)
+	end
+end
+
+local function quest_1_psy_field_function(id)
+	local npc = id and (db.storage[id] and db.storage[id].object or level.object_by_id(id))
+	if db.actor and npc and npc:alive() and (npc:position():distance_to_sqr(db.actor:position()) < 3600) then
+		local sound = sound_object([[monsters\controller\controller_tube_prepare]])
+		if sound then
+			sound:play_at_pos(db.actor,db.actor:position(),0)
+		end
+		level.add_pp_effector("yantar_underground_psi.ppe", 39568, false)
+		ResetTimeEvent(id,"psy_field",5)
+		return false
+	end
+	return true
+end
+function quest_1_psy_field(actor,npc)
+	if db.actor and npc and (npc:position():distance_to_sqr(db.actor:position()) < 3600) then
+		local id = npc and npc:id()
+		CreateTimeEvent(id,"psy_field",0,quest_1_psy_field_function,id)
+	end
+end
+
+function quest_1_teleport_actor_jupiter(a,b)
+	local smart = SIMBOARD.smarts_by_names["jup_b46"]
+	local position = vector():set(smart.position)
+	local lvid = tonumber(smart.m_level_vertex_id)
+	local gvid = tonumber(smart.m_game_vertex_id)
+	if position and lvid and gvid then
+		ChangeLevel(position,lvid,gvid,VEC_ZERO,true)
+	end
+end
+
+function quest_1_teleport_actor_zaton(a,b)
+	local smart = SIMBOARD.smarts_by_names["zat_stalker_base_smart"]
+	local position = vector():set(smart.position)
+	local lvid = tonumber(smart.m_level_vertex_id)
+	local gvid = tonumber(smart.m_game_vertex_id)
+	if position and lvid and gvid then
+		ChangeLevel(position,lvid,gvid,VEC_ZERO,true)
+	end
+end
+
+--=============================================================
+--Quest 2
+--=============================================================
+
+--=============================================================
+function give_quest_1()
+	task_manager.get_task_manager():give_task("as_quest_verlnut_1")
+end
+
+function give_quest_2()
+	task_manager.get_task_manager():give_task("as_quest_verlnut_2")
+end
+
+local function heal_aura_function(id)
+	local npc = id and (db.storage[id] and db.storage[id].object or level.object_by_id(id))
+	if not (npc and npc:alive()) then
+		return true
+	end
+	ResetTimeEvent(id,"heal_aura",1)
+	
+	local npc_position = vector():set(npc:position())
+	local function heal_progress(k)
+		local who = k and (db.storage[k] and db.storage[k].object or level.object_by_id(k))
+		if (who and who:alive() and (npc_position:distance_to_sqr(who:position()) < 25)) then
+			local health = tonumber(who.health)
+			if (health and health < 1) then
+				who.health = math.min(health+0.005,1)
+			end
+		end
+	end
+	
+	heal_progress(AC_ID)
+	for i,v in pairs(db.OnlineStalkers) do
+		heal_progress(v)
+	end
+	return false
+end
+function heal_aura(actor,npc)
+	local id = npc and npc:id()
+	if id then
+		CreateTimeEvent(id,"heal_aura",1,heal_aura_function,id)
+	end
+end
+
+--=============================================================
+function quest_progress(functor,quest_f,tsk,task_id,stage,field)
+	local quest = tonumber(quest_f)
+	if (M and quest) then
+		if functor == "status" then
+			return STAGE_STATUS[quest] and STAGE_STATUS[quest](tsk,task_id,stage)
+		end
+		if functor == "target" then
+			return STAGE_TARGET[quest] and STAGE_TARGET[quest](tsk,task_id,stage)
+		end
+		if functor == "text" then
+			return STAGE_TEXT[quest] and STAGE_TEXT[quest](tsk,task_id,stage,field)
+		end
+	end
+end
+
+function pick_logic(actor,npc,p)
+	if (p and #p == 2) then
+		local quest = p[1]
+		local index = p[2]
+		return M and M[quest] and (M[quest][index] == npc:id())
+	end
+	return false
+end

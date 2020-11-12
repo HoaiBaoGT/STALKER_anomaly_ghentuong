@@ -1,0 +1,205 @@
+[logic]
+active 						= beh@general
+post_combat_time			= 0,0
+can_select_weapon			= true
+gather_items_enabled		= false
+help_wounded_enabled		= false
+corpse_detection_enabled	= false
+;==================================================
+[meet@base]
+allow_break 		= true
+close_distance 		= 0
+close_victim		= nil
+close_anim 			= nil
+close_snd_distance 	= 0
+close_snd_hello		= nil
+close_snd_bye		= nil
+far_distance		= 0
+far_victim			= nil
+far_anim			= nil
+far_snd_distance	= 0
+far_snd				= nil
+snd_on_use			= nil
+use					= true
+abuse				= false
+trade_enable		= false
+meet_on_talking		= false
+;==================================================
+[beh@base]
+meet				= no_meet
+behavior_state		= beh_move
+target				= waypoint
+path_end			= loop
+walk_anim			= assault
+jog_anim			= assault
+invulnerable		= true
+combat_ignore_cond	= {=check_enemy_name(as_npc_stalker_1_bandit:as_npc_stalker_1_duty)} true, {=fighting_dist_ge(30)} true, false
+;==================================================
+[beh@general]:beh@base
+on_info1	= {=as_quest_stalker_is_npc(1)}		beh@duty_a_1
+on_info2	= {=as_quest_stalker_is_npc(2)}		beh@duty_a_2
+on_info3	= {=as_quest_stalker_is_npc(3)}		beh@duty_a_3
+on_info4	= {=as_quest_stalker_is_npc(4)}		beh@duty_a_4
+on_info5	= {=as_quest_stalker_is_npc(5)}		beh@duty_a_5
+on_info6	= {=as_quest_stalker_is_npc(6)}		beh@duty_a_6
+
+on_info11	= {=as_quest_stalker_is_npc(11)}	beh@bandit_1
+on_info12	= {=as_quest_stalker_is_npc(12)}	beh@bandit_2
+on_info13	= {=as_quest_stalker_is_npc(13)}	beh@bandit_3
+on_info14	= {=as_quest_stalker_is_npc(14)}	beh@bandit_4
+on_info15	= {=as_quest_stalker_is_npc(15)}	beh@bandit_5
+on_info16	= {=as_quest_stalker_is_npc(16)}	beh@bandit_6
+on_info17	= {=as_quest_stalker_is_npc(17)}	beh@bandit_7
+on_info18	= {=as_quest_stalker_is_npc(18)}	beh@bandit_8
+on_info19	= {=as_quest_stalker_is_npc(19)}	beh@bandit_9
+on_info20	= {=as_quest_stalker_is_npc(20)}	beh@bandit_10
+;==================================================
+[meet@duty]:meet@base
+meet_dialog			= as_dialog_stalker_1_1
+close_distance 		= {-as_quest_stalker_1_duty_money !dist_to_beh_waypoint_ge(1)} 3, 0
+close_victim		= actor
+close_anim 			= talk_default
+close_snd_distance 	= 3
+close_snd_hello		= meet_hello
+far_distance		= {-as_quest_stalker_1_duty_money !dist_to_beh_waypoint_ge(1)} 30, 0
+far_victim			= actor
+far_anim			= hello_wpn
+[beh@duty_a]:beh@base
+[beh@duty_b]:beh@base
+walk_anim	= assault
+jog_anim	= assault
+[beh@duty_commander]:beh@base
+meet		= meet@duty
+;----------------------------------------
+[beh@duty_a_1]:beh@duty_a
+pt1		= 999999,hide | pos:12,0.2,127 look:60,2,150
+on_info	= {=see_enemy_ignore} beh@duty_a_1_fire, {+as_quest_stalker_1_dead} beh@duty_b_1
+[beh@duty_a_1_fire]:beh@duty_a
+pt1		= 999999,hide_fire | pos:12,0.2,127 look_object_f:beh_combat@enemy
+on_info	= {!see_enemy_ignore} beh@duty_a_1, {+as_quest_stalker_1_dead} beh@duty_b_1
+
+[beh@duty_a_2]:beh@duty_a
+pt1		= 999999,hide | pos:13,0.2,136 look:60,2,150
+on_info	= {=see_enemy_ignore} beh@duty_a_2_fire, {+as_quest_stalker_1_dead} beh@duty_b_2
+[beh@duty_a_2_fire]:beh@duty_a
+pt1		= 999999,hide_fire | pos:13,0.2,136 look_object_f:beh_combat@enemy
+on_info	= {!see_enemy_ignore} beh@duty_a_2, {+as_quest_stalker_1_dead} beh@duty_b_2
+
+[beh@duty_a_3]:beh@duty_a
+pt1		= 999999,hide | pos:26,0.2,121 look:60,2,150
+on_info	= {=see_enemy_ignore} beh@duty_a_3_fire, {+as_quest_stalker_1_dead} beh@duty_b_3
+[beh@duty_a_3_fire]:beh@duty_a
+pt1		= 999999,hide_fire | pos:26,0.2,121 look_object_f:beh_combat@enemy
+on_info	= {!see_enemy_ignore} beh@duty_a_3, {+as_quest_stalker_1_dead} beh@duty_b_3
+
+[beh@duty_a_4]:beh@duty_a
+pt1		= 999999,threat_na | pos:23,0.2,107 look:60,2,150
+on_info	= {=see_enemy_ignore} beh@duty_a_4_fire, {+as_quest_stalker_1_dead} beh@duty_b_4
+[beh@duty_a_4_fire]:beh@duty_a
+pt1		= 999999,threat_fire | pos:23,0.2,107 look_object_f:beh_combat@enemy
+on_info	= {!see_enemy_ignore} beh@duty_a_4, {+as_quest_stalker_1_dead} beh@duty_b_4
+
+[beh@duty_a_5]:beh@duty_a
+pt1		= 999999,threat_na | pos:26,0.2,117 look:60,2,150
+on_info	= {=see_enemy_ignore} beh@duty_a_5_fire, {+as_quest_stalker_1_dead} beh@duty_b_5
+[beh@duty_a_5_fire]:beh@duty_a
+pt1		= 999999,threat_fire | pos:26,0.2,117 look_object_f:beh_combat@enemy
+on_info	= {!see_enemy_ignore} beh@duty_a_5, {+as_quest_stalker_1_dead} beh@duty_b_5
+
+[beh@duty_a_6]:beh@duty_a
+pt1		= 999999,threat_na | pos:10,0.2,105 look:60,2,150
+on_info	= {=see_enemy_ignore} beh@duty_a_6_fire, {+as_quest_stalker_1_dead} beh@duty_b_6
+[beh@duty_a_6_fire]:beh@duty_a
+pt1		= 999999,threat_fire | pos:10,0.2,105 look_object_f:beh_combat@enemy
+on_info	= {!see_enemy_ignore} beh@duty_a_6, {+as_quest_stalker_1_dead} beh@duty_b_6
+;----------------------------------------
+[beh@duty_b_1]:beh@duty_commander
+pt1		= 10000,ward			| pos:50,0,145 look:55,1.5,145
+[beh@duty_b_2]:beh@duty_b
+pt2		= 10000,search_corpse	| pos:48.5,1,130.5 look:48.5,1,131.5
+pt1		= 10000,salut			| pos:55,0,141 look:50,1.5,141
+[beh@duty_b_3]:beh@duty_b
+pt2		= 10000,search_corpse	| pos:64.5,6,166.5 look:64.5,6,165.5
+pt1		= 10000,salut			| pos:55,0,143 look:50,1.5,143
+[beh@duty_b_4]:beh@duty_b
+pt2		= 10000,search_corpse	| pos:66.5,1,174 look:67.5,1,174
+pt1		= 10000,salut			| pos:55,0,145 look:50,1.5,145
+[beh@duty_b_5]:beh@duty_b
+pt2		= 10000,search_corpse	| pos:76.5,9,151.5 look:76.5,9,152.5
+pt1		= 10000,salut			| pos:55,0,147 look:50,1.5,147
+[beh@duty_b_6]:beh@duty_b
+pt2		= 10000,search_corpse	| pos:76.5,6,152.5 look:76.5,6,153.5
+pt1		= 10000,salut			| pos:55,0,149 look:50,1.5,149
+;==================================================
+[beh@bandit]:beh@base
+invulnerable = {=dist_to_actor_le(60)} false, true
+;----------------------------------------
+[beh@bandit_1]:beh@bandit
+pt1		= 999999,threat_na | pos:63.5,6,153.5 look:60,2,150
+on_info	= {=see_enemy_ignore} beh@bandit_1_fire
+[beh@bandit_1_fire]:beh@bandit
+pt1		= 999999,threat_fire | pos:63.5,6,153.5 look_object_f:beh_combat@enemy
+on_info	= {!see_enemy_ignore} beh@bandit_1
+
+[beh@bandit_2]:beh@bandit
+pt1		= 999999,threat_na | pos:63,6,158 look:0,1,110
+on_info	= {=see_enemy_ignore} beh@bandit_2_fire
+[beh@bandit_2_fire]:beh@bandit
+pt1		= 999999,threat_fire | pos:63,6,158 look_object_f:beh_combat@enemy
+on_info	= {!see_enemy_ignore} beh@bandit_2
+
+[beh@bandit_3]:beh@bandit
+pt1		= 999999,threat_na | pos:64.5,6,149.5 look:0,1,110
+on_info	= {=see_enemy_ignore} beh@bandit_3_fire
+[beh@bandit_3_fire]:beh@bandit
+pt1		= 999999,threat_fire | pos:64.5,6,149.5 look_object_f:beh_combat@enemy
+on_info	= {!see_enemy_ignore} beh@bandit_3
+
+[beh@bandit_4]:beh@bandit
+pt1		= 999999,threat_na | pos:64.5,9,149.5 look:0,1,110
+on_info	= {=see_enemy_ignore} beh@bandit_4_fire
+[beh@bandit_4_fire]:beh@bandit
+pt1		= 999999,threat_fire | pos:64.5,9,149.5 look_object_f:beh_combat@enemy
+on_info	= {!see_enemy_ignore} beh@bandit_4
+
+[beh@bandit_5]:beh@bandit
+pt1		= 999999,threat_na | pos:64,9,154.5 look:0,1,110
+on_info	= {=see_enemy_ignore} beh@bandit_5_fire
+[beh@bandit_5_fire]:beh@bandit
+pt1		= 999999,threat_fire | pos:64,9,154.5 look_object_f:beh_combat@enemy
+on_info	= {!see_enemy_ignore} beh@bandit_5
+
+[beh@bandit_6]:beh@bandit
+pt1		= 999999,threat_na | pos:62,2,162 look:0,1,110
+on_info	= {=see_enemy_ignore} beh@bandit_6_fire
+[beh@bandit_6_fire]:beh@bandit
+pt1		= 999999,threat_fire | pos:62,2,162 look_object_f:beh_combat@enemy
+on_info	= {!see_enemy_ignore} beh@bandit_6
+
+[beh@bandit_7]:beh@bandit
+pt1		= 999999,hide | pos:60,1,148 look:0,1,110
+on_info	= {=see_enemy_ignore} beh@bandit_7_fire
+[beh@bandit_7_fire]:beh@bandit
+pt1		= 999999,hide_fire | pos:62,2,162 look_object_f:beh_combat@enemy
+on_info	= {!see_enemy_ignore} beh@bandit_7
+
+[beh@bandit_8]:beh@bandit
+pt1	= 999999,hide | pos:49,1,154.5 look:0,1,110
+on_info	= {=see_enemy_ignore} beh@bandit_8_fire
+[beh@bandit_8_fire]:beh@bandit
+pt1		= 999999,hide_fire | pos:49,1,154.5 look_object_f:beh_combat@enemy
+on_info	= {!see_enemy_ignore} beh@bandit_8
+
+[beh@bandit_9]:beh@bandit
+pt1	= 999999,hide | pos:51.5,1,150 look:0,1,110
+on_info	= {=see_enemy_ignore} beh@bandit_9_fire
+[beh@bandit_9_fire]:beh@bandit
+pt1		= 999999,hide_fire | pos:51.5,1,150 look_object_f:beh_combat@enemy
+on_info	= {!see_enemy_ignore} beh@bandit_9
+
+[beh@bandit_10]:beh@bandit
+pt1	= 999999,hide | pos:59.5,1,172.5 look:0,1,110
+on_info	= {=see_enemy_ignore} beh@bandit_10_fire
+[beh@bandit_10_fire]:beh@bandit
+pt1		= 999999,hide_fire | pos:59.5,1,172.5 look_object_f:beh_combat@enemy
+on_info	= {!see_enemy_ignore} beh@bandit_10

@@ -1,0 +1,53 @@
+[logic]
+active				= beh@idle
+post_combat_time	= 0,0
+;==================================================
+[before_hit@invulnerable]
+ignore = invulnerable
+;----------------------------------------
+[meet@base]
+close_anim 		= nil
+close_victim 	= nil
+far_anim 		= nil
+far_victim 		= nil
+close_distance  = 0
+far_distance 	= 0
+abuse           = false
+;----------------------------------------
+[beh@base]
+dont_keep_items						= true
+gather_items_enabled				= false
+help_wounded_enabled				= false
+corpse_detection_enabled			= false
+combat_ignore_keep_when_attacked	= true
+target				= waypoint
+path_end			= loop
+walk_dist			= 0
+jog_dist			= 0
+run_anim			= patrol
+meet				= meet@base
+before_hit			= before_hit@invulnerable
+combat_ignore_cond	= true
+danger_ignore		= true
+;==================================================
+[meet@general]:meet@base
+meet_dialog	= as_dialog_verlnut_idle
+
+[beh@switch]
+meet		= meet@general
+on_info1	= %=script(as_quest_verlnut:heal_aura)%
+on_info2	= {-as_quest_verlnut_1_complete +as_quest_verlnut_1_started =npc_on_level(jupiter)} %=script(as_xr_effects:set_new_logic:scripts\as_logic\as_quest_verlnut_1.ltx)%
+
+
+;Sit at the bar at day time
+[beh@idle]:beh@base,beh@switch
+pt1		= 999999,sit_ass | pos:133,-7.3,190 look:133,-7.3,189
+target	= {=beh_has_enemy} %=beh_shoot_enemy(threat_fire) =play_sound(fight_attack)%, waypoint
+on_info	= {!is_day} beh@guard
+
+;Guard on top of the ship at night time
+[beh@guard]:beh@base,beh@switch
+pt1		= 0,guard | pos:119,-1,191 look:119,-1,192
+pt2		= 0,guard | pos:149,-2,191 look:150,-2,192
+target	= {=beh_has_enemy} %=beh_shoot_enemy(threat_fire) =play_sound(fight_attack)%, waypoint
+on_info	= {=is_day} beh@idle

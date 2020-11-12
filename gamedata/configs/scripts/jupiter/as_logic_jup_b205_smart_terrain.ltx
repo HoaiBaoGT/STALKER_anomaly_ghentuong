@@ -1,0 +1,276 @@
+;------------------------------
+; shit
+;------------------------------
+[beh@base]
+target			= waypoint
+path_end		= loop
+walk_dist		= 0
+jog_dist		= 0
+run_anim		= patrol
+beh_net_spawn	= pt1
+use_camp		= false
+
+[beh@guard]:beh@base
+meet		= no_meet
+before_hit	= as_quest_csky@guard_before_hit
+;on_info		= {=has_enemy} %=script(xr_custom:fight_from_waypoint)%
+
+[beh@hide]:beh@base
+run_anim	= panic
+meet		= no_meet
+before_hit	= as_quest_csky@guard_before_hit
+;on_info		= {=has_enemy} %=script(xr_custom:fight_from_waypoint)%
+
+[beh@sleep]:beh@base
+meet = no_meet
+;------------------------------
+; simulation npcs 
+;------------------------------
+
+[logic@guard]
+suitable	= {=check_squad_name(as_squad_csky_base_guard)} true
+prior		= 100
+
+[logic@guard_1]:logic@guard
+active = beh@guard_1
+[logic@guard_2]:logic@guard
+active = beh@guard_2
+[logic@guard_3]:logic@guard
+active = beh@guard_3
+[logic@guard_4]:logic@guard
+active = beh@guard_4
+[logic@guard_5]:logic@guard
+active = beh@guard_5
+[logic@guard_6]:logic@guard
+active = beh@guard_6
+[logic@guard_7]:logic@guard
+active = beh@guard_7
+[logic@guard_8]:logic@guard
+active = beh@guard_8
+[logic@guard_9]:logic@guard
+active = beh@guard_9
+
+[beh@guard_1]:beh@guard
+pt1 = 999999,guard | pos:-393.0,11.42,10.0 look:-383.0,11.42,10.0
+[beh@guard_2]:beh@guard
+pt1 = 999999,guard | pos:-385.5,11.42,7.5 look:-375.5,11.42,7.5
+[beh@guard_3]:beh@guard
+pt1 = 999999,guard | pos:-391.5,11.42,5.5 look:-391.5,11.42,15.5
+[beh@guard_4]:beh@guard
+pt1 = 999999,guard | pos:-389.0,11.42,-4.5 look:-379.0,11.42,-4.5
+[beh@guard_5]:beh@guard
+pt1 = 999999,binocular | pos:-385.5,11.42,10.0 look:-375.5,11.42,10.0
+[beh@guard_6]:beh@guard
+pt1 = 999999,guard | pos:-389.2,11.42,-11.1 animpoint:-389.2,11.42,-11.1,0,0,-1
+target = {=script(xr_custom:animpoint:animpoint_stay_wall_no_rnd)} nil, waypoint
+[beh@guard_7]:beh@guard
+pt1 = 999999,guard | pos:-388.5,11.42,5.5 animpoint:-388.5,11.42,5.5,-1,0,0
+target = {=script(xr_custom:animpoint:animpoint_stay_wall_no_rnd)} nil, waypoint
+[beh@guard_8]:beh@guard
+pt1 = 999999,guard | pos:-385.5,11.42,-1.0 animpoint:-385.5,11.42,-1.0,1,0,0
+target = {=script(xr_custom:animpoint:animpoint_stay_wall_no_rnd)} nil, waypoint
+[beh@guard_9]:beh@guard
+pt1 = 999999,guard | pos:-397.7,11.42,-5.0 animpoint:-397.7,11.42,-5.0,-1,0,0
+target = {=script(xr_custom:animpoint:animpoint_stay_wall_no_rnd)} nil, waypoint
+
+
+;------------------------------
+
+[logic@patrol]
+suitable	= {=check_squad_name(as_squad_csky_base_guard) !surge_started !is_rain} true
+prior		= 200
+
+[logic@patrol_1]:logic@patrol
+active = beh@patrol_1
+[logic@patrol_2]:logic@patrol
+active = beh@patrol_2
+[logic@patrol_3]:logic@patrol
+active = beh@patrol_3
+
+[beh@patrol_1]:beh@guard
+pt1 = 20000,guard | pos:-383,11.0,13 look:-382,11.0,13
+pt2 = 20000,guard | pos:-400,11.0,13 look:-401,11.0,13
+[beh@patrol_2]:beh@guard
+pt1 = 20000,guard | pos:-385,11.0,-18 look:-384,11.0,-18
+pt2 = 20000,guard | pos:-400,11.0,-18 look:-401,11.0,-18
+[beh@patrol_3]:beh@guard
+pt1 = 20000,guard | pos:-402,11.0,-15 look:-402,11.0,-16
+pt2 = 20000,guard | pos:-402,11.0,10 look:-402,11.0,11
+
+
+;------------------------------
+
+[logic@chad_sky]
+suitable	= {=check_squad_name(as_squad_csky_base_guard) =between_time(6:7) !surge_started !is_rain} true
+prior		= 250
+
+[logic@chad_sky_1]:logic@chad_sky
+active = beh@chad_sky_1
+[logic@chad_sky_2]:logic@chad_sky
+active = beh@chad_sky_2
+[logic@chad_sky_3]:logic@chad_sky
+active = beh@chad_sky_3
+
+[beh@chad_sky_1]:beh@guard
+pt1 = 999999,guard | pos:-373.0,11.00,8.0 animpoint:-373.0,11.00,8.0,-1,0,0
+target = {=script(xr_custom:animpoint:otzhiman)} nil, waypoint
+[beh@chad_sky_2]:beh@guard
+pt1 = 999999,guard | pos:-373.0,11.00,6.0 animpoint:-373.0,11.00,6.0,-1,0,0
+target = {=script(xr_custom:animpoint:otzhiman)} nil, waypoint
+[beh@chad_sky_3]:beh@guard
+pt1 = 999999,guard | pos:-373.0,11.00,4.0 animpoint:-373.0,11.00,4.0,-1,0,0
+target = {=script(xr_custom:animpoint:otzhiman)} nil, waypoint
+
+;------------------------------
+;root = pos:-392.0,11.42,-3.0
+[logic@hide]
+suitable	= {=check_squad_name(as_squad_csky_base_guard) =surge_started} true, {=check_squad_name(as_squad_csky_base_guard) =is_rain} true, false
+prior		= 250
+
+[logic@hide_1]:logic@hide
+active = beh@hide_1
+[logic@hide_2]:logic@hide
+active = beh@hide_2
+[logic@hide_3]:logic@hide
+active = beh@hide_3
+[logic@hide_4]:logic@hide
+active = beh@hide_4
+[logic@hide_5]:logic@hide
+active = beh@hide_5
+[logic@hide_6]:logic@hide
+active = beh@hide_6
+
+[beh@hide_1]:beh@hide
+pt1 = 999999,guard | pos:-390.0,11.42,-3.0 animpoint:-390.0,11.42,-3.0,-1,0,0
+target = {=script(xr_custom:animpoint:animpoint_sit_ass)} nil, waypoint
+[beh@hide_2]:beh@hide
+pt1 = 999999,guard | pos:-390.5,11.42,-4.5 animpoint:-391.0,11.42,-4.5,-1,0,1
+target = {=script(xr_custom:animpoint:animpoint_sit_ass)} nil, waypoint
+[beh@hide_3]:beh@hide
+pt1 = 999999,guard | pos:-392.0,11.42,-5.0 animpoint:-392.0,11.42,-5.0,0,0,1
+target = {=script(xr_custom:animpoint:animpoint_sit_ass)} nil, waypoint
+[beh@hide_4]:beh@hide
+pt1 = 999999,guard | pos:-394.0,11.42,-3.0 animpoint:-394.0,11.42,-3.0,1,0,0
+target = {=script(xr_custom:animpoint:animpoint_sit_ass)} nil, waypoint
+[beh@hide_5]:beh@hide
+pt1 = 999999,guard | pos:-393.5,11.42,-1.5 animpoint:-393.5,11.42,-1.5,1,0,-1
+target = {=script(xr_custom:animpoint:animpoint_sit_ass)} nil, waypoint
+[beh@hide_6]:beh@hide
+pt1 = 999999,guard | pos:-392.0,11.42,-1.0 animpoint:-392.0,11.42,-1.0,0,0,-1
+target = {=script(xr_custom:animpoint:animpoint_sit_ass)} nil, waypoint
+
+;------------------------------
+
+[logic@sleep]
+suitable	= {=between_time(22:6) =surge_started =is_rain} true
+prior		= 250
+
+[logic@sleep_1]:logic@sleep
+active = beh@sleep_1
+[logic@sleep_2]:logic@sleep
+active = beh@sleep_2
+[logic@sleep_3]:logic@sleep
+active = beh@sleep_3
+[logic@sleep_4]:logic@sleep
+active = beh@sleep_4
+[logic@sleep_5]:logic@sleep
+active = beh@sleep_5
+
+[beh@sleep_1]:beh@sleep
+pt1 = 999999,sleep | pos:-396.5,12.0,1.00 look:-396.5,12.0,-10
+[beh@sleep_2]:beh@sleep
+pt1 = 999999,sleep | pos:-396.5,12.0,0.00 look:-396.5,12.0,-10
+[beh@sleep_3]:beh@sleep
+pt1 = 999999,sleep | pos:-396.5,12.0,-1.00 look:-396.5,12.0,-10
+[beh@sleep_4]:beh@sleep
+pt1 = 999999,sleep | pos:-396.5,12.0,-2.00 look:-396.5,12.0,-10
+[beh@sleep_5]:beh@sleep
+pt1 = 999999,sleep | pos:-396.5,12.0,-3.00 look:-396.5,12.0,-10
+
+;------------------------------
+
+[logic@base]
+suitable	= {!check_squad_name(as_squad_csky_base_guard)} true
+prior		= 100
+;------------------------------
+[logic@visitor_1]:logic@base
+active = beh@sit_bench_1
+[logic@visitor_2]:logic@base
+active = beh@sit_bench_2
+[logic@visitor_3]:logic@base
+active = beh@sit_bench_3
+[logic@visitor_4]:logic@base
+active = beh@stay_around_1
+[logic@visitor_5]:logic@base
+active = beh@stay_around_2
+[logic@visitor_6]:logic@base
+active = beh@stay_around_3
+[logic@visitor_7]:logic@base
+active = beh@stay_around_4
+[logic@visitor_8]:logic@base
+active = beh@stay_around_5
+[logic@visitor_9]:logic@base
+active = beh@music_player
+[logic@visitor_10]:logic@base
+active = beh@music_listener_1
+[logic@visitor_11]:logic@base
+active = beh@music_listener_2
+[logic@visitor_12]:logic@base
+active = beh@music_listener_3
+[logic@visitor_13]:logic@base
+active = beh@music_listener_4
+[logic@visitor_14]:logic@base
+active = beh@music_listener_5
+[logic@visitor_15]:logic@base
+active = beh@music_listener_6
+
+[beh@visitor]:beh@base
+run_anim = walk
+
+[beh@sit_bench_1]:beh@visitor
+pt1 = 999999,guard | pos:-391.0,11.42,2.7 animpoint:-391.0,11.42,2.7,0,0,1
+target = {=script(xr_custom:animpoint:animpoint_sit_normal:random)} %=script(xr_custom:sound:state)%, waypoint
+[beh@sit_bench_2]:beh@visitor
+pt1 = 999999,guard | pos:-390.0,11.42,2.7 animpoint:-390.0,11.42,2.7,0,0,1
+target = {=script(xr_custom:animpoint:animpoint_sit_normal:random)} %=script(xr_custom:sound:state)%, waypoint
+[beh@sit_bench_3]:beh@visitor
+pt1 = 999999,guard | pos:-389.0,11.42,2.7 animpoint:-389.0,11.42,2.7,0,0,1
+target = {=script(xr_custom:animpoint:animpoint_sit_normal:random)} %=script(xr_custom:sound:state)%, waypoint
+
+[beh@stay_around_1]:beh@visitor
+pt1 = 999999,guard | pos:-392.5,11.42,3.0 animpoint:-392.5,11.42,3.0,1,0,-1
+target = {=script(xr_custom:animpoint:animpoint_sit_knee:random)} %=script(xr_custom:sound:state)%, waypoint
+[beh@stay_around_2]:beh@visitor
+pt1 = 999999,guard | pos:-392.0,11.42,1.0 animpoint:-392.0,11.42,1.0,1,0,1
+target = {=script(xr_custom:animpoint:animpoint_sit_knee:random)} %=script(xr_custom:sound:state)%, waypoint
+[beh@stay_around_3]:beh@visitor
+pt1 = 999999,guard | pos:-390.5,11.51,0.5 animpoint:-390.5,11.51,0.5,0,0,1
+target = {=script(xr_custom:animpoint:animpoint_sit_knee:random)} %=script(xr_custom:sound:state)%, waypoint
+[beh@stay_around_4]:beh@visitor
+pt1 = 999999,guard | pos:-389.0,11.44,0.5 animpoint:-389.0,11.44,0.5,0,0,1
+target = {=script(xr_custom:animpoint:animpoint_sit_knee:random)} %=script(xr_custom:sound:state)%, waypoint
+[beh@stay_around_5]:beh@visitor
+pt1 = 999999,guard | pos:-393.0,11.42,2.0 animpoint:-393.0,11.42,2.0,1,0,0
+target = {=script(xr_custom:animpoint:fold_arms)} %=script(xr_custom:sound:state)%, waypoint
+
+[beh@music_player]:beh@visitor
+pt1 = 999999,guard | pos:-386.0,11.42,-9.0 look:-387.0,11.42,-9.0
+target = {=script(xr_custom:play_music:jup_b205_smart_terrain:visitor_10:visitor_11:visitor_12:visitor_13:visitor_14:visitor_15)} nil, %=stop_sound% waypoint
+[beh@music_listener_1]:beh@visitor
+pt1 = 999999,guard | pos:-388.0,11.42,-10.5 animpoint:-388.0,11.42,-10.5,1,0,1
+target = {=script(xr_custom:animpoint:animpoint_sit_knee:random)} nil, waypoint
+[beh@music_listener_2]:beh@visitor
+pt1 = 999999,guard | pos:-388.0,11.42,-8.0 animpoint:-388.0,11.42,-8.0,1,0,0
+target = {=script(xr_custom:animpoint:animpoint_sit_knee:random)} nil, waypoint
+[beh@music_listener_3]:beh@visitor
+pt1 = 999999,guard | pos:-386.0,11.42,-7.0 animpoint:-386.0,11.42,-7.0,0,0,-1
+target = {=script(xr_custom:animpoint:animpoint_sit_knee:random)} nil, waypoint
+[beh@music_listener_4]:beh@visitor
+pt1 = 999999,guard | pos:-389.5,11.42,-9.5 animpoint:-389.5,11.42,-9.5,1,0,0
+target = {=script(xr_custom:animpoint:animpoint_sit_knee:random)} nil, waypoint
+[beh@music_listener_5]:beh@visitor
+pt1 = 999999,guard | pos:-387.5,11.42,-6.0 animpoint:-387.5,11.42,-6.0,0,0,-1
+target = {=script(xr_custom:animpoint:animpoint_sit_knee:random)} nil, waypoint
+[beh@music_listener_6]:beh@visitor
+pt1 = 999999,guard | pos:-389.0,11.42,-7.0 animpoint:-389.0,11.42,-7.0,1,0,-1
+target = {=script(xr_custom:animpoint:animpoint_sit_knee:random)} nil, waypoint
